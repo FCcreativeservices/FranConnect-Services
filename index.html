@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- BUILD-CHECK: 2026-07-31-2141 (carousel anim + position, badge spacing, enhance-card height) -->
+<!-- BUILD-CHECK: 2026-07-31-2210 (fixed hero-metrics position specificity bug, 7 carousel items, full-box animation, enhance-card +30% overlap) -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -81,8 +81,8 @@ nav{
 .hero-lead{font-size:13px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.02em;margin-bottom:22px;text-align:left;}
 
 /* ── HERO METRIC CAROUSEL (3-slot wheel) ── */
-.hero-metrics{
-  position:absolute;top:6%;right:3%;z-index:5;
+#hero .hero-metrics{
+  position:absolute;top:6%;right:4%;z-index:5;
   width:280px;height:230px;
   display:flex;flex-direction:column;gap:8px;
 }
@@ -104,7 +104,7 @@ nav{
   75%{opacity:1;transform:translateY(0);}
   100%{opacity:0;transform:translateY(-22px);}
 }
-#hm-current .hm-num,#hm-current .hm-label{animation:hmTextCycle 3s ease-in-out infinite;}
+#hm-current{animation:hmTextCycle 3s ease-in-out infinite;}
 
 
 /* ── ZONE CARDS ── */
@@ -227,9 +227,9 @@ nav{
 .enhance-media-img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0;}
 .enhance-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,26,56,.35) 0%,rgba(2,26,56,.05) 55%);z-index:1;}
 .enhance-card{
-  position:absolute;top:10%;bottom:-20%;right:6%;width:468px;max-width:90%;
+  position:absolute;top:10%;bottom:-30%;right:6%;width:468px;max-width:90%;
   background:#fff;border-radius:var(--radius);
-  box-shadow:0 14px 44px rgba(0,0,0,.28);
+  box-shadow:0 18px 50px rgba(0,0,0,.32);
   padding:44px 34px;display:flex;flex-direction:column;justify-content:center;z-index:6;
 }
 .enhance-card .sec-eye,.enhance-card .sec-title,.enhance-card .sec-sub{text-align:left;margin-left:0;margin-right:0;}
@@ -756,9 +756,13 @@ function submitContact(){
 
 /* ── HERO METRICS WHEEL CAROUSEL ── */
 var hmMetrics=[
-  {num:'3',label:'Core service lines'},
   {num:'100%',label:'Branded to you'},
-  {num:'24/7',label:'Team on standby'}
+  {num:'Partner',label:'That helps you grow'},
+  {num:'Design',label:'That makes you shine'},
+  {num:'Hands-on',label:'Every step of the way'},
+  {num:'Built once',label:'No ongoing subscription'},
+  {num:'Adoption',label:'That actually sticks'},
+  {num:'One team',label:'For everything you need'}
 ];
 var hmIndex=0;
 function hmRender(){
