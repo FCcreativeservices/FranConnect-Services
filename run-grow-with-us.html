@@ -168,6 +168,21 @@ nav{
 .check-list li::before{content:'';position:absolute;left:0;top:2px;width:17px;height:17px;border-radius:50%;background:var(--orange);}
 .check-list li::after{content:'';position:absolute;left:5.5px;top:5px;width:6px;height:9px;border:solid white;border-width:0 2px 2px 0;transform:rotate(40deg);}
 
+/* ── STAT CHIPS ── */
+.stat-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;}
+.stat-chip{display:inline-flex;align-items:center;gap:6px;background:rgba(19,69,100,.06);border:1px solid rgba(19,69,100,.14);border-radius:40px;padding:6px 14px;font-size:12px;font-weight:600;color:var(--blue);white-space:nowrap;}
+.stat-chip svg{width:13px;height:13px;stroke:var(--orange);fill:none;stroke-width:2.2;flex-shrink:0;}
+.stat-chip.on-dark{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.2);color:white;}
+
+/* ── PROCESS STRIP ── */
+.process-strip{display:flex;gap:0;margin:8px 0 28px;}
+.process-step{flex:1;text-align:center;position:relative;padding:0 6px;}
+.process-step:not(:last-child)::after{content:'';position:absolute;top:15px;left:calc(50% + 21px);width:calc(100% - 42px);height:2px;background:rgba(19,69,100,.14);}
+.process-num{width:30px;height:30px;border-radius:50%;background:var(--orange);color:white;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;margin:0 auto 8px;position:relative;z-index:2;}
+.process-label{font-size:11.5px;font-weight:600;color:var(--blue);line-height:1.35;}
+.process-strip.on-dark .process-step:not(:last-child)::after{background:rgba(255,255,255,.2);}
+.process-strip.on-dark .process-label{color:rgba(255,255,255,.85);}
+
 /* ── VIDEO BANNER ── */
 .video-banner{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--blue);}
 .video-banner video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;}
@@ -274,6 +289,10 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
   #hero{padding:110px 16px 70px;min-height:540px;}
   #hero h1{font-size:34px;}
   #quiz,#cta{padding:64px 20px;}
+  .process-strip{flex-direction:column;gap:14px;text-align:left;}
+  .process-step{display:flex;align-items:center;gap:12px;text-align:left;padding:0;}
+  .process-step:not(:last-child)::after{display:none;}
+  .process-num{margin:0;flex-shrink:0;}
 }
 
 .nav-current{color:white;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);font-size:13px;font-weight:600;padding:8px 16px;cursor:default;}
@@ -334,6 +353,11 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
       <h2 class="sec-title">Platform Concierge</h2>
       <p class="sec-sub" style="margin-bottom:8px;">You don't need to learn FranConnect inside and out. You need someone who already has.</p>
       <p class="sec-sub" style="margin-bottom:20px;">Platform admin work rarely feels urgent, so it quietly piles up: page updates, user management, report pulls, and the dozens of small tasks that come with running FranConnect day to day. Platform Concierge puts a dedicated FranConnect expert on your side to handle that work directly. It's not a ticket queue, it's a person who already knows your setup and gets things done without you having to explain it every time.</p>
+      <div class="process-strip">
+        <div class="process-step"><div class="process-num">1</div><div class="process-label">Tell us your hours</div></div>
+        <div class="process-step"><div class="process-num">2</div><div class="process-label">We learn your setup</div></div>
+        <div class="process-step"><div class="process-num">3</div><div class="process-label">Tasks handled, every week</div></div>
+      </div>
       <ul class="check-list">
         <li>A dedicated expert who already knows FranConnect, with no ramp-up time</li>
         <li>Flexible hours (10 / 20 / 30 per month) that scale with how busy things get</li>
@@ -360,6 +384,11 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
       <h2 class="sec-title" style="color:white;">Growth Partner</h2>
       <p class="sec-sub" style="color:rgba(255,255,255,.82);margin-bottom:8px;">You're using FranConnect. The question is whether you're getting everything out of it.</p>
       <p class="sec-sub" style="color:rgba(255,255,255,.78);margin-bottom:20px;">FranConnect can do a lot more than most teams have time to explore. Between day-to-day priorities, it's easy to settle into a routine with the platform and rarely circle back to see what else it could be doing for you. A Growth Partner is an ongoing, strategic set of eyes on your account: reviewing usage and adoption regularly, identifying what's working well and what could work harder, and bringing you clear recommendations on a consistent basis. Think of it less as a service request and more as a seat at the table, someone accountable for making sure the platform keeps paying off, quarter over quarter.</p>
+      <div class="process-strip on-dark">
+        <div class="process-step"><div class="process-num">1</div><div class="process-label">We audit usage &amp; adoption</div></div>
+        <div class="process-step"><div class="process-num">2</div><div class="process-label">We bring you priorities</div></div>
+        <div class="process-step"><div class="process-num">3</div><div class="process-label">We track the improvement</div></div>
+      </div>
       <ul class="check-list on-dark">
         <li>Regular usage, adoption, and data-health reviews</li>
         <li>Proactive recommendations, not just requests you have to think up yourself</li>
@@ -386,6 +415,11 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
       <h2 class="sec-title">Change Management</h2>
       <p class="sec-sub" style="margin-bottom:8px;">The system works. Getting people to actually use it is the hard part.</p>
       <p class="sec-sub" style="margin-bottom:20px;">Most rollouts don't fall short because of the technology. They fall short because franchisees weren't brought along, communication was inconsistent, or the launch had no follow-through after week one. Change Management builds the human side of your rollout: a communication plan, a training and adoption timeline, and a way to track who's actually using the new process. It's built on proven change frameworks, not guesswork, so whatever you just invested in, whether it's a new module, a process change, or a full platform update, it actually sticks instead of quietly fizzling out.</p>
+      <div class="process-strip">
+        <div class="process-step"><div class="process-num">1</div><div class="process-label">Plan the rollout</div></div>
+        <div class="process-step"><div class="process-num">2</div><div class="process-label">Communicate &amp; train</div></div>
+        <div class="process-step"><div class="process-num">3</div><div class="process-label">Track adoption</div></div>
+      </div>
       <ul class="check-list">
         <li>A structured communication &amp; adoption plan for your rollout</li>
         <li>Built on proven change frameworks (Kotter, Lewin)</li>
@@ -409,6 +443,11 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
   <p class="sec-sub" style="max-width:780px;margin:0 auto 8px;">Stop copy-pasting between systems.</p>
   <p class="sec-sub" style="max-width:780px;margin:0 auto 16px;">Every manual export, every "which spreadsheet is the real one," every hour spent re-entering the same data into a second system: that's the cost of systems that don't talk to each other.</p>
   <p class="sec-sub" style="max-width:780px;margin:0 auto 40px;">Integrations connects FranConnect to the tools you already run, whether through flat files, APIs, or a direct database connection. It's a one-time build, not a subscription. Once it's live, your data moves on its own, automatically, so your team can trust the numbers instead of double-checking them.</p>
+  <div class="stat-chips" style="justify-content:center;">
+    <span class="stat-chip"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Any system, any format</span>
+    <span class="stat-chip"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Set up once, runs forever</span>
+    <span class="stat-chip"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg>Numbers you can trust</span>
+  </div>
   
   <ul class="check-list" style="display:grid;grid-template-columns:1fr 1fr;gap:10px 40px;max-width:780px;margin:0 auto 36px;text-align:left;">
     <li>Works with flat files, APIs, or direct database connections</li>
