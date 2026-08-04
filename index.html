@@ -21,6 +21,8 @@
   --text:    #1A1A1A;
   --border:  #E2E4E8;
   --blue3:   #2E8FCB;
+  --blue4:   #A5CFE5;
+  --blue5:   #021A38;
   --radius:  14px;
   --rad-sm:  8px;
   --shadow:  0 2px 16px rgba(0,0,0,.08);
@@ -195,9 +197,19 @@ nav{
 
 /* ── VIDEO BANNER ── */
 .enhance-media-section{position:relative;width:100%;min-height:520px;overflow:visible;background:#021a38;margin-bottom:0;z-index:7!important;}
+.enhance-media-crop{position:absolute;inset:0;}
 .enhance-media-img{width:100%;height:100%;object-fit:cover;object-position:left center;display:block;position:absolute;inset:0;}
 @media (max-width:1024px){
-  .enhance-media-img{object-position:12% center;}
+  /* keep only the 35% horizontal band holding the focal tablet
+     mockup (drop 9% off the left, 56% off the right) and scale
+     that band up to fill the frame — real crop, not a shrink */
+  .enhance-media-crop{overflow:hidden;}
+  .enhance-media-img{
+    position:absolute;top:50%;left:-25.71%;
+    width:285.71%;height:285.71%;
+    transform:translateY(-50%);
+    object-fit:cover;object-position:left center;
+  }
 }
 .enhance-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,26,56,.35) 0%,rgba(2,26,56,.05) 55%);z-index:1;}
 .enhance-card{
@@ -211,8 +223,12 @@ nav{
 .enhance-card .sec-sub{margin-bottom:24px;max-width:none;}
 .enhance-card .pill-row{justify-content:flex-start;}
 @media (max-width:760px){
-  .enhance-media-section{min-height:640px;}
-  .enhance-card{position:relative;top:auto;bottom:auto;right:auto;width:100%;max-width:100%;margin:-60px auto 0;}
+  /* clean stack on mobile: video block first, text card after,
+     no overlap; crop math above still applies to the video inside */
+  .enhance-media-section{min-height:auto;display:flex;flex-direction:column;overflow:hidden;}
+  .enhance-media-crop{position:relative;inset:auto;height:230px;width:100%;overflow:hidden;}
+  .enhance-overlay{display:none;}
+  .enhance-card{position:relative;top:auto;bottom:auto;right:auto;width:100%;max-width:100%;margin:0;}
 }
 .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,42,62,.5),rgba(11,42,62,.85));}
 .video-content{position:relative;z-index:2;text-align:center;max-width:640px;padding:60px 24px;}
@@ -244,9 +260,9 @@ nav{
 .quiz-content-col .qz-step .qc{padding:12px 13px;}
 .quiz-content-col .qc-line{font-size:13px;line-height:1.35;margin-bottom:0;}
 @media (max-width:900px){
-  .quiz-layout{flex-direction:column;gap:24px;}
-  .quiz-image-col{flex:0 0 auto;max-width:100%;width:100%;margin:0;}
-  .quiz-content-col{text-align:center;}
+  .quiz-layout{flex-direction:column;gap:0;}
+  .quiz-image-col{display:none;}
+  .quiz-content-col{text-align:center;min-width:0;width:100%;}
   .quiz-content-col .sec-eye,.quiz-content-col .sec-title,.quiz-content-col .sec-sub{text-align:center;}
   .quiz-content-col .sec-title{font-size:clamp(24px,3.5vw,32px);}
   .quiz-content-col .sec-sub{font-size:15px;}
@@ -262,7 +278,7 @@ nav{
   padding:36px 40px;
 }
 .quiz-spacer{width:100%;height:100vh;pointer-events:none;}
-@media (max-width:760px){
+@media (max-width:900px){
   #quiz{position:relative!important;min-height:auto;}
   .quiz-spacer{display:none;}
 }
@@ -299,7 +315,7 @@ nav{
 .qr-foot button,.qr-foot a{background:none;border:none;color:var(--blue2);font-weight:600;font-size:13px;cursor:pointer;font-family:'Poppins',sans-serif;text-decoration:underline;padding:0;}
 
 /* result card: solid blue-tone background per outcome group */
-#quiz-result .qr-eyebrow{color:rgba(255,255,255,.75);}
+#quiz-result .qr-eyebrow{color:var(--orange);}
 #quiz-result .qr-title{color:#fff;}
 #quiz-result .qr-desc{color:rgba(255,255,255,.85);}
 #quiz-result .qr-cta{background:#fff;color:var(--blue);}
@@ -310,8 +326,17 @@ nav{
 #quiz-result.res-build .qr-cta{color:var(--blue);}
 #quiz-result.res-integrations{background:var(--blue3);}
 #quiz-result.res-integrations .qr-cta{color:var(--blue3);}
-#quiz-result.res-run{background:var(--blue2);}
-#quiz-result.res-run .qr-cta{color:var(--blue2);}
+#quiz-result.res-concierge{background:var(--blue2);}
+#quiz-result.res-concierge .qr-cta{color:var(--blue2);}
+#quiz-result.res-change{background:var(--blue5);}
+#quiz-result.res-change .qr-cta{color:var(--blue5);}
+/* lighter background here -- swap to navy text for contrast */
+#quiz-result.res-growth{background:var(--blue4);}
+#quiz-result.res-growth .qr-title{color:#134564;}
+#quiz-result.res-growth .qr-desc{color:#134564;}
+#quiz-result.res-growth .qr-cta{color:#134564;}
+#quiz-result.res-growth .qr-foot{color:rgba(19,69,100,.72);}
+#quiz-result.res-growth .qr-foot button,#quiz-result.res-growth .qr-foot a{color:#134564;text-decoration-color:rgba(19,69,100,.5);}
 
 /* ── QUIZ WIZARD ── */
 #quiz-wizard{max-width:900px;margin:0 auto;}
@@ -540,9 +565,11 @@ nav{
 
 <!-- ENHANCE YOUR PLATFORM -->
 <section class="enhance-media-section">
-  <video class="enhance-media-img" autoplay muted loop playsinline>
-    <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Creative.mp4" type="video/mp4">
-  </video>
+  <div class="enhance-media-crop">
+    <video class="enhance-media-img" autoplay muted loop playsinline>
+      <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Creative.mp4" type="video/mp4">
+    </video>
+  </div>
   <div class="enhance-overlay"></div>
   <div class="enhance-card reveal-up">
     <div class="sec-eye" style="color:var(--orange);">Build with us</div>
@@ -721,7 +748,7 @@ nav{
 <script>
 var QUIZ_MATCHES={
   concierge:{
-    group:'run',
+    group:'concierge',
     eyebrow:'Run & grow with us',
     title:'Platform Concierge is your best fit',
     desc:"You don't need to learn FranConnect inside and out — you need someone who already has. A FranConnect expert handles the day-to-day system work so your team gets time back.",
@@ -729,7 +756,7 @@ var QUIZ_MATCHES={
     href:'run-grow-with-us.html#concierge'
   },
   growth:{
-    group:'run',
+    group:'growth',
     eyebrow:'Run & grow with us',
     title:'Growth Partner is your best fit',
     desc:"You're using FranConnect — the question is whether you're getting everything out of it. A Growth Partner looks at your data, your processes, and adoption, and actively drives improvement.",
@@ -737,7 +764,7 @@ var QUIZ_MATCHES={
     href:'run-grow-with-us.html#growth'
   },
   change:{
-    group:'run',
+    group:'change',
     eyebrow:'Run & grow with us',
     title:'Change Management is your best fit',
     desc:'The system works — getting people to actually use it is the hard part. We build the communication and adoption plan so a rollout sticks instead of fizzling out.',
