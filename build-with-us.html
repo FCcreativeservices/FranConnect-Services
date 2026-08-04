@@ -73,10 +73,15 @@ nav{
 
 /* ── HERO ── */
 #hero{
-  min-height:460px;
+  height:460px;
   background:#0b2a3e;
   display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
-  text-align:left;padding:80px 8% 100px 6%;position:relative;overflow:hidden;
+  text-align:left;padding:80px 8% 100px 6%;position:fixed;top:0;left:0;right:0;overflow:hidden;z-index:1;
+}
+.hero-spacer{width:100%;height:460px;pointer-events:none;}
+@media (max-width:760px){
+  #hero{position:relative;height:auto;min-height:420px;}
+  .hero-spacer{display:none;}
 }
 #hero::after{
   content:'';position:absolute;inset:0;
@@ -119,7 +124,7 @@ nav{
 .sec-sub{font-size:15px;color:var(--dark);max-width:520px;line-height:1.65;margin-bottom:48px;}
 
 /* ── PLATFORM ── */
-#platform{background:var(--off);}
+#platform{background:var(--off);position:relative;z-index:5;border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.12);}
 .plat-hero{border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-lg);aspect-ratio:16/7;background:var(--blue);margin-bottom:52px;position:relative;}
 .plat-hero video{width:100%;height:100%;object-fit:cover;display:block;}
 .plat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;}
@@ -574,6 +579,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
   <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Enhance your platform</h1>
   <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">Design, training, and video — made to feel like your brand, every time.</p>
 </section>
+<div class="hero-spacer"></div>
 
 <!-- PLATFORM -->
 <section id="platform" class="section">
