@@ -1089,6 +1089,22 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 </div>
 
 <script>
+/* ── HERO RELEASE ──
+   Hide the fixed hero once we've scrolled past its own height, so
+   it can never peek through a rounded corner further down the page.
+   Only relevant on the >760px layout where the hero is fixed. */
+(function(){
+  var hero = document.getElementById('hero');
+  if(!hero) return;
+  function updateHero(){
+    if(window.innerWidth<=760){ hero.style.visibility=''; return; }
+    hero.style.visibility = window.scrollY > 460 ? 'hidden' : 'visible';
+  }
+  window.addEventListener('scroll', updateHero, {passive:true});
+  window.addEventListener('resize', updateHero);
+  updateHero();
+})();
+
 /* ── STATE ── */
 var E = {
   platform: { skin:false, dash:false, hub:false, tmpl:false },
