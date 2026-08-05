@@ -261,6 +261,46 @@ nav{
 .gp-stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:32px;}
 @media (max-width:640px){.gp-kpis{grid-template-columns:1fr;}}
 
+/* ── SCROLL REVEAL: staggered fade-up ── */
+.reveal-stagger .reveal-item{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+.reveal-stagger.in-view .reveal-item{opacity:1;transform:translateY(0);}
+.reveal-stagger.in-view .reveal-item:nth-child(1){transition-delay:.05s;}
+.reveal-stagger.in-view .reveal-item:nth-child(2){transition-delay:.22s;}
+.reveal-stagger.in-view .reveal-item:nth-child(3){transition-delay:.39s;}
+.reveal-stagger.in-view .reveal-item:nth-child(4){transition-delay:.56s;}
+@media (prefers-reduced-motion:reduce){.reveal-stagger .reveal-item{opacity:1;transform:none;transition:none;}}
+
+/* ── PLATFORM CONCIERGE: plain video, no border/shadow ── */
+.op-video-wrap{border-radius:var(--radius);overflow:hidden;}
+.op-video-wrap video{width:100%;height:380px;object-fit:cover;display:block;}
+
+/* ── generic light card, dark-bg variant (reused by Growth Partner) ── */
+.cm-card.on-dark{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.14);}
+.cm-card.on-dark .cm-card-icon{background:rgba(255,255,255,.09);}
+.cm-card.on-dark .cm-card-icon svg{stroke:#fff;}
+.cm-card.on-dark .cm-card-title{color:#fff;}
+.cm-card.on-dark .cm-card-desc{color:rgba(255,255,255,.65);}
+#concierge .cm-card-icon{background:rgba(23,102,155,.14);}
+#concierge .cm-card-icon svg{stroke:var(--blue2);}
+#growth .cm-cards{grid-template-columns:repeat(3,1fr);margin-bottom:8px;}
+#growth .split-media .gp-dash{margin:0;max-width:none;}
+@media (max-width:900px){#growth .cm-cards{grid-template-columns:1fr 1fr;}}
+@media (max-width:560px){#growth .cm-cards{grid-template-columns:1fr;}}
+
+/* ── TRANSITION: Compare → Integrations, subtle animated network ── */
+.section-transition-flow{position:relative;height:140px;background:var(--off);overflow:hidden;}
+.flow-svg{position:absolute;top:0;left:0;width:100%;height:100%;}
+.flow-line{fill:none;stroke:var(--blue3);stroke-width:1.4;opacity:.28;stroke-dasharray:6 8;animation:flowDash 7s linear infinite;}
+.flow-line.l2{stroke:var(--blue2);opacity:.22;animation-duration:9s;animation-direction:reverse;}
+.flow-line.l3{stroke:var(--orange);opacity:.16;animation-duration:11s;}
+@keyframes flowDash{to{stroke-dashoffset:-140;}}
+.flow-node{fill:var(--blue2);opacity:.3;transform-box:fill-box;transform-origin:center;animation:flowPulse 4.5s ease-in-out infinite;}
+.flow-node.n2{fill:var(--orange);animation-delay:1.3s;}
+.flow-node.n3{fill:var(--blue3);animation-delay:2.6s;}
+@keyframes flowPulse{0%,100%{opacity:.18;transform:scale(1);}50%{opacity:.6;transform:scale(1.5);}}
+@media (max-width:640px){.section-transition-flow{height:90px;}}
+@media (prefers-reduced-motion:reduce){.flow-line,.flow-node{animation:none!important;}}
+
 /* ── COMPARISON ── */
 #compare{background:var(--off);position:relative;z-index:5;}
 .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
@@ -478,7 +518,7 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 <!-- HERO -->
 <section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Grow_Hero%20Image.png');background-size:contain;background-position:left bottom;background-repeat:no-repeat;">
   <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Run &amp; grow with us</div>
-  <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Extra hands, real strategy, smoother change</h1>
+  <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Extra hands, real strategy,<br>smoother change</h1>
   <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">From day-to-day platform work to full-scale rollouts, our team plugs in wherever you need support, without you having to hire for it.</p>
 </section>
 <div class="hero-spacer"></div>
@@ -486,87 +526,108 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 <!-- PLATFORM CONCIERGE -->
 <section id="concierge" class="section split-section" style="background:#f5f6f8;position:relative;z-index:5;border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.12);">
 <div class="sec-wrap">
-  <div class="split-wrap">
+  <div class="split-wrap reverse">
     <div class="split-media">
-      <div class="op-wrap">
-        <div class="op-mock">
-          <div class="op-mock-bar">
-            <span class="op-dot r"></span><span class="op-dot y"></span><span class="op-dot g"></span>
-            <span class="op-mock-url">app.franconnect.net</span>
-          </div>
-          <div class="op-mock-body">
-            <div class="op-mock-row"><span class="op-mock-check"></span>Update franchisee directory</div>
-            <div class="op-mock-row"><span class="op-mock-check"></span>Publish weekly newsletter</div>
-            <div class="op-mock-row"><span class="op-mock-check"></span>Pull performance report</div>
-            <div class="op-mock-row"><span class="op-mock-check"></span>Refresh dashboard tiles</div>
-          </div>
-        </div>
-        <div class="op-tasks-card">
-          <div class="op-tasks-head">Today's tasks</div>
-          <div class="op-tasks-num">4</div>
-          <div class="op-tasks-line">handled so far</div>
-          <div class="op-tasks-line sub">Avg. response: <strong>2h</strong></div>
-        </div>
+      <div class="op-video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Grow_PlatfromConcierge.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
     <div class="split-text">
       <div class="sec-eye" style="color:var(--blue2);">Run &amp; grow with us</div>
       <h2 class="sec-title">Platform Concierge</h2>
       <p class="sec-sub" style="margin-bottom:8px;">You don't need to learn FranConnect inside and out. You need someone who already has.</p>
-      <p class="sec-sub" style="margin-bottom:20px;">Platform admin work rarely feels urgent, so it quietly piles up: page updates, user management, report pulls, and the dozens of small tasks that come with running FranConnect day to day. Platform Concierge puts a dedicated FranConnect expert on your side to handle that work directly. It's not a ticket queue, it's a person who already knows your setup and gets things done without you having to explain it every time.</p>
-      <div class="process-strip">
-        <div class="process-step"><div class="process-num">1</div><div class="process-label">Tell us your hours</div></div>
-        <div class="process-step"><div class="process-num">2</div><div class="process-label">We learn your setup</div></div>
-        <div class="process-step"><div class="process-num">3</div><div class="process-label">Tasks handled, every week</div></div>
-      </div>
-      <ul class="check-list">
-        <li>A dedicated expert who already knows FranConnect, with no ramp-up time</li>
-        <li>Flexible hours (10 / 20 / 30 per month) that scale with how busy things get</li>
-        <li>No hiring, training, or managing an in-house admin role</li>
-        <li>Platform knowledge that stays with your team, not with one person</li>
-      </ul>
-      <a href="#" onclick="openContactModal();return false;" class="qr-cta">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <p class="sec-sub" style="margin-bottom:0;">Platform admin work rarely feels urgent, so it quietly piles up: page updates, user management, report pulls, and the dozens of small tasks that come with running FranConnect day to day. Platform Concierge puts a dedicated FranConnect expert on your side to handle that work directly. It's not a ticket queue, it's a person who already knows your setup and gets things done without you having to explain it every time.</p>
     </div>
+  </div>
+
+  <div class="process-strip reveal-stagger">
+    <div class="process-step reveal-item"><div class="process-num">1</div><div class="process-label">Tell us your hours</div></div>
+    <div class="process-step reveal-item"><div class="process-num">2</div><div class="process-label">We learn your setup</div></div>
+    <div class="process-step reveal-item"><div class="process-num">3</div><div class="process-label">Tasks handled, every week</div></div>
+  </div>
+
+  <div class="cm-cards">
+    <div class="cm-card">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="cm-card-title">Dedicated Expert</div>
+      <div class="cm-card-desc">Already knows FranConnect, so there's no ramp-up time before work starts.</div>
+    </div>
+    <div class="cm-card">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="cm-card-title">Flexible Hours</div>
+      <div class="cm-card-desc">10 / 20 / 30 hours per month that scale with how busy things get.</div>
+    </div>
+    <div class="cm-card">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="cm-card-title">No Hiring Needed</div>
+      <div class="cm-card-desc">No hiring, training, or managing an in-house admin role.</div>
+    </div>
+    <div class="cm-card">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="cm-card-title">Retained Knowledge</div>
+      <div class="cm-card-desc">Platform knowledge that stays with your team, not with one person.</div>
+    </div>
+  </div>
+
+  <div style="text-align:left;">
+    <a href="#" onclick="openContactModal();return false;" class="qr-cta">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </div>
 </section>
 
 
 <!-- GROWTH PARTNER -->
-<section id="growth" class="section" style="background:#021a38;position:relative;z-index:5;">
+<section id="growth" class="section split-section" style="background:#021a38;position:relative;z-index:5;">
 <div class="sec-wrap">
-  <div class="gp-spotlight">
-    <div class="sec-eye" style="color:var(--orange);">Run &amp; grow with us</div>
-    <h2 class="sec-title" style="color:white;">Growth Partner</h2>
-    <p class="sec-sub" style="color:rgba(255,255,255,.82);margin-bottom:8px;">You're using FranConnect. The question is whether you're getting everything out of it.</p>
-    <p class="sec-sub" style="color:rgba(255,255,255,.78);">FranConnect can do a lot more than most teams have time to explore. A Growth Partner is an ongoing, strategic set of eyes on your account, reviewing usage and adoption, and bringing you clear recommendations on a consistent basis. Think of it less as a service request and more as a seat at the table, someone accountable for making sure the platform keeps paying off, quarter over quarter.</p>
+  <div class="split-wrap">
+    <div class="split-media">
+      <div class="gp-dash">
+        <div class="gp-dash-head">
+          <span class="gp-dash-badge">Quarterly Review</span>
+          <span class="gp-dash-date">FranConnect Insights</span>
+        </div>
+        <div class="gp-kpis">
+          <div class="gp-kpi"><div class="gp-kpi-num">87%</div><div class="gp-kpi-lbl">Adoption rate</div><div class="gp-kpi-trend">&#9650; 6%</div></div>
+          <div class="gp-kpi"><div class="gp-kpi-num">1,240</div><div class="gp-kpi-lbl">Active users</div><div class="gp-kpi-trend">&#9650; 120</div></div>
+          <div class="gp-kpi"><div class="gp-kpi-num">-32%</div><div class="gp-kpi-lbl">Support tickets</div><div class="gp-kpi-trend">&#9660; 32%</div></div>
+        </div>
+        <div class="gp-chart">
+          <span class="gp-bar" style="--h:42%"></span>
+          <span class="gp-bar" style="--h:55%"></span>
+          <span class="gp-bar" style="--h:48%"></span>
+          <span class="gp-bar" style="--h:68%"></span>
+          <span class="gp-bar" style="--h:60%"></span>
+          <span class="gp-bar" style="--h:80%"></span>
+        </div>
+        <div class="gp-dash-foot">Platform health: <strong style="color:#4ADE80;">Excellent</strong> &middot; 3 new recommendations this quarter</div>
+      </div>
+    </div>
+    <div class="split-text">
+      <div class="sec-eye" style="color:var(--orange);">Run &amp; grow with us</div>
+      <h2 class="sec-title" style="color:white;">Growth Partner</h2>
+      <p class="sec-sub" style="color:rgba(255,255,255,.82);margin-bottom:8px;">You're using FranConnect. The question is whether you're getting everything out of it.</p>
+      <p class="sec-sub" style="color:rgba(255,255,255,.78);margin-bottom:0;">FranConnect can do a lot more than most teams have time to explore. A Growth Partner is an ongoing, strategic set of eyes on your account, reviewing usage and adoption, and bringing you clear recommendations on a consistent basis. Think of it less as a service request and more as a seat at the table, someone accountable for making sure the platform keeps paying off, quarter over quarter.</p>
+    </div>
   </div>
 
-  <div class="gp-dash">
-    <div class="gp-dash-head">
-      <span class="gp-dash-badge">Quarterly Review</span>
-      <span class="gp-dash-date">FranConnect Insights</span>
+  <div class="cm-cards">
+    <div class="cm-card on-dark">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg></div>
+      <div class="cm-card-title">Usage &amp; Adoption Reviews</div>
+      <div class="cm-card-desc">Regular check-ins on how the platform is actually being used, not just whether it's live.</div>
     </div>
-    <div class="gp-kpis">
-      <div class="gp-kpi"><div class="gp-kpi-num">87%</div><div class="gp-kpi-lbl">Adoption rate</div><div class="gp-kpi-trend">&#9650; 6%</div></div>
-      <div class="gp-kpi"><div class="gp-kpi-num">1,240</div><div class="gp-kpi-lbl">Active users</div><div class="gp-kpi-trend">&#9650; 120</div></div>
-      <div class="gp-kpi"><div class="gp-kpi-num">-32%</div><div class="gp-kpi-lbl">Support tickets</div><div class="gp-kpi-trend">&#9660; 32%</div></div>
+    <div class="cm-card on-dark">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+      <div class="cm-card-title">Proactive Recommendations</div>
+      <div class="cm-card-desc">Clear, prioritized suggestions on a set cadence, not something you have to think up yourself.</div>
     </div>
-    <div class="gp-chart">
-      <span class="gp-bar" style="--h:42%"></span>
-      <span class="gp-bar" style="--h:55%"></span>
-      <span class="gp-bar" style="--h:48%"></span>
-      <span class="gp-bar" style="--h:68%"></span>
-      <span class="gp-bar" style="--h:60%"></span>
-      <span class="gp-bar" style="--h:80%"></span>
+    <div class="cm-card on-dark">
+      <div class="cm-card-icon"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
+      <div class="cm-card-title">Ongoing Accountability</div>
+      <div class="cm-card-desc">A partner accountable for outcomes over time, not a one-off fix and gone.</div>
     </div>
-    <div class="gp-dash-foot">Platform health: <strong style="color:#4ADE80;">Excellent</strong> &middot; 3 new recommendations this quarter</div>
-  </div>
-
-  <div class="gp-stats">
-    <span class="stat-chip on-dark"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M18 9l-5 5-3-3-4 4"/></svg>Regular usage &amp; adoption reviews</span>
-    <span class="stat-chip on-dark"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>Proactive recommendations, on a schedule</span>
-    <span class="stat-chip on-dark"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg>Ongoing accountability, not one-off fixes</span>
   </div>
 
   <div style="text-align:center;">
@@ -586,18 +647,18 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
     <p class="sec-sub">Most rollouts don't fall short because of the technology. They fall short because franchisees weren't brought along, communication was inconsistent, or the launch had no follow-through after week one. Change Management builds the human side of your rollout, and it's built on proven change frameworks, not guesswork, so whatever you just invested in actually sticks instead of quietly fizzling out.</p>
   </div>
 
-  <div class="cm-roadmap">
-    <div class="cm-stop">
+  <div class="cm-roadmap reveal-stagger">
+    <div class="cm-stop reveal-item">
       <div class="cm-stop-dot">1</div>
       <div class="cm-stop-title">Plan the rollout</div>
       <div class="cm-stop-desc">Map the change, the stakeholders, and what success looks like before anything launches.</div>
     </div>
-    <div class="cm-stop">
+    <div class="cm-stop reveal-item">
       <div class="cm-stop-dot">2</div>
       <div class="cm-stop-title">Communicate &amp; train</div>
       <div class="cm-stop-desc">Bring franchisees along with clear messaging and hands-on training, not a one-time email.</div>
     </div>
-    <div class="cm-stop">
+    <div class="cm-stop reveal-item">
       <div class="cm-stop-dot">3</div>
       <div class="cm-stop-title">Track adoption</div>
       <div class="cm-stop-desc">Follow-through after launch, so you know what's landing and what still needs a push.</div>
@@ -635,7 +696,7 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 
 
 <!-- COMPARISON -->
-<section id="compare" class="section">
+<section id="compare" class="section" style="border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.12);">
 <div class="sec-wrap">
   <div class="sec-head" style="text-align:center;">
     <div class="sec-eye">Run &amp; grow with us</div>
@@ -709,6 +770,17 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 </div>
 </section>
 
+<div class="section-transition-flow" aria-hidden="true">
+  <svg class="flow-svg" viewBox="0 0 1200 140" preserveAspectRatio="none">
+    <path class="flow-line l1" d="M0,90 C200,40 350,120 550,70 S850,30 1200,80"></path>
+    <path class="flow-line l2" d="M0,40 C180,100 400,20 650,90 S950,110 1200,50"></path>
+    <path class="flow-line l3" d="M0,110 C250,60 500,130 750,60 S1000,20 1200,110"></path>
+    <circle class="flow-node n1" cx="180" cy="63" r="3"></circle>
+    <circle class="flow-node n2" cx="560" cy="85" r="3"></circle>
+    <circle class="flow-node n3" cx="900" cy="55" r="3"></circle>
+    <circle class="flow-node n1" cx="1050" cy="95" r="3"></circle>
+  </svg>
+</div>
 
 <!-- INTEGRATIONS -->
 <section id="integrations" class="section" style="background:#ffffff;text-align:center;position:relative;z-index:5;">
@@ -775,6 +847,24 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 </div>
 
 <script>
+(function(){
+  var groups = document.querySelectorAll('.reveal-stagger');
+  if(!groups.length) return;
+  if(!('IntersectionObserver' in window)){
+    groups.forEach(function(g){ g.classList.add('in-view'); });
+    return;
+  }
+  var obs = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('in-view');
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {threshold:0.3});
+  groups.forEach(function(g){ obs.observe(g); });
+})();
+
 (function(){
   var hero = document.getElementById('hero');
   if(!hero) return;
