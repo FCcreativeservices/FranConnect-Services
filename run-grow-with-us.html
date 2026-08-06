@@ -964,14 +964,19 @@ function closeCompareZoomIfBg(e){
   var spacer = document.getElementById('change-spacer');
   if(!change || !spacer) return;
   var pinned = false;
-  var pinHeight = 0;
 
+  /* IMPORTANT: visibility must be judged relative to THIS section's
+     own spacer position (via getBoundingClientRect), not raw page
+     scrollY. Change Management sits far down the document, so
+     comparing scrollY against its own height (a trick that only
+     works for the hero, which starts at document position 0) made
+     it hide itself almost immediately on any screen tall enough to
+     pin it -- long before the user had actually scrolled down to it. */
   function measure(){
     change.classList.remove('pin-fixed');
     var h = change.offsetHeight;
     var fits = h <= window.innerHeight && window.innerWidth > 760;
     if(fits){
-      pinHeight = h;
       spacer.style.height = h + 'px';
       spacer.style.display = 'block';
       change.classList.add('pin-fixed');
@@ -981,11 +986,13 @@ function closeCompareZoomIfBg(e){
       change.style.visibility = '';
       pinned = false;
     }
+    updateVisibility();
   }
 
   function updateVisibility(){
     if(!pinned) return;
-    change.style.visibility = window.scrollY > pinHeight ? 'hidden' : 'visible';
+    var rect = spacer.getBoundingClientRect();
+    change.style.visibility = rect.bottom <= 0 ? 'hidden' : 'visible';
   }
 
   window.addEventListener('load', measure);
