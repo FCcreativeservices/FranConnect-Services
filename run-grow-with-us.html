@@ -345,24 +345,14 @@ nav{
   .cm-journey-path{transition:none;stroke-dashoffset:0;}
 }
 
-/* ── ATMOSPHERE: Compare → Integrations -- light, not a divider.
-   Only white / #fafbfd / #f7f9fc / #f1f4f9. Only the background glow
-   moves (slow position drift, 30s+); the two accents are static and
-   architectural, not floating decoration. ── */
+/* ── ATMOSPHERE: Compare → Integrations -- no divider, no seam.
+   #f1f4f9 (matching #compare exactly) degrades smoothly into white
+   through an actual linear gradient -- by the time the curve appears
+   the backdrop is already white, so the curve is pure shape, not a
+   color edge. ── */
 .section-atmosphere{
   position:relative;z-index:5;height:320px;overflow:hidden;
-  background-color:#f1f4f9;
-  background-image:
-    radial-gradient(ellipse 60% 65% at 18% 22%, #ffffff 0%, transparent 68%),
-    radial-gradient(ellipse 55% 60% at 84% 30%, #fafbfd 0%, transparent 70%),
-    radial-gradient(ellipse 75% 65% at 46% 98%, #ffffff 0%, transparent 72%);
-  background-repeat:no-repeat;
-  background-size:100% 100%;
-  animation:atmoShift 32s ease-in-out infinite alternate;
-}
-@keyframes atmoShift{
-  0%{background-position:0% 0%, 0% 0%, 0% 0%;}
-  100%{background-position:3% 4%, -3% -3%, -2% 2%;}
+  background:linear-gradient(180deg,#f1f4f9 0%,#f4f6f9 22%,#f9fafb 42%,#ffffff 64%,#ffffff 100%);
 }
 .atmo-square{
   position:absolute;top:16%;right:9%;width:78px;height:78px;
@@ -376,19 +366,16 @@ nav{
   .atmo-square{width:50px;height:50px;right:6%;}
   .atmo-dots{left:6%;}
 }
-@media (prefers-reduced-motion:reduce){
-  .section-atmosphere{animation:none!important;}
-}
 
-/* -- CURVE REVEAL: the f1f4f9 atmosphere ends in one soft,
-   asymmetrical curve that simply uncovers the white section
-   underneath. No line, no border, no shadow -- just a filled
-   shape the same white as the section below. -- */
+/* -- CURVE REVEAL: sits on the already-white tail of the gradient
+   above, so it reads as one continuous surface with a soft, living
+   edge -- never a hard line. A gentle blur feathers the boundary,
+   and a constant slow roll keeps it feeling like a quiet wave. -- */
 .curve-reveal{
   position:absolute;left:0;right:0;bottom:-1px;width:100%;height:58%;
   display:block;pointer-events:none;z-index:0;
 }
-.curve-reveal path{fill:#ffffff;stroke:none;}
+.curve-reveal path{fill:#ffffff;stroke:none;filter:url(#curveFeather);}
 @media (max-width:640px){
   .curve-reveal{height:46%;}
 }
@@ -641,7 +628,7 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 </div>
 
 <!-- HERO -->
-<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Grow_Hero%20Image.png');background-size:contain;background-position:left bottom;background-repeat:no-repeat;">
+<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Grow_Hero%20Image.png');background-size:auto 100%;background-position:left bottom;background-repeat:no-repeat;">
   <div class="hero-text">
     <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Run &amp; grow with us</div>
     <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Extra hands, real strategy,<br>smoother change</h1>
@@ -898,13 +885,19 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
   <span class="atmo-square"></span>
   <span class="atmo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
   <svg class="curve-reveal" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <filter id="curveFeather" x="-10%" y="-30%" width="120%" height="160%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="3.5" />
+      </filter>
+    </defs>
     <path d="M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z">
-      <animate attributeName="d" dur="27s" repeatCount="indefinite" calcMode="spline"
-        keyTimes="0;0.32;0.68;1"
-        keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"
+      <animate attributeName="d" dur="16s" repeatCount="indefinite" calcMode="spline"
+        keyTimes="0;0.25;0.5;0.75;1"
+        keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"
         values="M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z;
-                M0,101 C428,158 932,39 1440,107 L1440,220 L0,220 Z;
-                M0,92 C412,171 948,27 1440,116 L1440,220 L0,220 Z;
+                M0,102 C452,158 908,40 1440,105 L1440,220 L0,220 Z;
+                M0,93 C486,148 884,46 1440,99 L1440,220 L0,220 Z;
+                M0,89 C448,157 912,37 1440,108 L1440,220 L0,220 Z;
                 M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z" />
     </path>
   </svg>
