@@ -56,8 +56,9 @@ nav{
   text-align:left;padding:80px 8% 100px 6%;position:fixed;top:0;left:0;right:0;overflow:hidden;z-index:1;
 }
 .hero-spacer{width:100%;height:460px;pointer-events:none;}
+.hero-text{position:relative;z-index:2;}
 @media (max-width:760px){
-  #hero{position:relative;height:auto;min-height:420px;}
+  #hero{position:relative;height:auto;min-height:420px;background-size:auto 100%!important;background-position:left center!important;}
   .hero-spacer{display:none;}
 }
 #hero::after{
@@ -369,6 +370,21 @@ nav{
 .compare-reco-card.growth{background:rgba(2,26,56,.06);border:1px solid rgba(2,26,56,.18);}
 .compare-reco-card strong{display:block;margin-bottom:6px;color:var(--blue);}
 @media (max-width:760px){.compare-reco{grid-template-columns:1fr;}}
+.compare-zoom-btn{display:none;position:absolute;right:8px;bottom:8px;width:36px;height:36px;border-radius:50%;background:var(--blue2);border:none;align-items:center;justify-content:center;box-shadow:0 4px 14px rgba(0,0,0,.25);z-index:6;cursor:pointer;padding:0;}
+.compare-zoom-btn svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:2.2;}
+@media (max-width:760px){
+  #compare-scroll{position:relative;}
+  #compare-scroll .compare-grid{min-width:0;grid-template-columns:64px repeat(3,1fr);}
+  #compare-scroll .compare-cell{padding:6px 4px;font-size:8px;line-height:1.25;}
+  #compare-scroll .compare-head{font-size:8px;padding:8px 4px;}
+  .compare-zoom-btn{display:flex;}
+}
+.compare-zoom-overlay{position:fixed;inset:0;background:rgba(10,26,40,.72);z-index:400;display:none;align-items:center;justify-content:center;padding:24px 16px;}
+.compare-zoom-overlay.open{display:flex;}
+.compare-zoom-panel{background:#fff;border-radius:var(--radius);width:100%;max-width:100%;max-height:85vh;position:relative;padding:40px 12px 16px;box-shadow:0 24px 60px rgba(0,0,0,.35);}
+.compare-zoom-close{position:absolute;top:8px;right:10px;width:32px;height:32px;border-radius:50%;border:none;background:var(--off);font-size:20px;line-height:1;cursor:pointer;color:var(--blue);}
+.compare-zoom-scroll{overflow:auto;max-height:calc(85vh - 56px);-webkit-overflow-scrolling:touch;}
+
 
 /* ── VIDEO BANNER ── */
 .video-banner{position:relative;min-height:64vh;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--blue);}
@@ -514,9 +530,19 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 .video-placeholder svg{width:34px;height:34px;stroke:rgba(255,255,255,.6);fill:none;stroke-width:1.6;}
 .video-placeholder span{font-size:12px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.03em;}
 
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;margin-right:2px;}
+.nav-hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;margin:4px 0;}
+.nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:rgba(19,69,100,.98);backdrop-filter:blur(20px);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
+.nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
+.nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-mobile-menu .nav-mobile-current{color:var(--orange);}
+@media (max-width:760px){
+  .nav-title,.nav-current{display:none;}
+  .nav-links a:not(.nav-cta){display:none;}
+  .nav-hamburger{display:block;}
+}
 @media (max-width:640px){
   nav{padding:12px 20px;}
-  .nav-links a:not(.nav-cta){display:none;}
   #hero{padding:110px 16px 70px;min-height:540px;}
   #hero h1{font-size:34px;}
   #quiz,#cta{padding:64px 20px;}
@@ -561,15 +587,25 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
   <div class="nav-links">
     <span class="nav-current">Run &amp; grow with us</span>
     <a href="build-with-us.html">Build with us</a>
+    <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
     <a href="#" onclick="openContactModal();return false;" class="nav-cta">Talk to us</a>
   </div>
 </nav>
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <a href="index.html">Services</a>
+  <a href="build-with-us.html">Build with us</a>
+  <span class="nav-mobile-current">Run &amp; grow with us</span>
+</div>
 
 <!-- HERO -->
 <section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Grow_Hero%20Image.png');background-size:contain;background-position:left bottom;background-repeat:no-repeat;">
-  <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Run &amp; grow with us</div>
-  <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Extra hands, real strategy,<br>smoother change</h1>
-  <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">From day-to-day platform work to full-scale rollouts, our team plugs in wherever you need support, without you having to hire for it.</p>
+  <div class="hero-text">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Run &amp; grow with us</div>
+    <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Extra hands, real strategy,<br>smoother change</h1>
+    <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">From day-to-day platform work to full-scale rollouts, our team plugs in wherever you need support, without you having to hire for it.</p>
+  </div>
 </section>
 <div class="hero-spacer"></div>
 
@@ -748,7 +784,7 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
     <p class="sec-sub">A side-by-side look at how the three services differ, so you can match the right fit to where you are today.</p>
   </div>
 
-  <div class="compare-scroll">
+  <div class="compare-scroll" id="compare-scroll">
     <div class="compare-grid">
       <div class="compare-cell"></div>
       <div class="compare-cell compare-head concierge">Platform Concierge</div>
@@ -795,6 +831,9 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
       <div class="compare-cell">Ongoing</div>
       <div class="compare-cell">Project-based</div>
     </div>
+    <button class="compare-zoom-btn" onclick="openCompareZoom()" aria-label="Expand table">
+      <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/><path d="M11 8v6M8 11h6"/></svg>
+    </button>
   </div>
 
   <div class="compare-reco">
@@ -873,6 +912,14 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
   <div class="cta-copyright">© FranConnect. Build With Us &middot; Run &amp; Grow With Us</div>
 </section>
 
+<!-- COMPARE ZOOM MODAL -->
+<div class="compare-zoom-overlay" id="compare-zoom-overlay" onclick="closeCompareZoomIfBg(event)">
+  <div class="compare-zoom-panel">
+    <button class="compare-zoom-close" onclick="closeCompareZoom()" aria-label="Close">&times;</button>
+    <div class="compare-zoom-scroll" id="compare-zoom-scroll"></div>
+  </div>
+</div>
+
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contact-overlay" onclick="closeContactIfBg(event)">
   <div class="modal-card" style="position:relative;">
@@ -891,6 +938,28 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 </div>
 
 <script>
+function toggleMobileNav(){
+  document.getElementById('nav-mobile-menu').classList.toggle('open');
+}
+
+function openCompareZoom(){
+  var grid = document.querySelector('#compare-scroll .compare-grid');
+  var target = document.getElementById('compare-zoom-scroll');
+  if(grid && target){ target.appendChild(grid); }
+  document.getElementById('compare-zoom-overlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeCompareZoom(){
+  var grid = document.querySelector('#compare-zoom-scroll .compare-grid');
+  var original = document.getElementById('compare-scroll');
+  if(grid && original){ original.appendChild(grid); }
+  document.getElementById('compare-zoom-overlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function closeCompareZoomIfBg(e){
+  if(e.target.id === 'compare-zoom-overlay'){ closeCompareZoom(); }
+}
+
 (function(){
   var groups = document.querySelectorAll('.reveal-stagger');
   if(!groups.length) return;
