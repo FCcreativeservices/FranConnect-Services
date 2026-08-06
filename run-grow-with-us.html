@@ -57,7 +57,7 @@ nav{
 }
 .hero-spacer{width:100%;height:460px;pointer-events:none;}
 .hero-text{position:relative;z-index:2;}
-@media (max-width:760px){
+@media (max-width:760px), (max-height:500px){
   #hero{position:relative;height:auto;min-height:420px;background-size:auto 100%!important;background-position:left center!important;}
   .hero-spacer{display:none;}
 }
@@ -288,19 +288,9 @@ nav{
 @media (max-width:900px){#growth .cm-cards{grid-template-columns:1fr 1fr;}}
 @media (max-width:560px){#growth .cm-cards{grid-template-columns:1fr;}}
 
-/* ── TRANSITION: Compare → Integrations, subtle animated network ── */
-.section-transition-flow{position:relative;height:140px;background:#fff;overflow:hidden;position:relative;z-index:5;}
-.flow-svg{position:absolute;top:0;left:0;width:100%;height:100%;}
-.flow-line{fill:none;stroke:var(--blue3);stroke-width:1.4;opacity:.28;stroke-dasharray:6 8;animation:flowDash 7s linear infinite;}
-.flow-line.l2{stroke:var(--blue2);opacity:.22;animation-duration:9s;animation-direction:reverse;}
-.flow-line.l3{stroke:var(--orange);opacity:.16;animation-duration:11s;}
-@keyframes flowDash{to{stroke-dashoffset:-140;}}
-.flow-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--blue2);opacity:.3;transform:translate(-50%,-50%);animation:flowPulse 4.5s ease-in-out infinite;}
-.flow-dot.orange{background:var(--orange);animation-delay:1.3s;}
-.flow-dot.blue3{background:var(--blue3);animation-delay:2.6s;}
-@keyframes flowPulse{0%,100%{opacity:.18;transform:translate(-50%,-50%) scale(1);}50%{opacity:.6;transform:translate(-50%,-50%) scale(1.6);}}
-@media (max-width:640px){.section-transition-flow{height:90px;}}
-@media (prefers-reduced-motion:reduce){.flow-line,.flow-dot{animation:none!important;}}
+/* ── TRANSITION: Compare → Integrations, plain color blend ── */
+.section-fade-transition{height:90px;background:linear-gradient(to bottom, var(--off), #ffffff);}
+@media (max-width:640px){.section-fade-transition{height:56px;}}
 
 /* ── COMPARE: pins in place like the hero; only sections below it
    actually scroll and slide up to cover it. Disabled automatically
@@ -343,9 +333,16 @@ nav{
   7%{transform:scale(1);}
 }
 @media (max-width:760px){
-  .cm-journey{height:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:22px 14px;padding:0 4px;}
-  .cm-journey-svg,.cm-journey-dot{display:none;}
-  .cm-journey-stage{position:static;transform:none;width:78px;opacity:1!important;}
+  .cm-journey{height:150px;margin:4px 0 32px;}
+  .cm-journey-stage{width:66px;}
+  .cm-journey-icon{width:34px;height:34px;margin-bottom:5px;}
+  .cm-journey-icon svg{width:14px;height:14px;}
+  .cm-journey-label{font-size:10px;}
+}
+@media (max-width:420px){
+  .cm-journey{height:120px;}
+  .cm-journey-icon{width:28px;height:28px;}
+  .cm-journey-icon svg{width:12px;height:12px;}
 }
 @media (prefers-reduced-motion:reduce){
   .cm-journey-dot,.cm-journey-icon{animation:none!important;}
@@ -853,17 +850,7 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 </div>
 </section>
 
-<div class="section-transition-flow" aria-hidden="true">
-  <svg class="flow-svg" viewBox="0 0 1200 140" preserveAspectRatio="none">
-    <path class="flow-line l1" d="M0,90 C200,40 350,120 550,70 S850,30 1200,80"></path>
-    <path class="flow-line l2" d="M0,40 C180,100 400,20 650,90 S950,110 1200,50"></path>
-    <path class="flow-line l3" d="M0,110 C250,60 500,130 750,60 S1000,20 1200,110"></path>
-  </svg>
-  <span class="flow-dot" style="left:15%;top:45%;"></span>
-  <span class="flow-dot orange" style="left:46.7%;top:60.7%;"></span>
-  <span class="flow-dot blue3" style="left:75%;top:39.3%;"></span>
-  <span class="flow-dot" style="left:87.5%;top:67.9%;"></span>
-</div>
+<div class="section-fade-transition" aria-hidden="true"></div>
 
 <!-- INTEGRATIONS -->
 <section id="integrations" class="section" style="background:#ffffff;text-align:center;position:relative;z-index:5;">
