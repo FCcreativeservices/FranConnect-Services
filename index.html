@@ -205,13 +205,12 @@ nav{
      that band up to fill the frame — real crop, not a shrink */
   .enhance-media-crop{overflow:hidden;}
   .enhance-media-img{
-    position:absolute;top:50%;left:-25.71%;
-    width:285.71%;height:285.71%;
+    position:absolute;top:50%;left:-20%;
+    width:222.22%;height:222.22%;
     transform:translateY(-50%);
     object-fit:cover;object-position:left center;
   }
 }
-.enhance-overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(2,26,56,.35) 0%,rgba(2,26,56,.05) 55%);z-index:1;}
 .enhance-card{
   position:absolute;top:10%;bottom:-10%;right:6%;width:468px;max-width:90%;
   background:#fff;border-radius:var(--radius);
@@ -227,7 +226,6 @@ nav{
      no overlap; crop math above still applies to the video inside */
   .enhance-media-section{min-height:auto;display:flex;flex-direction:column;overflow:hidden;}
   .enhance-media-crop{position:relative;inset:auto;height:230px;width:100%;overflow:hidden;}
-  .enhance-overlay{display:none;}
   .enhance-card{position:relative;top:auto;bottom:auto;right:auto;width:100%;max-width:100%;margin:0;}
 }
 .video-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,42,62,.5),rgba(11,42,62,.85));}
@@ -586,7 +584,6 @@ nav{
       <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Creative.mp4" type="video/mp4">
     </video>
   </div>
-  <div class="enhance-overlay"></div>
   <div class="enhance-card reveal-up">
     <div class="sec-eye" style="color:var(--orange);">Build with us</div>
     <h2 class="sec-title" style="color:var(--blue);">Enhance your platform</h2>
