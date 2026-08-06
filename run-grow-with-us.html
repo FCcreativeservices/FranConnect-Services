@@ -312,6 +312,45 @@ nav{
   .change-spacer{display:none!important;}
 }
 
+/* ── CHANGE MANAGEMENT: change-journey process illustration ── */
+.cm-journey{position:relative;width:100%;height:200px;margin:4px 0 44px;}
+.cm-journey-svg{position:absolute;top:0;left:0;width:100%;height:100%;}
+.cm-journey-path{fill:none;stroke:#a5cfe5;stroke-width:2.5;stroke-linecap:round;stroke-dasharray:1300;stroke-dashoffset:1300;transition:stroke-dashoffset 2.4s ease;}
+.cm-journey.in-view .cm-journey-path{stroke-dashoffset:0;}
+.cm-journey-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--blue);opacity:0;box-shadow:0 0 8px rgba(19,69,100,.45);transform:translate(-50%,-50%);animation:cmDotTravel 16s ease-in-out infinite;}
+@keyframes cmDotTravel{
+  0%,4%{left:8%;top:70%;opacity:0;}
+  6%,17%{left:8%;top:70%;opacity:.9;}
+  20%{left:8%;top:70%;opacity:0;}
+  24%,37%{left:29%;top:22%;opacity:.9;}
+  40%{left:29%;top:22%;opacity:0;}
+  44%,57%{left:50%;top:70%;opacity:.9;}
+  60%{left:50%;top:70%;opacity:0;}
+  64%,77%{left:71%;top:22%;opacity:.9;}
+  80%{left:71%;top:22%;opacity:0;}
+  84%,97%{left:92%;top:70%;opacity:.9;}
+  100%{left:92%;top:70%;opacity:0;}
+}
+.cm-journey-stage{position:absolute;transform:translate(-50%,-50%);text-align:center;width:110px;opacity:0;transition:opacity .7s ease;}
+.cm-journey.in-view .cm-journey-stage{opacity:1;}
+.cm-journey-icon{width:46px;height:46px;border-radius:50%;background:#fff;border:2px solid #a5cfe5;display:flex;align-items:center;justify-content:center;margin:0 auto 8px;box-shadow:0 4px 14px rgba(19,69,100,.14);animation:cmPulse 16s ease-in-out infinite;}
+.cm-journey-icon svg{width:19px;height:19px;stroke:var(--blue);fill:none;stroke-width:1.8;}
+.cm-journey-label{font-size:12.5px;font-weight:700;color:var(--blue);}
+@keyframes cmPulse{
+  0%,94%,100%{transform:scale(1);box-shadow:0 4px 14px rgba(19,69,100,.14);}
+  3%{transform:scale(1.16);box-shadow:0 8px 22px rgba(19,69,100,.3);}
+  7%{transform:scale(1);}
+}
+@media (max-width:760px){
+  .cm-journey{height:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:22px 14px;padding:0 4px;}
+  .cm-journey-svg,.cm-journey-dot{display:none;}
+  .cm-journey-stage{position:static;transform:none;width:78px;opacity:1!important;}
+}
+@media (prefers-reduced-motion:reduce){
+  .cm-journey-dot,.cm-journey-icon{animation:none!important;}
+  .cm-journey-path{transition:none;stroke-dashoffset:0;}
+}
+
 /* ── COMPARISON ── */
 #compare{background:var(--off);position:relative;z-index:5;}
 .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
@@ -594,25 +633,10 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 <div class="sec-wrap">
   <div class="split-wrap reverse">
     <div class="split-media">
-      <div class="gp-dash">
-        <div class="gp-dash-head">
-          <span class="gp-dash-badge">Quarterly Review</span>
-          <span class="gp-dash-date">FranConnect Insights</span>
-        </div>
-        <div class="gp-kpis">
-          <div class="gp-kpi"><div class="gp-kpi-num">87%</div><div class="gp-kpi-lbl">Adoption rate</div><div class="gp-kpi-trend">&#9650; 6%</div></div>
-          <div class="gp-kpi"><div class="gp-kpi-num">1,240</div><div class="gp-kpi-lbl">Active users</div><div class="gp-kpi-trend">&#9650; 120</div></div>
-          <div class="gp-kpi"><div class="gp-kpi-num">-32%</div><div class="gp-kpi-lbl">Support tickets</div><div class="gp-kpi-trend">&#9660; 32%</div></div>
-        </div>
-        <div class="gp-chart">
-          <span class="gp-bar" style="--h:42%"></span>
-          <span class="gp-bar" style="--h:55%"></span>
-          <span class="gp-bar" style="--h:48%"></span>
-          <span class="gp-bar" style="--h:68%"></span>
-          <span class="gp-bar" style="--h:60%"></span>
-          <span class="gp-bar" style="--h:80%"></span>
-        </div>
-        <div class="gp-dash-foot">Platform health: <strong style="color:#4ADE80;">Excellent</strong> &middot; 3 new recommendations this quarter</div>
+      <div class="op-video-wrap">
+        <video autoplay muted loop playsinline>
+          <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Grow_GrowthPartner.mp4" type="video/mp4">
+        </video>
       </div>
     </div>
     <div class="split-text">
@@ -656,6 +680,33 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
     <h2 class="sec-title">Change Management</h2>
     <p class="sec-sub" style="margin-bottom:8px;">The system works. Getting people to actually use it is the hard part.</p>
     <p class="sec-sub">Most rollouts don't fall short because of the technology. They fall short because franchisees weren't brought along, communication was inconsistent, or the launch had no follow-through after week one. Change Management builds the human side of your rollout, and it's built on proven change frameworks, not guesswork, so whatever you just invested in actually sticks instead of quietly fizzling out.</p>
+  </div>
+
+  <div class="cm-journey reveal-stagger" aria-hidden="true">
+    <svg class="cm-journey-svg" viewBox="0 0 1000 200" preserveAspectRatio="none">
+      <path class="cm-journey-path" d="M80,140 C160,90 220,44 290,44 C360,44 430,140 500,140 C570,140 640,44 710,44 C780,44 850,140 920,140"></path>
+    </svg>
+    <span class="cm-journey-dot"></span>
+    <div class="cm-journey-stage" style="left:8%;top:70%;">
+      <div class="cm-journey-icon" style="animation-delay:.96s;"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+      <div class="cm-journey-label">Assess</div>
+    </div>
+    <div class="cm-journey-stage" style="left:29%;top:22%;">
+      <div class="cm-journey-icon" style="animation-delay:3.84s;"><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+      <div class="cm-journey-label">Align</div>
+    </div>
+    <div class="cm-journey-stage" style="left:50%;top:70%;">
+      <div class="cm-journey-icon" style="animation-delay:7.04s;"><svg viewBox="0 0 24 24"><path d="M22 10v6M2 10l10-5 10 5-10 5-10-5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></div>
+      <div class="cm-journey-label">Train</div>
+    </div>
+    <div class="cm-journey-stage" style="left:71%;top:22%;">
+      <div class="cm-journey-icon" style="animation-delay:10.24s;"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M8 12l3 3 5-6"/></svg></div>
+      <div class="cm-journey-label">Adopt</div>
+    </div>
+    <div class="cm-journey-stage" style="left:92%;top:70%;">
+      <div class="cm-journey-icon" style="animation-delay:13.44s;"><svg viewBox="0 0 24 24"><path d="M23 4v6h-6"/><path d="M1 20v-6h6"/><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10"/><path d="M20.49 15a9 9 0 0 1-14.85 3.36L1 14"/></svg></div>
+      <div class="cm-journey-label">Sustain</div>
+    </div>
   </div>
 
   <div class="cm-roadmap reveal-stagger">
