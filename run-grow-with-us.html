@@ -351,7 +351,7 @@ nav{
    the backdrop is already white, so the curve is pure shape, not a
    color edge. ── */
 .section-atmosphere{
-  position:relative;z-index:5;height:320px;overflow:hidden;
+  position:relative;z-index:5;height:230px;overflow:hidden;
   background:linear-gradient(180deg,#f1f4f9 0%,#f1f4f9 55%,#f6f8fa 72%,#ffffff 92%,#ffffff 100%);
 }
 .atmo-square{
@@ -362,7 +362,7 @@ nav{
 .atmo-dots{position:absolute;left:8%;top:20%;display:grid;grid-template-columns:repeat(3,10px);gap:9px;pointer-events:none;z-index:1;}
 .atmo-dots span{width:3px;height:3px;border-radius:50%;background:rgba(19,69,100,.09);display:block;}
 @media (max-width:640px){
-  .section-atmosphere{height:180px;}
+  .section-atmosphere{height:150px;}
   .atmo-square{width:50px;height:50px;right:6%;}
   .atmo-dots{left:6%;}
 }
@@ -381,7 +381,7 @@ nav{
 }
 
 /* ── COMPARISON ── */
-#compare{background:#f1f4f9;position:relative;z-index:5;}
+#compare{background:#f1f4f9;position:relative;z-index:5;padding-bottom:32px;}
 .compare-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch;}
 .compare-grid{display:grid;grid-template-columns:200px repeat(3,1fr);min-width:760px;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;background:#fff;}
 .compare-cell{padding:16px 18px;font-size:13px;color:var(--text);line-height:1.4;border-bottom:1px solid var(--border);border-right:1px solid var(--border);display:flex;align-items:center;}
@@ -891,13 +891,13 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
       </filter>
     </defs>
     <path d="M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z">
-      <animate attributeName="d" dur="20s" repeatCount="indefinite" calcMode="spline"
+      <animate attributeName="d" dur="11s" repeatCount="indefinite" calcMode="spline"
         keyTimes="0;0.25;0.5;0.75;1"
         keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"
         values="M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z;
-                M0,112 C520,138 860,58 1440,94 L1440,220 L0,220 Z;
-                M0,84 C560,104 800,84 1440,132 L1440,220 L0,220 Z;
-                M0,104 C440,152 920,42 1440,102 L1440,220 L0,220 Z;
+                M0,118 C540,130 850,64 1440,88 L1440,220 L0,220 Z;
+                M0,78 C580,92 790,96 1440,138 L1440,220 L0,220 Z;
+                M0,110 C430,148 930,36 1440,98 L1440,220 L0,220 Z;
                 M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z" />
     </path>
   </svg>
