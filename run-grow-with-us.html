@@ -367,17 +367,30 @@ nav{
 .atmo-square{
   position:absolute;top:16%;right:9%;width:78px;height:78px;
   border:1px solid rgba(19,69,100,.07);transform:rotate(7deg);
-  pointer-events:none;
+  pointer-events:none;z-index:1;
 }
-.atmo-dots{position:absolute;left:10%;bottom:18%;display:grid;grid-template-columns:repeat(3,10px);gap:9px;pointer-events:none;}
+.atmo-dots{position:absolute;left:8%;top:20%;display:grid;grid-template-columns:repeat(3,10px);gap:9px;pointer-events:none;z-index:1;}
 .atmo-dots span{width:3px;height:3px;border-radius:50%;background:rgba(19,69,100,.09);display:block;}
 @media (max-width:640px){
   .section-atmosphere{height:180px;}
   .atmo-square{width:50px;height:50px;right:6%;}
-  .atmo-dots{left:7%;}
+  .atmo-dots{left:6%;}
 }
 @media (prefers-reduced-motion:reduce){
   .section-atmosphere{animation:none!important;}
+}
+
+/* -- CURVE REVEAL: the f1f4f9 atmosphere ends in one soft,
+   asymmetrical curve that simply uncovers the white section
+   underneath. No line, no border, no shadow -- just a filled
+   shape the same white as the section below. -- */
+.curve-reveal{
+  position:absolute;left:0;right:0;bottom:-1px;width:100%;height:58%;
+  display:block;pointer-events:none;z-index:0;
+}
+.curve-reveal path{fill:#ffffff;stroke:none;}
+@media (max-width:640px){
+  .curve-reveal{height:46%;}
 }
 
 /* ── COMPARISON ── */
@@ -884,6 +897,17 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 <div class="section-atmosphere" aria-hidden="true">
   <span class="atmo-square"></span>
   <span class="atmo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
+  <svg class="curve-reveal" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
+    <path d="M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z">
+      <animate attributeName="d" dur="27s" repeatCount="indefinite" calcMode="spline"
+        keyTimes="0;0.32;0.68;1"
+        keySplines="0.45 0 0.55 1;0.45 0 0.55 1;0.45 0 0.55 1"
+        values="M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z;
+                M0,101 C428,158 932,39 1440,107 L1440,220 L0,220 Z;
+                M0,92 C412,171 948,27 1440,116 L1440,220 L0,220 Z;
+                M0,96 C420,166 940,32 1440,112 L1440,220 L0,220 Z" />
+    </path>
+  </svg>
 </div>
 
 <!-- INTEGRATIONS -->
@@ -962,6 +986,14 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 function toggleMobileNav(){
   document.getElementById('nav-mobile-menu').classList.toggle('open');
 }
+
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.querySelectorAll('.curve-reveal animate').forEach(function(a){
+      a.setAttribute('repeatCount','0');
+    });
+  }
+})();
 
 function openCompareZoom(){
   var grid = document.querySelector('#compare-scroll .compare-grid');
