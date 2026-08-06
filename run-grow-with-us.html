@@ -345,33 +345,39 @@ nav{
   .cm-journey-path{transition:none;stroke-dashoffset:0;}
 }
 
-/* ── ATMOSPHERE: Compare → Integrations, no divider, just light ── */
-.section-atmosphere{position:relative;z-index:5;height:240px;overflow:hidden;background:linear-gradient(to bottom, #f1f4f9, #ffffff);}
-.atmo-wave-svg{position:absolute;inset:0;width:100%;height:100%;filter:blur(22px);}
-.atmo-glow{position:absolute;left:-10%;right:-10%;top:-45%;height:220%;background:radial-gradient(ellipse 55% 55% at 45% 40%,rgba(23,102,155,.05) 0%,rgba(23,102,155,0) 70%);filter:blur(30px);pointer-events:none;}
-.atmo-shape{position:absolute;pointer-events:none;}
-.atmo-circle-lg{width:180px;height:180px;border-radius:50%;border:1px solid rgba(19,69,100,.09);background:rgba(19,69,100,.03);top:14%;right:8%;animation:atmoFloat1 26s ease-in-out infinite;}
-.atmo-square{width:44px;height:44px;border-radius:10px;border:1px solid rgba(224,115,0,.16);background:rgba(224,115,0,.04);top:52%;left:9%;transform-origin:center;animation:atmoRotateSquare 46s linear infinite;}
-.atmo-diamond{width:20px;height:20px;border:1px solid rgba(23,102,155,.18);background:rgba(23,102,155,.05);top:18%;left:23%;transform-origin:center;animation:atmoRotateDiamond 60s linear infinite;}
-.atmo-dot-cluster{position:absolute;bottom:16%;right:20%;display:flex;gap:10px;}
-.atmo-dot-cluster span{width:5px;height:5px;border-radius:50%;background:rgba(19,69,100,.18);display:block;animation:atmoBreathe 15s ease-in-out infinite;}
-.atmo-dot-cluster span:nth-child(2){animation-delay:3s;margin-top:6px;}
-.atmo-dot-cluster span:nth-child(3){animation-delay:6s;}
-.atmo-dot-sm{width:4px;height:4px;border-radius:50%;background:rgba(224,115,0,.22);}
-.atmo-dot-sm.d1{top:34%;right:30%;animation:atmoFloat1 20s ease-in-out infinite;}
-.atmo-dot-sm.d2{bottom:20%;left:36%;animation:atmoFloat2 24s ease-in-out infinite;}
-@keyframes atmoFloat1{0%,100%{transform:translateY(0);}50%{transform:translateY(-6px);}}
-@keyframes atmoFloat2{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
-@keyframes atmoRotateSquare{from{transform:rotate(20deg);}to{transform:rotate(380deg);}}
-@keyframes atmoRotateDiamond{from{transform:rotate(45deg);}to{transform:rotate(405deg);}}
-@keyframes atmoBreathe{0%,100%{opacity:.45;}50%{opacity:1;}}
+/* ── ATMOSPHERE: Compare → Integrations -- light, not a divider.
+   Only white / #fafbfd / #f7f9fc / #f1f4f9. Only the background glow
+   moves (slow position drift, 30s+); the two accents are static and
+   architectural, not floating decoration. ── */
+.section-atmosphere{
+  position:relative;z-index:5;height:320px;overflow:hidden;
+  background-color:#f1f4f9;
+  background-image:
+    radial-gradient(ellipse 60% 65% at 18% 22%, #ffffff 0%, transparent 68%),
+    radial-gradient(ellipse 55% 60% at 84% 30%, #fafbfd 0%, transparent 70%),
+    radial-gradient(ellipse 75% 65% at 46% 98%, #ffffff 0%, transparent 72%);
+  background-repeat:no-repeat;
+  background-size:100% 100%;
+  animation:atmoShift 32s ease-in-out infinite alternate;
+}
+@keyframes atmoShift{
+  0%{background-position:0% 0%, 0% 0%, 0% 0%;}
+  100%{background-position:3% 4%, -3% -3%, -2% 2%;}
+}
+.atmo-square{
+  position:absolute;top:16%;right:9%;width:78px;height:78px;
+  border:1px solid rgba(19,69,100,.07);transform:rotate(7deg);
+  pointer-events:none;
+}
+.atmo-dots{position:absolute;left:10%;bottom:18%;display:grid;grid-template-columns:repeat(3,10px);gap:9px;pointer-events:none;}
+.atmo-dots span{width:3px;height:3px;border-radius:50%;background:rgba(19,69,100,.09);display:block;}
 @media (max-width:640px){
-  .section-atmosphere{height:130px;}
-  .atmo-circle-lg{width:100px;height:100px;right:4%;}
-  .atmo-square{left:6%;}
+  .section-atmosphere{height:180px;}
+  .atmo-square{width:50px;height:50px;right:6%;}
+  .atmo-dots{left:7%;}
 }
 @media (prefers-reduced-motion:reduce){
-  .atmo-shape,.atmo-dot-cluster span{animation:none!important;}
+  .section-atmosphere{animation:none!important;}
 }
 
 /* ── COMPARISON ── */
@@ -876,16 +882,8 @@ footer{padding:32px 48px;text-align:center;font-size:12px;color:var(--dark);}
 </section>
 
 <div class="section-atmosphere" aria-hidden="true">
-  <div class="atmo-glow"></div>
-  <svg class="atmo-wave-svg" viewBox="0 0 1200 240" preserveAspectRatio="none">
-    <path d="M0,150 C300,190 500,100 800,135 C950,152 1080,118 1200,132 L1200,240 L0,240 Z" fill="rgba(19,69,100,.03)"></path>
-  </svg>
-  <span class="atmo-shape atmo-circle-lg"></span>
-  <span class="atmo-shape atmo-square"></span>
-  <span class="atmo-shape atmo-diamond"></span>
-  <span class="atmo-shape atmo-dot-sm d1"></span>
-  <span class="atmo-shape atmo-dot-sm d2"></span>
-  <span class="atmo-dot-cluster"><span></span><span></span><span></span></span>
+  <span class="atmo-square"></span>
+  <span class="atmo-dots"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span>
 </div>
 
 <!-- INTEGRATIONS -->
