@@ -53,7 +53,7 @@ nav{
 .nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
 .nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
 .nav-mobile-menu .nav-mobile-current{color:var(--orange);}
-@media(max-width:920px){
+@media(max-width:760px){
   nav{padding:12px 20px;}
   .nav-links a:not(.nav-cta){display:none;}
   .nav-current{display:none;}
@@ -144,6 +144,10 @@ nav{
 .cu-submit:hover{background:var(--blue2);}
 .cu-submit:disabled{opacity:.6;cursor:default;}
 .cta-copyright{position:relative;z-index:2;text-align:center;padding:24px;font-size:12px;color:var(--dark);}
+.ty-check-circle{stroke-dasharray:151;stroke-dashoffset:151;animation:tyCircle .5s ease-out forwards;}
+.ty-check-mark{stroke-dasharray:40;stroke-dashoffset:40;animation:tyCheck .3s .4s ease-out forwards;}
+@keyframes tyCircle{to{stroke-dashoffset:0;}}
+@keyframes tyCheck{to{stroke-dashoffset:0;}}
 </style>
 </head>
 <body>
@@ -157,8 +161,8 @@ nav{
     <span class="nav-title">Services</span>
   </div>
   <div class="nav-links">
-    <a href="build-with-us.html">Build with us</a>
     <a href="run-grow-with-us.html">Run &amp; grow with us</a>
+    <a href="build-with-us.html">Build with us</a>
     <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -169,7 +173,6 @@ nav{
   <a href="index.html">Services</a>
   <a href="build-with-us.html">Build with us</a>
   <a href="run-grow-with-us.html">Run &amp; grow with us</a>
-  <span class="nav-mobile-current">Contact Us</span>
 </div>
 
 <!-- INTRO -->
@@ -177,7 +180,7 @@ nav{
   <div class="cu-intro-wrap">
     <div class="cu-eye">Contact Us</div>
     <h1 class="cu-title">Let's build something great together</h1>
-    <p class="cu-sub">Tell us a bit about you, then add whichever services you're interested in below. One message, one quote — even if it spans a few different things.</p>
+    <p class="cu-sub">Tell us a bit about yourself, then add whichever services interest you below. Whether it's one service or several, we'll bundle everything into a single quote.</p>
   </div>
 </div>
 
@@ -186,10 +189,10 @@ nav{
   <!-- CONTACT INFO -->
   <div class="cu-section alt">
     <div class="cu-wrap">
-      <div class="cu-field"><label>Name</label><input id="cu-name" type="text" placeholder="First Last"></div>
+      <div class="cu-field"><label>Name</label><input id="cu-name" type="text" required placeholder="First Last"></div>
       <div class="cu-row2">
         <div class="cu-field"><label>Company</label><input id="cu-company" type="text" placeholder="Your franchise name"></div>
-        <div class="cu-field"><label>Email</label><input id="cu-email" type="email" placeholder="you@brand.com"></div>
+        <div class="cu-field"><label>Email</label><input id="cu-email" type="email" required placeholder="you@brand.com"></div>
       </div>
     </div>
   </div>
@@ -241,19 +244,16 @@ nav{
   </div>
 
   <!-- SUBMIT -->
-  <div class="cu-section">
+  <div class="cu-section alt">
     <div class="cu-wrap" style="max-width:640px;">
-      <label class="cu-tc-row">
-        <input type="checkbox" id="cu-tc-agree">
-        <span>I agree to the <a href="#" onclick="openTCModal();return false;">Terms &amp; Conditions</a></span>
-      </label>
+      <p class="cu-tc-row" style="cursor:default;">By submitting this form, you agree to our <a href="#" onclick="openTCModal();return false;">Terms &amp; Conditions</a>.</p>
       <div class="mc-err" id="cu-error"></div>
       <button type="button" class="cu-submit" id="cu-submit-btn" onclick="submitCU()">Send request →</button>
     </div>
   </div>
 </form>
 
-<div class="cta-copyright">FranConnect Creative Services © 2025</div>
+<div class="cta-copyright">FranConnect Creative Services © 2026</div>
 
 <!-- MODAL: TERMS & CONDITIONS -->
 <div id="tc-overlay" style="position:fixed;inset:0;z-index:700;background:rgba(0,0,0,.75);backdrop-filter:blur(10px);display:none;align-items:flex-start;justify-content:center;padding:20px;overflow-y:auto;" onclick="closeTCIfBg(event)">
@@ -319,11 +319,11 @@ nav{
 
 <!-- MODAL: THANK YOU (only shown after successful submit) -->
 <div id="ty-overlay" style="position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:white;border-radius:20px;max-width:440px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3);text-align:center;padding:40px 32px;">
-    <svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8" style="margin-bottom:18px;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+  <div style="background:white;border-radius:20px;max-width:440px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3);text-align:center;padding:40px 32px;position:relative;">
+    <button onclick="document.getElementById('ty-overlay').style.display='none'" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--off);border:none;color:var(--dark);font-size:16px;cursor:pointer;">✕</button>
+    <svg width="72" height="72" viewBox="0 0 52 52" style="margin-bottom:18px;"><circle class="ty-check-circle" cx="26" cy="26" r="24" fill="none" stroke="#059669" stroke-width="2.5"/><path class="ty-check-mark" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M14 27l7 7 16-16"/></svg>
     <div style="font-size:22px;font-weight:800;color:var(--blue);margin-bottom:10px;">Thanks for reaching out!</div>
-    <div style="font-size:14px;color:var(--dark);line-height:1.6;margin-bottom:26px;">We're excited about the idea of working together — your message is on its way to our team, and we'll follow up shortly with your quote. 🎉</div>
-    <button onclick="startOver()" style="padding:13px 32px;border-radius:40px;background:var(--blue);border:none;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;">Start over</button>
+    <div style="font-size:14px;color:var(--dark);line-height:1.6;">We're excited about the idea of working together — your message is on its way to our team, and we'll follow up shortly with your quote.</div>
   </div>
 </div>
 
@@ -331,6 +331,12 @@ nav{
 function toggleMobileNav(){
   document.getElementById('nav-mobile-menu').classList.toggle('open');
 }
+window.addEventListener('resize',function(){
+  if(window.innerWidth>760){
+    var m=document.getElementById('nav-mobile-menu');
+    if(m)m.classList.remove('open');
+  }
+});
 function openTCModal(){document.getElementById('tc-overlay').style.display='flex';}
 function closeTCIfBg(e){if(e.target.id==='tc-overlay')document.getElementById('tc-overlay').style.display='none';}
 
@@ -347,8 +353,7 @@ function saveDraft(){
     email:document.getElementById('cu-email').value,
     rgComment:document.getElementById('cu-rg-comment').value,
     buildComment:document.getElementById('cu-build-comment').value,
-    rgChecked:checked,
-    tcAgree:document.getElementById('cu-tc-agree').checked
+    rgChecked:checked
   };
   localStorage.setItem(DRAFT_KEY,JSON.stringify(draft));
 }
@@ -362,7 +367,6 @@ function restoreDraft(){
     document.getElementById('cu-email').value=d.email||'';
     document.getElementById('cu-rg-comment').value=d.rgComment||'';
     document.getElementById('cu-build-comment').value=d.buildComment||'';
-    document.getElementById('cu-tc-agree').checked=!!d.tcAgree;
     (d.rgChecked||[]).forEach(function(slug){
       var box=document.querySelector('#cu-rg-services input[data-slug="'+slug+'"]');
       if(box){box.checked=true;box.closest('.cu-check').classList.add('sel');}
@@ -390,7 +394,6 @@ document.querySelectorAll('#cu-rg-services input').forEach(function(box){
 ['cu-name','cu-company','cu-email','cu-rg-comment','cu-build-comment'].forEach(function(id){
   document.getElementById(id).addEventListener('input',saveDraft);
 });
-document.getElementById('cu-tc-agree').addEventListener('change',saveDraft);
 document.getElementById('cu-add-link-empty').addEventListener('click',saveDraft);
 
 /* ── BUILD WITH US: read estimate saved by build-with-us.html ── */
@@ -459,9 +462,9 @@ function submitCU(){
   var email=document.getElementById('cu-email').value.trim();
   var company=document.getElementById('cu-company').value.trim();
   var errEl=document.getElementById('cu-error');
-  var tcAgree=document.getElementById('cu-tc-agree').checked;
   if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
-  if(!tcAgree){errEl.textContent='Please agree to the Terms & Conditions to continue.';errEl.style.display='block';return;}
+  if(/\d/.test(name)){errEl.textContent='Please enter a valid name (no numbers).';errEl.style.display='block';return;}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   errEl.style.display='none';
 
   var rgServices=buildRgSummary();
@@ -523,10 +526,6 @@ function submitCU(){
     btn.textContent='Send request →';btn.disabled=false;
   });
 }
-function startOver(){
-  window.location.href='contact-us.html';
-}
-
 /* ── INIT ── */
 restoreDraft();
 preselectFromUrl();
