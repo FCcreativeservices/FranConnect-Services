@@ -505,9 +505,10 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 /* ── RESPONSIVE ── */
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;margin-right:2px;}
 .nav-hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;margin:4px 0;}
-.nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:rgba(19,69,100,.98);backdrop-filter:blur(20px);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
+.nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:var(--off);box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
 .nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
-.nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:var(--blue);text-decoration:none;font-size:15px;font-weight:600;padding:14px 12px;border-radius:8px;border-bottom:1px solid var(--border);transition:background .15s ease;}
+.nav-mobile-menu a:hover{background:rgba(19,69,100,.08);}
 .nav-mobile-menu .nav-mobile-current{color:var(--orange);}
 @media(max-width:920px){
   nav{padding:12px 20px;}
@@ -593,7 +594,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 </div>
 
 <!-- HERO -->
-<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Build_Hero%20Image.png');background-size:auto 75%;background-position:right bottom;background-repeat:no-repeat;">
+<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Build_Hero%20Image.png');background-size:auto 100%;background-position:right bottom;background-repeat:no-repeat;">
   <div class="hero-text">
     <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Build with us</div>
     <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Enhance your platform</h1>
