@@ -49,9 +49,10 @@ nav{
 .nav-current{color:white;text-decoration:underline;text-decoration-color:rgba(255,255,255,.5);font-size:13px;font-weight:600;padding:8px 16px;cursor:default;}
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;margin-right:2px;}
 .nav-hamburger span{display:block;width:20px;height:2px;background:#fff;border-radius:2px;margin:4px 0;}
-.nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:rgba(19,69,100,.98);backdrop-filter:blur(20px);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
+.nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:var(--off);box-shadow:0 8px 24px rgba(0,0,0,.12);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
 .nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
-.nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:var(--blue);text-decoration:none;font-size:15px;font-weight:600;padding:14px 12px;border-radius:8px;border-bottom:1px solid var(--border);transition:background .15s ease;}
+.nav-mobile-menu a:hover{background:rgba(19,69,100,.08);}
 .nav-mobile-menu .nav-mobile-current{color:var(--orange);}
 @media(max-width:760px){
   nav{padding:12px 20px;}
@@ -148,6 +149,18 @@ nav{
 .ty-check-mark{stroke-dasharray:40;stroke-dashoffset:40;animation:tyCheck .3s .4s ease-out forwards;}
 @keyframes tyCircle{to{stroke-dashoffset:0;}}
 @keyframes tyCheck{to{stroke-dashoffset:0;}}
+.cu-split{display:flex;align-items:stretch;}
+.cu-left{position:fixed;top:0;left:0;width:42%;height:100vh;background-size:cover;background-position:center;display:flex;align-items:center;padding:150px 48px 70px;overflow:hidden;}
+.cu-left::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(19,69,100,.88),rgba(19,69,100,.72));}
+.cu-left .cu-intro-wrap{max-width:100%;margin:0;position:relative;z-index:2;}
+.cu-right{margin-left:42%;width:58%;min-height:100vh;background:var(--off);display:flex;justify-content:center;padding:130px 40px 60px;}
+.cu-card{background:white;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.12);padding:48px;width:100%;max-width:640px;height:fit-content;}
+@media (max-width:900px){
+  .cu-split{display:block;}
+  .cu-left{position:relative;width:100%;height:auto;min-height:360px;padding:130px 24px 50px;}
+  .cu-right{margin-left:0;width:100%;padding:40px 20px 60px;}
+  .cu-card{padding:28px;}
+}
 </style>
 </head>
 <body>
@@ -175,16 +188,18 @@ nav{
   <a href="run-grow-with-us.html">Run &amp; grow with us</a>
 </div>
 
-<!-- INTRO -->
-<div class="cu-intro">
-  <div class="cu-intro-wrap">
-    <div class="cu-eye">Contact Us</div>
-    <h1 class="cu-title">Let's build something great together</h1>
-    <p class="cu-sub">Tell us a bit about yourself, then add whichever services interest you below. Whether it's one service or several, we'll bundle everything into a single quote.</p>
+<!-- INTRO + FORM (split layout) -->
+<div class="cu-split">
+  <div class="cu-left" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Integration.jpg');">
+    <div class="cu-intro-wrap">
+      <div class="cu-eye">Contact Us</div>
+      <h1 class="cu-title">Let's build something great together</h1>
+      <p class="cu-sub">Tell us a bit about yourself, then add whichever services interest you below. Whether it's one service or several, we'll bundle everything into a single quote.</p>
+    </div>
   </div>
-</div>
-
-<form id="cu-form" onsubmit="return false;">
+  <div class="cu-right">
+    <div class="cu-card">
+      <form id="cu-form" onsubmit="return false;">
 
   <!-- CONTACT INFO -->
   <div class="cu-section alt">
@@ -252,6 +267,9 @@ nav{
     </div>
   </div>
 </form>
+    </div>
+  </div>
+</div>
 
 <div class="cta-copyright">FranConnect Creative Services © 2026</div>
 
@@ -318,9 +336,9 @@ nav{
 </div>
 
 <!-- MODAL: THANK YOU (only shown after successful submit) -->
-<div id="ty-overlay" style="position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;">
+<div id="ty-overlay" onclick="if(event.target.id==='ty-overlay')window.location.reload();" style="position:fixed;inset:0;z-index:800;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;">
   <div style="background:white;border-radius:20px;max-width:440px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3);text-align:center;padding:40px 32px;position:relative;">
-    <button onclick="document.getElementById('ty-overlay').style.display='none'" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--off);border:none;color:var(--dark);font-size:16px;cursor:pointer;">✕</button>
+    <button onclick="window.location.reload();" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--off);border:none;color:var(--dark);font-size:16px;cursor:pointer;">✕</button>
     <svg width="72" height="72" viewBox="0 0 52 52" style="margin-bottom:18px;"><circle class="ty-check-circle" cx="26" cy="26" r="24" fill="none" stroke="#059669" stroke-width="2.5"/><path class="ty-check-mark" fill="none" stroke="#059669" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" d="M14 27l7 7 16-16"/></svg>
     <div style="font-size:22px;font-weight:800;color:var(--blue);margin-bottom:10px;">Thanks for reaching out!</div>
     <div style="font-size:14px;color:var(--dark);line-height:1.6;">We're excited about the idea of working together — your message is on its way to our team, and we'll follow up shortly with your quote.</div>
