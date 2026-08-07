@@ -762,6 +762,12 @@ nav{
 function toggleMobileNav(){
   document.getElementById('nav-mobile-menu').classList.toggle('open');
 }
+window.addEventListener('resize',function(){
+  if(window.innerWidth>640){
+    var m=document.getElementById('nav-mobile-menu');
+    if(m)m.classList.remove('open');
+  }
+});
 
 var QUIZ_MATCHES={
   concierge:{
