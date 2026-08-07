@@ -26,7 +26,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{font-family:'Poppins',sans-serif;color:var(--text);background:var(--white);overflow-x:hidden;}
+body{font-family:'Poppins',sans-serif;color:var(--text);overflow-x:hidden;background-color:var(--white);background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Integration.jpg');background-size:cover;background-position:center;background-repeat:no-repeat;background-attachment:fixed;}
 
 /* ── NAV ── */
 nav{
@@ -150,10 +150,10 @@ nav{
 @keyframes tyCircle{to{stroke-dashoffset:0;}}
 @keyframes tyCheck{to{stroke-dashoffset:0;}}
 .cu-split{display:flex;align-items:stretch;}
-.cu-left{position:fixed;top:0;left:0;width:42%;height:100vh;background-size:cover;background-position:center;display:flex;align-items:center;padding:150px 48px 70px;overflow:hidden;}
+.cu-left{position:fixed;top:0;left:0;width:42%;height:100vh;display:flex;align-items:center;padding:150px 48px 70px;overflow:hidden;}
 .cu-left::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(19,69,100,.88),rgba(19,69,100,.72));}
 .cu-left .cu-intro-wrap{max-width:100%;margin:0;position:relative;z-index:2;}
-.cu-right{margin-left:42%;width:58%;min-height:100vh;background:var(--off);display:flex;justify-content:center;padding:130px 40px 60px;}
+.cu-right{margin-left:42%;width:58%;min-height:100vh;display:flex;justify-content:center;padding:130px 40px 60px;}
 .cu-card{background:white;border-radius:20px;box-shadow:0 20px 60px rgba(0,0,0,.12);padding:48px;width:100%;max-width:640px;height:fit-content;}
 @media (max-width:900px){
   .cu-split{display:block;}
@@ -190,7 +190,7 @@ nav{
 
 <!-- INTRO + FORM (split layout) -->
 <div class="cu-split">
-  <div class="cu-left" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Integration.jpg');">
+  <div class="cu-left">
     <div class="cu-intro-wrap">
       <div class="cu-eye">Contact Us</div>
       <h1 class="cu-title">Let's build something great together</h1>
