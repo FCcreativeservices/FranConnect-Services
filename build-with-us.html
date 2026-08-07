@@ -73,12 +73,12 @@ nav{
 
 /* ── HERO ── */
 #hero{
-  height:460px;
+  height:380px;
   background-color:#134564;
   display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
-  text-align:left;padding:80px 8% 100px 6%;position:fixed;top:0;left:0;right:0;overflow:hidden;z-index:1;
+  text-align:left;padding:56px 8% 64px 6%;position:fixed;top:0;left:0;right:0;overflow:hidden;z-index:1;
 }
-.hero-spacer{width:100%;height:460px;pointer-events:none;}
+.hero-spacer{width:100%;height:380px;pointer-events:none;}
 .hero-text{position:relative;z-index:2;}
 @media (max-width:1440px){
   #hero{background-position:left bottom!important;}
@@ -1860,6 +1860,41 @@ function submitCSM(){submitGetQuote();}
 
 /* Init */
 document.getElementById('eslider').style.setProperty('--pct','0%');
+(function(){
+  try{
+    var raw=localStorage.getItem('fc_build_estimate');
+    if(!raw)return;
+    var saved=JSON.parse(raw);
+    if(!saved)return;
+    if(saved.platform){
+      ['skin','dash','hub','tmpl'].forEach(function(k){
+        if(saved.platform[k]){
+          E.platform[k]=true;
+          var card=document.getElementById('pc-'+k);
+          var btn=document.getElementById('pb-'+k);
+          if(card)card.classList.add('sel');
+          if(btn)btn.textContent='\u2713 Added!';
+        }
+      });
+    }
+    if(saved.editAdded){
+      E.editAdded=true;
+      if(saved.editPrice)E.editPrice=saved.editPrice;
+      if(saved.editQty)E.editQty=saved.editQty;
+      var eb=document.getElementById('ebtn');
+      if(eb)eb.innerHTML='Update estimate \u2014 <span id="etotal">$'+(E.editPrice*E.editQty).toLocaleString()+'</span>';
+    }
+    if(saved.prodAdded){
+      E.prodAdded=true;
+      if(saved.prodPrice)E.prodPrice=saved.prodPrice;
+      var pb=document.getElementById('pbtn');
+      if(pb)pb.innerHTML='Update estimate \u2014 <span id="ptotal">$'+E.prodPrice.toLocaleString()+'</span>';
+    }
+    if(Array.isArray(saved.trainCourses)){
+      E.trainCourses=saved.trainCourses;
+    }
+  }catch(e){}
+})();
 updCart();
 </script>
 </body>
