@@ -74,12 +74,15 @@ nav{
 /* ── HERO ── */
 #hero{
   height:460px;
-  background:#0b2a3e;
+  background-color:#134564;
   display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
   text-align:left;padding:80px 8% 100px 6%;position:fixed;top:0;left:0;right:0;overflow:hidden;z-index:1;
 }
 .hero-spacer{width:100%;height:460px;pointer-events:none;}
 .hero-text{position:relative;z-index:2;}
+@media (max-width:1440px){
+  #hero{background-position:left bottom!important;}
+}
 @media (max-width:760px){
   #hero{position:relative;height:420px;background-size:auto 100%!important;background-position:left center!important;}
   .hero-spacer{display:none;}
@@ -120,8 +123,8 @@ nav{
 /* ── SECTION SHELL ── */
 .section{padding:90px 48px;}
 .sec-wrap{max-width:1160px;margin:0 auto;}
-.sec-eye{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
-.sec-title{font-size:clamp(28px,3.5vw,46px);font-weight:800;color:var(--blue);line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;}
+.sec-eye{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;}
+.sec-title{font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--blue);line-height:1.2;margin-bottom:14px;}
 .sec-sub{font-size:15px;color:var(--dark);max-width:520px;line-height:1.65;margin-bottom:48px;}
 
 /* ── PLATFORM ── */
@@ -590,7 +593,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 </div>
 
 <!-- HERO -->
-<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Build_Hero%20Image.png');background-size:auto 100%;background-position:right bottom;background-repeat:no-repeat;">
+<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Build_Hero%20Image.png');background-size:auto 75%;background-position:right bottom;background-repeat:no-repeat;">
   <div class="hero-text">
     <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Build with us</div>
     <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Enhance your platform</h1>
@@ -964,7 +967,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
       <button class="csm-p" onclick="window.location.href='contact-us.html'">See my full estimate</button>
     </div>
   </div>
-  <div class="cta-copyright">FranConnect Creative Services © 2025</div>
+  <div class="cta-copyright">FranConnect Creative Services © 2026</div>
 </div>
 
 <!-- MODAL: TERMS & CONDITIONS -->
@@ -1111,6 +1114,12 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 function toggleMobileNav(){
   document.getElementById('nav-mobile-menu').classList.toggle('open');
 }
+window.addEventListener('resize',function(){
+  if(window.innerWidth>760){
+    var m=document.getElementById('nav-mobile-menu');
+    if(m)m.classList.remove('open');
+  }
+});
 
 /* ── HERO RELEASE ──
    Hide the fixed hero once we've scrolled past its own height, so
