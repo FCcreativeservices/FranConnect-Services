@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Let's build something great together. Get in touch with the FranConnect Creative Services team to talk about your project.">
 <title>Contact Us — FranConnect Creative Services</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -482,7 +483,7 @@ function submitCU(){
   var errEl=document.getElementById('cu-error');
   if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
   if(/\d/.test(name)){errEl.textContent='Please enter a valid name (no numbers).';errEl.style.display='block';return;}
-  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
+  if(!/^(?!.*\.\.)[^\s@.][^\s@]*@[^\s@.][^\s@]*\.[a-zA-Z]{2,}$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   errEl.style.display='none';
 
   var rgServices=buildRgSummary();
