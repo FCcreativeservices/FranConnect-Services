@@ -882,7 +882,7 @@ function submitContact(){
   var msg=document.getElementById('mc-msg').value.trim();
   var errEl=document.getElementById('mc-error');
   var nameRe=/^[A-Za-zÀ-ÿ' -]+$/;
-  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  var emailRe=/^[^\s@]+@[^\s@]+\.[a-zA-Z]{2,}$/;
   if(!name||!nameRe.test(name)){errEl.textContent='Please enter a valid name (letters only, no numbers).';errEl.style.display='block';return;}
   if(!company){errEl.textContent='Please enter your company name.';errEl.style.display='block';return;}
   if(!email||!emailRe.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
