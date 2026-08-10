@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Enhance your platform with FranConnect's design, training, and video services — all made to feel like your brand, every time.">
 <title>Build With Us — FranConnect Creative Services</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -1037,7 +1038,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 <!-- CONTACT MODAL (same as index.html) -->
 <div class="modal-overlay" id="contact-overlay" onclick="closeContactIfBg(event)">
   <div class="modal-card" style="position:relative;">
-    <button class="mc-close" onclick="closeContactModal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <button class="mc-close" onclick="closeContactModal()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <div id="mc-form-wrap">
       <h3>Let's figure out what you need</h3>
       <p class="mc-sub">Tell us what's going on — we'll route it to the right team and get back to you.</p>
@@ -1641,7 +1642,11 @@ function submitContact(){
   var company=document.getElementById('mc-company').value.trim();
   var msg=document.getElementById('mc-msg').value.trim();
   var errEl=document.getElementById('mc-error');
-  if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
+  var nameRe=/^[A-Za-zÀ-ÿ' -]+$/;
+  var emailRe=/^(?!.*\.\.)[^\s@.][^\s@]*@[^\s@.][^\s@]*\.[a-zA-Z]{2,}$/;
+  if(!name||!nameRe.test(name)){errEl.textContent='Please enter a valid name (letters only, no numbers).';errEl.style.display='block';return;}
+  if(!company){errEl.textContent='Please enter your company name.';errEl.style.display='block';return;}
+  if(!email||!emailRe.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   errEl.style.display='none';
   var btn=document.getElementById('mc-submit-btn');
   btn.textContent='Sending...';btn.disabled=true;
@@ -1812,7 +1817,9 @@ function submitGetQuote(){
   var company=document.getElementById('gq-company').value.trim();
   var msg=document.getElementById('gq-msg').value.trim();
   var errEl=document.getElementById('gq-error');
+  var emailRe=/^(?!.*\.\.)[^\s@.][^\s@]*@[^\s@.][^\s@]*\.[a-zA-Z]{2,}$/;
   if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
+  if(!emailRe.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   errEl.style.display='none';
   var btn=document.getElementById('gq-submit-btn');
   btn.textContent='Sending...';btn.style.background='var(--blue2)';btn.disabled=true;
