@@ -745,7 +745,7 @@ nav{
 <!-- CONTACT MODAL -->
 <div class="modal-overlay" id="contact-overlay" onclick="closeContactIfBg(event)">
   <div class="modal-card" style="position:relative;">
-    <button class="mc-close" onclick="closeContactModal()"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
+    <button class="mc-close" onclick="closeContactModal()" aria-label="Close"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg></button>
     <div id="mc-form-wrap">
       <h3>Let's figure out what you need</h3>
       <p class="mc-sub">Tell us what's going on — we'll route it to the right team and get back to you.</p>
@@ -764,7 +764,7 @@ function toggleMobileNav(){
   document.getElementById('nav-mobile-menu').classList.toggle('open');
 }
 window.addEventListener('resize',function(){
-  if(window.innerWidth>640){
+  if(window.innerWidth>760){
     var m=document.getElementById('nav-mobile-menu');
     if(m)m.classList.remove('open');
   }
@@ -881,7 +881,11 @@ function submitContact(){
   var company=document.getElementById('mc-company').value.trim();
   var msg=document.getElementById('mc-msg').value.trim();
   var errEl=document.getElementById('mc-error');
-  if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
+  var nameRe=/^[A-Za-zÀ-ÿ' -]+$/;
+  var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if(!name||!nameRe.test(name)){errEl.textContent='Please enter a valid name (letters only, no numbers).';errEl.style.display='block';return;}
+  if(!company){errEl.textContent='Please enter your company name.';errEl.style.display='block';return;}
+  if(!email||!emailRe.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   errEl.style.display='none';
   var btn=document.getElementById('mc-submit-btn');
   btn.textContent='Sending...';btn.disabled=true;
