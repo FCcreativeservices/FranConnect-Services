@@ -94,6 +94,17 @@ nav{
 .cu-row2{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 @media(max-width:600px){.cu-row2{grid-template-columns:1fr;}}
 
+.cu-advisor-wrap label{display:flex;align-items:center;justify-content:space-between;gap:10px;}
+.cu-advisor-toggle{background:none;border:none;padding:0;margin:0;font-family:'Poppins',sans-serif;font-size:11.5px;font-weight:600;color:var(--blue2);cursor:pointer;text-decoration:underline;}
+.cu-advisor-toggle:hover{color:var(--orange);}
+.cu-autocomplete-wrap{position:relative;}
+.cu-advisor-suggestions{position:absolute;top:calc(100% + 4px);left:0;right:0;z-index:20;background:white;border:1.5px solid var(--border);border-radius:var(--rad-sm);box-shadow:0 8px 20px rgba(0,0,0,.08);max-height:220px;overflow-y:auto;display:none;}
+.cu-advisor-suggestions.show{display:block;}
+.cu-advisor-suggestion{padding:10px 14px;font-size:14px;color:var(--text);cursor:pointer;}
+.cu-advisor-suggestion:hover,.cu-advisor-suggestion.active{background:rgba(224,115,0,.08);}
+.cu-advisor-suggestion-empty{padding:10px 14px;font-size:13px;color:rgba(0,0,0,.45);}
+#cu-advisor-field.no-advisor input#cu-advisor{background:rgba(0,0,0,.03);color:rgba(0,0,0,.45);cursor:not-allowed;}
+
 /* ── SERVICE CHECKBOXES ── */
 .cu-check{
   display:flex;align-items:flex-start;gap:12px;
@@ -209,6 +220,13 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
       <div class="cu-row2">
         <div class="cu-field"><label>Company</label><input id="cu-company" type="text" placeholder="Your franchise name"></div>
         <div class="cu-field"><label>Email</label><input id="cu-email" type="email" required placeholder="you@brand.com"></div>
+      </div>
+      <div class="cu-field cu-advisor-wrap" id="cu-advisor-field">
+        <label>Advisor <button type="button" class="cu-advisor-toggle" id="cu-advisor-toggle" onclick="toggleAdvisorNone()">I don't have one</button></label>
+        <div class="cu-autocomplete-wrap">
+          <input id="cu-advisor" type="text" required autocomplete="off" placeholder="Start typing your advisor's name" oninput="filterAdvisors(this.value)" onfocus="filterAdvisors(this.value)" onblur="onAdvisorBlur()">
+          <div id="cu-advisor-suggestions" class="cu-advisor-suggestions"></div>
+        </div>
       </div>
     </div>
   </div>
@@ -476,6 +494,45 @@ function buildRgSummary(){
   });
   return lines;
 }
+var ADVISOR_LIST=['Jordan Blake','Casey Rivera','Morgan Ellis','Taylor Brooks','Avery Sinclair','Riley Sanders','Cameron Ward','Peyton Marsh','Dakota Reyes','Hayden Foster','Sydney Marlowe','Elliot Grant','Reese Calloway','Quinn Whitfield','Skyler Monroe','Rowan Delgado','Finley Prescott','Emerson Vaughn','Kendall Osei','Marlowe Chen']; // TEMP fictitious names, replace with real advisor list
+var advisorNoneFlag=false;
+function filterAdvisors(q){
+  var box=document.getElementById('cu-advisor-suggestions');
+  var query=q.trim().toLowerCase();
+  if(!query){box.classList.remove('show');box.innerHTML='';return;}
+  var matches=ADVISOR_LIST.filter(function(n){return n.toLowerCase().indexOf(query)!==-1;}).slice(0,6);
+  if(!matches.length){box.innerHTML='<div class="cu-advisor-suggestion-empty">No matches found</div>';box.classList.add('show');return;}
+  box.innerHTML=matches.map(function(n){return '<div class="cu-advisor-suggestion" onmousedown="selectAdvisor(&quot;'+n+'&quot;)">'+n+'</div>';}).join('');
+  box.classList.add('show');
+}
+function selectAdvisor(name){
+  document.getElementById('cu-advisor').value=name;
+  document.getElementById('cu-advisor-suggestions').classList.remove('show');
+}
+function onAdvisorBlur(){
+  setTimeout(function(){document.getElementById('cu-advisor-suggestions').classList.remove('show');},150);
+}
+function toggleAdvisorNone(){
+  advisorNoneFlag=!advisorNoneFlag;
+  var field=document.getElementById('cu-advisor-field');
+  var input=document.getElementById('cu-advisor');
+  var btn=document.getElementById('cu-advisor-toggle');
+  if(advisorNoneFlag){
+    field.classList.add('no-advisor');
+    input.value='';
+    input.disabled=true;
+    input.required=false;
+    input.placeholder='No advisor selected';
+    document.getElementById('cu-advisor-suggestions').classList.remove('show');
+    btn.textContent='I do have an advisor';
+  }else{
+    field.classList.remove('no-advisor');
+    input.disabled=false;
+    input.required=true;
+    input.placeholder="Start typing your advisor's name";
+    btn.textContent="I don't have one";
+  }
+}
 function submitCU(){
   var name=document.getElementById('cu-name').value.trim();
   var email=document.getElementById('cu-email').value.trim();
@@ -484,6 +541,12 @@ function submitCU(){
   if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
   if(/\d/.test(name)){errEl.textContent='Please enter a valid name (no numbers).';errEl.style.display='block';return;}
   if(!/^(?!.*\.\.)[^\s@.][^\s@]*@[^\s@.][^\s@]*\.[a-zA-Z]{2,}$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
+  var advisorVal=document.getElementById('cu-advisor').value.trim();
+  if(!advisorNoneFlag){
+    if(!advisorVal){errEl.textContent='Please enter your advisor\'s name, or click "I don\'t have one."';errEl.style.display='block';return;}
+    var advisorValid=ADVISOR_LIST.some(function(n){return n.toLowerCase()===advisorVal.toLowerCase();});
+    if(!advisorValid){errEl.textContent='Please select a valid advisor from the suggestions, or click "I don\'t have one."';errEl.style.display='block';return;}
+  }
   errEl.style.display='none';
 
   var rgServices=buildRgSummary();
@@ -525,6 +588,7 @@ function submitCU(){
   fd.append('subject','[Contact Us] Quote request from '+(company||name));
   fd.append('replyto',email);
   fd.append('from_name','Contact Us — FranConnect Creative Services');
+  fd.append('advisor', advisorNoneFlag ? 'No advisor selected' : advisorVal);
 
   fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
   .then(function(r){return r.json();})
