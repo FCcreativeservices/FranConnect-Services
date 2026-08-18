@@ -497,7 +497,7 @@ function buildRgSummary(){
 var ADVISOR_LIST=['Jordan Blake','Casey Rivera','Morgan Ellis','Taylor Brooks','Avery Sinclair','Riley Sanders','Cameron Ward','Peyton Marsh','Dakota Reyes','Hayden Foster','Sydney Marlowe','Elliot Grant','Reese Calloway','Quinn Whitfield','Skyler Monroe','Rowan Delgado','Finley Prescott','Emerson Vaughn','Kendall Osei','Marlowe Chen']; // TEMP fictitious names, replace with real advisor list
 var advisorNoneFlag=false;
 function loadFcContacts(){
-  fetch('/fc-contacts.json')
+  fetch('/fc-contacts.json', {cache:'no-store'})
     .then(function(r){ if(!r.ok) throw new Error('bad status'); return r.json(); })
     .then(function(data){
       if(Array.isArray(data) && data.length){ ADVISOR_LIST = data; }
