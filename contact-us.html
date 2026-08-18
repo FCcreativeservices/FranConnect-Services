@@ -222,9 +222,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
         <div class="cu-field"><label>Email</label><input id="cu-email" type="email" required placeholder="you@brand.com"></div>
       </div>
       <div class="cu-field cu-advisor-wrap" id="cu-advisor-field">
-        <label>Advisor <button type="button" class="cu-advisor-toggle" id="cu-advisor-toggle" onclick="toggleAdvisorNone()">I don't have one</button></label>
+        <label>FranConnect Contact <button type="button" class="cu-advisor-toggle" id="cu-advisor-toggle" onclick="toggleAdvisorNone()">I don't have one</button></label>
         <div class="cu-autocomplete-wrap">
-          <input id="cu-advisor" type="text" required autocomplete="off" placeholder="Start typing your advisor's name" oninput="filterAdvisors(this.value)" onfocus="filterAdvisors(this.value)" onblur="onAdvisorBlur()">
+          <input id="cu-advisor" type="text" required autocomplete="off" placeholder="Start typing your FranConnect contact's name" oninput="filterAdvisors(this.value)" onfocus="filterAdvisors(this.value)" onblur="onAdvisorBlur()">
           <div id="cu-advisor-suggestions" class="cu-advisor-suggestions"></div>
         </div>
       </div>
@@ -522,14 +522,14 @@ function toggleAdvisorNone(){
     input.value='';
     input.disabled=true;
     input.required=false;
-    input.placeholder='No advisor selected';
+    input.placeholder='No FranConnect contact selected';
     document.getElementById('cu-advisor-suggestions').classList.remove('show');
-    btn.textContent='I do have an advisor';
+    btn.textContent='I do have a FranConnect contact';
   }else{
     field.classList.remove('no-advisor');
     input.disabled=false;
     input.required=true;
-    input.placeholder="Start typing your advisor's name";
+    input.placeholder="Start typing your FranConnect contact's name";
     btn.textContent="I don't have one";
   }
 }
@@ -543,9 +543,9 @@ function submitCU(){
   if(!/^(?!.*\.\.)[^\s@.][^\s@]*@[^\s@.][^\s@]*\.[a-zA-Z]{2,}$/.test(email)){errEl.textContent='Please enter a valid email address.';errEl.style.display='block';return;}
   var advisorVal=document.getElementById('cu-advisor').value.trim();
   if(!advisorNoneFlag){
-    if(!advisorVal){errEl.textContent='Please enter your advisor\'s name, or click "I don\'t have one."';errEl.style.display='block';return;}
+    if(!advisorVal){errEl.textContent='Please enter your FranConnect contact\'s name, or click "I don\'t have one."';errEl.style.display='block';return;}
     var advisorValid=ADVISOR_LIST.some(function(n){return n.toLowerCase()===advisorVal.toLowerCase();});
-    if(!advisorValid){errEl.textContent='Please select a valid advisor from the suggestions, or click "I don\'t have one."';errEl.style.display='block';return;}
+    if(!advisorValid){errEl.textContent='Please select a valid FranConnect contact from the suggestions, or click "I don\'t have one."';errEl.style.display='block';return;}
   }
   errEl.style.display='none';
 
@@ -588,7 +588,7 @@ function submitCU(){
   fd.append('subject','[Contact Us] Quote request from '+(company||name));
   fd.append('replyto',email);
   fd.append('from_name','Contact Us — FranConnect Creative Services');
-  fd.append('advisor', advisorNoneFlag ? 'No advisor selected' : advisorVal);
+  fd.append('fc_contact', advisorNoneFlag ? 'No FranConnect contact selected' : advisorVal);
 
   fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
   .then(function(r){return r.json();})
