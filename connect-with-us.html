@@ -98,6 +98,9 @@ nav{
   #hero{position:relative;height:auto;min-height:420px;background-size:auto 100%!important;background-position:left center!important;}
   .hero-spacer{display:none;}
 }
+@media (min-width:1600px){
+  #hero{background-position:right center!important;}
+}
 #hero::after{
   content:'';position:absolute;inset:0;
   background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(224,115,0,.12) 0%,transparent 70%);
@@ -259,8 +262,8 @@ nav{
   </div>
   <div class="nav-links">
     <a href="run-grow-with-us.html">Grow</a>
-    <a href="build-with-us.html">Build</a>
     <span class="nav-current">Connect</span>
+    <a href="build-with-us.html">Build</a>
     <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -269,17 +272,17 @@ nav{
 </nav>
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a href="index.html">Services</a>
-  <a href="build-with-us.html">Build</a>
-  <a href="run-grow-with-us.html">Grow</a>
   <span class="nav-mobile-current">Connect</span>
+  <a href="run-grow-with-us.html">Grow</a>
+  <a href="build-with-us.html">Build</a>
 </div>
 
 <!-- HERO -->
 <section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Connect_Hero%20Image.png');background-size:auto 100%;background-position:left center;background-repeat:no-repeat;">
   <div class="hero-text">
     <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Connect with us</div>
-    <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Connect the systems that keep your business moving.</h1>
-    <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">Move data between FranConnect and the tools you already use — without spreadsheets, duplicate entry, or manual reconciliation.</p>
+    <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Connect the systems</h1>
+    <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">Move data between FranConnect and the tools you already use, without spreadsheets, duplicate entry, or manual reconciliation.</p>
   </div>
 </section>
 <div class="hero-spacer"></div>
@@ -310,7 +313,7 @@ nav{
   <div class="sec-wrap">
     <div class="center">
       <div class="sec-eye">Connect with us</div>
-      <h2 class="sec-title">Built around the way your systems work.</h2>
+      <h2 class="sec-title">Built around the way your systems work</h2>
       <p class="sec-sub center">Whether your systems exchange files, expose APIs, or connect directly to a database, integrations can be designed around the way your business already operates.</p>
     </div>
 
@@ -382,7 +385,7 @@ nav{
 
     <div class="cw-proc-final">
       <div class="cw-proc-final-headline">Built once. Then let your data move.</div>
-      <div class="cw-proc-final-sub">Once your integration is live, your data can move automatically — without adding another recurring subscription.</div>
+      <div class="cw-proc-final-sub">Once your integration is live, your data can move automatically, without adding another recurring subscription.</div>
     </div>
   </div>
 </section>
