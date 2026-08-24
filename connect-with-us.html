@@ -161,6 +161,12 @@ nav{
 .cw-proc-step:not(:last-child)::after{content:'';position:absolute;top:23px;left:calc(50% + 30px);width:calc(100% - 60px);height:2px;background:var(--border);}
 .cw-proc-num{width:46px;height:46px;border-radius:50%;background:var(--off);border:2px solid var(--border);color:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:14px;margin:0 auto 16px;position:relative;z-index:2;transition:.4s;}
 .reveal-stagger.in-view .cw-proc-num{background:var(--blue);border-color:var(--blue);color:#fff;}
+.cw-proc-num-txt,.cw-proc-num-ic{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;transition:opacity .25s,transform .25s;}
+.cw-proc-num-ic{opacity:0;transform:scale(.5);}
+.cw-proc-num-ic svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.8;}
+.cw-proc-step:hover .cw-proc-num-txt{opacity:0;transform:scale(.5);}
+.cw-proc-step:hover .cw-proc-num-ic{opacity:1;transform:scale(1);}
+.cw-proc-step:hover .cw-proc-num{border-color:var(--blue);}
 .cw-proc-title{font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
 .cw-proc-desc{font-size:13px;color:var(--dark);line-height:1.55;max-width:200px;margin:0 auto;}
 .cw-proc-final{
@@ -362,22 +368,22 @@ nav{
 
     <div class="cw-proc-row reveal-stagger">
       <div class="cw-proc-step reveal-item">
-        <div class="cw-proc-num">1</div>
+        <div class="cw-proc-num"><span class="cw-proc-num-txt">1</span><span class="cw-proc-num-ic"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg></span></div>
         <div class="cw-proc-title">Scope</div>
         <div class="cw-proc-desc">Understand the systems and data involved.</div>
       </div>
       <div class="cw-proc-step reveal-item">
-        <div class="cw-proc-num">2</div>
+        <div class="cw-proc-num"><span class="cw-proc-num-txt">2</span><span class="cw-proc-num-ic"><svg viewBox="0 0 24 24"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94z"/></svg></span></div>
         <div class="cw-proc-title">Build</div>
         <div class="cw-proc-desc">Create the integration around your requirements.</div>
       </div>
       <div class="cw-proc-step reveal-item">
-        <div class="cw-proc-num">3</div>
+        <div class="cw-proc-num"><span class="cw-proc-num-txt">3</span><span class="cw-proc-num-ic"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></span></div>
         <div class="cw-proc-title">Connect</div>
         <div class="cw-proc-desc">Put the systems into communication.</div>
       </div>
       <div class="cw-proc-step reveal-item">
-        <div class="cw-proc-num">4</div>
+        <div class="cw-proc-num"><span class="cw-proc-num-txt">4</span><span class="cw-proc-num-ic"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg></span></div>
         <div class="cw-proc-title">Automate</div>
         <div class="cw-proc-desc">Let the data move without repetitive manual work.</div>
       </div>
