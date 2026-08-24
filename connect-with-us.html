@@ -87,68 +87,21 @@ nav{
    HERO — dark navy, animated data-flow illustration
    ══════════════════════════════════════════════════════════ */
 #hero{
-  background:#0b2a3e;position:relative;overflow:hidden;
-  padding:150px 8% 90px;display:flex;flex-direction:column;align-items:center;
-  text-align:center;
+  height:460px;
+  background:#0b2a3e;
+  display:flex;flex-direction:column;align-items:flex-start;justify-content:center;
+  text-align:left;padding:80px 8% 100px 6%;position:fixed;top:0;left:0;right:0;overflow:hidden;z-index:1;
 }
-#hero.pin-fixed{position:fixed;top:0;left:0;right:0;z-index:1;}
-.hero-spacer{width:100%;display:none;pointer-events:none;}
-@media (max-width:760px){
-  #hero.pin-fixed{position:relative;top:auto;left:auto;right:auto;z-index:5;}
-  .hero-spacer{display:none!important;}
+.hero-spacer{width:100%;height:460px;pointer-events:none;}
+.hero-text{position:relative;z-index:2;}
+@media (max-width:760px), (max-height:500px){
+  #hero{position:relative;height:auto;min-height:420px;background-size:auto 100%!important;background-position:left center!important;}
+  .hero-spacer{display:none;}
 }
 #hero::after{
   content:'';position:absolute;inset:0;
-  background:radial-gradient(ellipse 70% 50% at 50% 30%,rgba(224,115,0,.14) 0%,transparent 70%);
+  background:radial-gradient(ellipse 70% 50% at 50% 60%,rgba(224,115,0,.12) 0%,transparent 70%);
   pointer-events:none;
-}
-.cw-hero-text{position:relative;z-index:2;max-width:760px;margin-bottom:56px;}
-.hero-eyebrow{
-  display:inline-flex;align-items:center;gap:8px;
-  background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);
-  border-radius:40px;padding:7px 16px;
-  font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;
-  color:rgba(255,255,255,.85);margin-bottom:22px;
-}
-.hero-eyebrow-dot{width:6px;height:6px;background:var(--orange);border-radius:50%;}
-#hero h1{
-  font-size:clamp(30px,4.6vw,52px);font-weight:800;color:white;
-  line-height:1.14;letter-spacing:-.02em;margin-bottom:18px;
-}
-.cw-hero-sub{font-size:16px;color:rgba(255,255,255,.8);line-height:1.6;max-width:600px;margin:0 auto;}
-
-/* hero data-flow illustration */
-.cw-flowart{position:relative;width:100%;max-width:920px;height:260px;z-index:2;}
-.cw-fa-svg{position:absolute;inset:0;width:100%;height:100%;}
-.cw-fa-path{fill:none;stroke:rgba(255,255,255,.18);stroke-width:1.6;}
-.cw-fa-node{position:absolute;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:6px;}
-.cw-fa-node-box{width:52px;height:52px;border-radius:12px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;}
-.cw-fa-node-box svg{width:22px;height:22px;stroke:rgba(255,255,255,.85);fill:none;stroke-width:1.7;}
-.cw-fa-node-lbl{font-size:10.5px;font-weight:600;color:rgba(255,255,255,.55);letter-spacing:.03em;white-space:nowrap;}
-.cw-fa-hub{
-  position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-  width:96px;height:96px;border-radius:50%;
-  background:radial-gradient(circle at 35% 30%,#2E8FCB,#134564 70%);
-  border:2px solid rgba(255,255,255,.3);
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 0 0 8px rgba(255,255,255,.04),0 12px 34px rgba(0,0,0,.4);
-  z-index:3;
-}
-.cw-fa-hub-ring{position:absolute;inset:-14px;border-radius:50%;border:1px dashed rgba(255,255,255,.25);animation:cwHubSpin 30s linear infinite;}
-@keyframes cwHubSpin{to{transform:rotate(360deg);}}
-.cw-fa-hub span{font-size:10px;font-weight:800;letter-spacing:.06em;color:#fff;text-transform:uppercase;}
-.cw-fa-dot{position:absolute;width:6px;height:6px;border-radius:50%;background:var(--orange);opacity:0;box-shadow:0 0 8px rgba(224,115,0,.6);transform:translate(-50%,-50%);animation:cwDotFlow 9s ease-in-out infinite;}
-@keyframes cwDotFlow{
-  0%,4%{opacity:0;}
-  8%{opacity:1;}
-  46%{opacity:1;}
-  50%{opacity:0;}
-  100%{opacity:0;}
-}
-@media (prefers-reduced-motion:reduce){.cw-fa-dot,.cw-fa-hub-ring{animation:none!important;}}
-@media (max-width:760px){
-  #hero{padding:120px 20px 60px;}
-  .cw-flowart{height:auto;min-height:220px;}
 }
 
 /* ══════════════════════════════════════════════════════════
@@ -184,10 +137,6 @@ nav{
 .cw-method-desc{font-size:13px;color:var(--dark);line-height:1.55;}
 @media (max-width:900px){.cw-methods-grid{grid-template-columns:1fr 1fr;}}
 @media (max-width:560px){.cw-methods-grid{grid-template-columns:1fr;}}
-
-/* ── CONNECT HERO IMAGE (after Methods) ── */
-.cw-methods-img{max-width:1000px;margin:56px auto 0;text-align:center;}
-.cw-methods-img img{width:100%;height:auto;display:block;border-radius:var(--radius);box-shadow:var(--shadow-lg);}
 
 /* ══════════════════════════════════════════════════════════
    BIG STATEMENT
@@ -314,7 +263,7 @@ nav{
     <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
-    <a href="#" onclick="openContactModal();return false;" class="nav-cta">Talk to us</a>
+    <a href="contact-us.html" class="nav-cta">Talk to us</a>
   </div>
 </nav>
 <div class="nav-mobile-menu" id="nav-mobile-menu">
@@ -325,62 +274,14 @@ nav{
 </div>
 
 <!-- HERO -->
-<section id="hero">
-  <div class="cw-hero-text">
-    <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span>Connect with us</div>
-    <h1>Connect the systems that keep your business moving.</h1>
-    <p class="cw-hero-sub">Move data between FranConnect and the tools you already use — without spreadsheets, duplicate entry, or manual reconciliation.</p>
-  </div>
-
-  <div class="cw-flowart" aria-hidden="true">
-    <svg class="cw-fa-svg" viewBox="0 0 920 260" preserveAspectRatio="xMidYMid meet">
-      <path class="cw-fa-path" d="M110,55 C260,55 320,130 430,130"></path>
-      <path class="cw-fa-path" d="M110,130 C260,130 320,130 430,130"></path>
-      <path class="cw-fa-path" d="M110,205 C260,205 320,130 430,130"></path>
-      <path class="cw-fa-path" d="M490,130 C600,130 660,55 810,55"></path>
-      <path class="cw-fa-path" d="M490,130 C600,130 660,130 810,130"></path>
-      <path class="cw-fa-path" d="M490,130 C600,130 660,205 810,205"></path>
-    </svg>
-    <div class="cw-fa-node" style="left:11.9%;top:21.2%;">
-      <div class="cw-fa-node-box"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6"/></svg></div>
-      <div class="cw-fa-node-lbl">CSV</div>
-    </div>
-    <div class="cw-fa-node" style="left:11.9%;top:50%;">
-      <div class="cw-fa-node-box"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 9h18M9 4v16"/></svg></div>
-      <div class="cw-fa-node-lbl">API</div>
-    </div>
-    <div class="cw-fa-node" style="left:11.9%;top:78.8%;">
-      <div class="cw-fa-node-box"><svg viewBox="0 0 24 24"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.66 3.58 3 8 3s8-1.34 8-3V6"/><path d="M4 12v6c0 1.66 3.58 3 8 3s8-1.34 8-3v-6"/></svg></div>
-      <div class="cw-fa-node-lbl">Database</div>
-    </div>
-    <div class="cw-fa-hub">
-      <div class="cw-fa-hub-ring"></div>
-      <span>FC</span>
-    </div>
-    <div class="cw-fa-node" style="left:88.1%;top:21.2%;">
-      <div class="cw-fa-node-box"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></div>
-      <div class="cw-fa-node-lbl">Accurate</div>
-    </div>
-    <div class="cw-fa-node" style="left:88.1%;top:50%;">
-      <div class="cw-fa-node-box"><svg viewBox="0 0 24 24"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
-      <div class="cw-fa-node-lbl">Faster</div>
-    </div>
-    <div class="cw-fa-node" style="left:88.1%;top:78.8%;">
-      <div class="cw-fa-node-box"><svg viewBox="0 0 24 24"><path d="M3 3v18h18"/><path d="M7 14l4-4 4 4 5-6"/></svg></div>
-      <div class="cw-fa-node-lbl">Reporting</div>
-    </div>
-    <span class="cw-fa-dot" style="left:12%;top:21.2%;animation-delay:0s;"></span>
-    <span class="cw-fa-dot" style="left:50%;top:50%;animation-delay:.6s;"></span>
-    <span class="cw-fa-dot" style="left:88%;top:21.2%;animation-delay:1.2s;"></span>
-    <span class="cw-fa-dot" style="left:12%;top:50%;animation-delay:2.2s;"></span>
-    <span class="cw-fa-dot" style="left:50%;top:50%;animation-delay:2.8s;"></span>
-    <span class="cw-fa-dot" style="left:88%;top:50%;animation-delay:3.4s;"></span>
-    <span class="cw-fa-dot" style="left:12%;top:78.8%;animation-delay:4.4s;"></span>
-    <span class="cw-fa-dot" style="left:50%;top:50%;animation-delay:5s;"></span>
-    <span class="cw-fa-dot" style="left:88%;top:78.8%;animation-delay:5.6s;"></span>
+<section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Connect_Hero.png');background-size:auto 100%;background-position:left center;background-repeat:no-repeat;">
+  <div class="hero-text">
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Connect with us</div>
+    <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Connect the systems that keep your business moving.</h1>
+    <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">Move data between FranConnect and the tools you already use — without spreadsheets, duplicate entry, or manual reconciliation.</p>
   </div>
 </section>
-<div class="hero-spacer" id="hero-spacer"></div>
+<div class="hero-spacer"></div>
 
 <!-- PILLARS -->
 <section id="cw-pillars">
@@ -433,10 +334,6 @@ nav{
         <div class="cw-method-title">Custom</div>
         <div class="cw-method-desc">Built around your specific requirements.</div>
       </div>
-    </div>
-
-    <div class="cw-methods-img">
-      <img src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Connect_Hero.png" alt="How Integrations connects your systems">
     </div>
   </div>
 </section>
@@ -501,7 +398,7 @@ nav{
   <div class="cta-content">
     <h2>Ready to connect your systems?</h2>
     <p>Let's build an integration around the way your business works.</p>
-    <button class="cta-btn" onclick="openContactModal()">Contact Us</button>
+    <a href="contact-us.html" class="cta-btn" style="display:inline-block;text-decoration:none;">Contact Us</a>
   </div>
   <div class="cta-copyright">© FranConnect. Build With Us &middot; Grow With Us &middot; Connect With Us</div>
 </section>
@@ -530,37 +427,14 @@ function toggleMobileNav(){
 
 (function(){
   var hero = document.getElementById('hero');
-  var spacer = document.getElementById('hero-spacer');
-  if(!hero || !spacer) return;
-  var pinned = false;
-
-  function measure(){
-    hero.classList.remove('pin-fixed');
-    var h = hero.offsetHeight;
-    var fits = h <= window.innerHeight && window.innerWidth > 760;
-    if(fits){
-      spacer.style.height = h + 'px';
-      spacer.style.display = 'block';
-      hero.classList.add('pin-fixed');
-      pinned = true;
-    } else {
-      spacer.style.display = 'none';
-      hero.style.visibility = '';
-      pinned = false;
-    }
-    updateVisibility();
+  if(!hero) return;
+  function updateHero(){
+    if(window.innerWidth<=760){ hero.style.visibility=''; return; }
+    hero.style.visibility = window.scrollY > 460 ? 'hidden' : 'visible';
   }
-
-  function updateVisibility(){
-    if(!pinned) return;
-    var rect = spacer.getBoundingClientRect();
-    hero.style.visibility = rect.bottom <= 0 ? 'hidden' : 'visible';
-  }
-
-  window.addEventListener('load', measure);
-  window.addEventListener('resize', measure);
-  window.addEventListener('scroll', updateVisibility, {passive:true});
-  measure();
+  window.addEventListener('scroll', updateHero, {passive:true});
+  window.addEventListener('resize', updateHero);
+  updateHero();
 })();
 
 (function(){
