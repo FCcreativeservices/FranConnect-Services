@@ -149,6 +149,13 @@ nav{
 }
 .pc:hover .pc-play{opacity:1;background:rgba(0,0,0,.35);}
 .pc-play svg{width:44px;height:44px;stroke:white;fill:none;stroke-width:1.5;filter:drop-shadow(0 2px 8px rgba(0,0,0,.4));}
+@media (max-width:760px){
+  .pc-play,.vsc-play{
+    inset:auto;top:8px;right:8px;width:30px;height:30px;border-radius:50%;
+    opacity:1;background:rgba(0,0,0,.55)!important;box-shadow:0 2px 6px rgba(0,0,0,.35);
+  }
+  .pc-play svg,.vsc-play svg{width:15px;height:15px;filter:none;}
+}
 .pc-body{padding:18px;display:flex;flex-direction:column;flex:1;}
 .pc-name{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:5px;}
 .pc-desc{font-size:12px;color:var(--dark);line-height:1.5;margin-bottom:12px;flex:1;}
