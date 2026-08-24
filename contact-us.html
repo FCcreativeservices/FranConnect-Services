@@ -186,9 +186,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
     <span class="nav-title">Services</span>
   </div>
   <div class="nav-links">
-    <a href="run-grow-with-us.html">Grow with us</a>
-    <a href="build-with-us.html">Build with us</a>
-    <a href="connect-with-us.html">Connect with us</a>
+    <a href="run-grow-with-us.html">Grow</a>
+    <a href="build-with-us.html">Build</a>
+    <a href="connect-with-us.html">Connect</a>
     <button class="nav-hamburger" onclick="toggleMobileNav()" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -197,9 +197,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
 </nav>
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <a href="index.html">Services</a>
-  <a href="build-with-us.html">Build with us</a>
-  <a href="run-grow-with-us.html">Grow with us</a>
-  <a href="connect-with-us.html">Connect with us</a>
+  <a href="build-with-us.html">Build</a>
+  <a href="run-grow-with-us.html">Grow</a>
+  <a href="connect-with-us.html">Connect</a>
 </div>
 
 <!-- INTRO + FORM (split layout) -->
@@ -236,7 +236,7 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <!-- RUN & GROW -->
   <div class="cu-section">
     <div class="cu-wrap">
-      <div class="cu-block-title">Grow with us</div>
+      <div class="cu-block-title">Grow</div>
       <div class="cu-block-sub">Ongoing support to help you get more out of your platform.</div>
       <div id="cu-rg-services">
         <label class="cu-check" data-slug="concierge">
@@ -251,19 +251,30 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
           <input type="checkbox" data-slug="change">
           <div><div class="cu-check-name">Change Management</div><div class="cu-check-desc">Guided rollout across assess, align, train, adopt, and sustain.</div></div>
         </label>
-        <label class="cu-check" data-slug="integrations">
-          <input type="checkbox" data-slug="integrations">
-          <div><div class="cu-check-name">Integrations</div><div class="cu-check-desc">Connect FranConnect with your other systems — flat files, APIs, or direct database.</div></div>
-        </label>
       </div>
       <div class="cu-field" style="margin-top:18px;"><label>Anything specific about these? (optional)</label><textarea id="cu-rg-comment" rows="3" placeholder="Timeline, scope, questions..."></textarea></div>
     </div>
   </div>
 
-  <!-- BUILD WITH US -->
+  <!-- CONNECT -->
   <div class="cu-section alt">
     <div class="cu-wrap">
-      <div class="cu-block-title">Build with us</div>
+      <div class="cu-block-title">Connect</div>
+      <div class="cu-block-sub">Connect FranConnect to the systems you already use.</div>
+      <div id="cu-connect-services">
+        <label class="cu-check" data-slug="integrations">
+          <input type="checkbox" data-slug="integrations">
+          <div><div class="cu-check-name">Integrations</div><div class="cu-check-desc">Connect FranConnect with your other systems — flat files, APIs, or direct database.</div></div>
+        </label>
+      </div>
+      <div class="cu-field" style="margin-top:18px;"><label>Anything specific about this? (optional)</label><textarea id="cu-connect-comment" rows="3" placeholder="Timeline, scope, questions..."></textarea></div>
+    </div>
+  </div>
+
+  <!-- BUILD WITH US -->
+  <div class="cu-section">
+    <div class="cu-wrap">
+      <div class="cu-block-title">Build</div>
       <div class="cu-block-sub">Platform design, video, and training built to spec.</div>
 
       <div id="cu-build-empty">
@@ -379,18 +390,20 @@ window.addEventListener('resize',function(){
 function openTCModal(){document.getElementById('tc-overlay').style.display='flex';}
 function closeTCIfBg(e){if(e.target.id==='tc-overlay')document.getElementById('tc-overlay').style.display='none';}
 
-var RG_LABELS={concierge:'Platform Concierge',growth:'Growth Partner',change:'Change Management',integrations:'Integrations'};
+var RG_LABELS={concierge:'Platform Concierge',growth:'Growth Partner',change:'Change Management'};
+var CONNECT_LABELS={integrations:'Integrations'};
 var DRAFT_KEY='fc_contact_draft';
 var BUILD_KEY='fc_build_estimate';
 
 /* ── DRAFT SAVE / RESTORE ── */
 function saveDraft(){
-  var checked=Array.from(document.querySelectorAll('#cu-rg-services input:checked')).map(function(i){return i.getAttribute('data-slug');});
+  var checked=Array.from(document.querySelectorAll('#cu-rg-services input:checked, #cu-connect-services input:checked')).map(function(i){return i.getAttribute('data-slug');});
   var draft={
     name:document.getElementById('cu-name').value,
     company:document.getElementById('cu-company').value,
     email:document.getElementById('cu-email').value,
     rgComment:document.getElementById('cu-rg-comment').value,
+    connectComment:document.getElementById('cu-connect-comment').value,
     buildComment:document.getElementById('cu-build-comment').value,
     rgChecked:checked
   };
@@ -405,9 +418,10 @@ function restoreDraft(){
     document.getElementById('cu-company').value=d.company||'';
     document.getElementById('cu-email').value=d.email||'';
     document.getElementById('cu-rg-comment').value=d.rgComment||'';
+    document.getElementById('cu-connect-comment').value=d.connectComment||'';
     document.getElementById('cu-build-comment').value=d.buildComment||'';
     (d.rgChecked||[]).forEach(function(slug){
-      var box=document.querySelector('#cu-rg-services input[data-slug="'+slug+'"]');
+      var box=document.querySelector('#cu-rg-services input[data-slug="'+slug+'"], #cu-connect-services input[data-slug="'+slug+'"]');
       if(box){box.checked=true;box.closest('.cu-check').classList.add('sel');}
     });
   }catch(e){}
@@ -418,19 +432,19 @@ function preselectFromUrl(){
   var params=new URLSearchParams(window.location.search);
   var svc=params.get('service');
   if(svc){
-    var box=document.querySelector('#cu-rg-services input[data-slug="'+svc+'"]');
+    var box=document.querySelector('#cu-rg-services input[data-slug="'+svc+'"], #cu-connect-services input[data-slug="'+svc+'"]');
     if(box){box.checked=true;box.closest('.cu-check').classList.add('sel');saveDraft();}
   }
 }
 
 /* ── RUN & GROW checkbox styling ── */
-document.querySelectorAll('#cu-rg-services input').forEach(function(box){
+document.querySelectorAll('#cu-rg-services input, #cu-connect-services input').forEach(function(box){
   box.addEventListener('change',function(){
     box.closest('.cu-check').classList.toggle('sel',box.checked);
     saveDraft();
   });
 });
-['cu-name','cu-company','cu-email','cu-rg-comment','cu-build-comment'].forEach(function(id){
+['cu-name','cu-company','cu-email','cu-rg-comment','cu-connect-comment','cu-build-comment'].forEach(function(id){
   document.getElementById(id).addEventListener('input',saveDraft);
 });
 document.getElementById('cu-add-link-empty').addEventListener('click',saveDraft);
@@ -493,6 +507,13 @@ function buildRgSummary(){
   var lines=[];
   document.querySelectorAll('#cu-rg-services input:checked').forEach(function(box){
     lines.push(RG_LABELS[box.getAttribute('data-slug')]);
+  });
+  return lines;
+}
+function buildConnectSummary(){
+  var lines=[];
+  document.querySelectorAll('#cu-connect-services input:checked').forEach(function(box){
+    lines.push(CONNECT_LABELS[box.getAttribute('data-slug')]);
   });
   return lines;
 }
@@ -560,7 +581,9 @@ function submitCU(){
   errEl.style.display='none';
 
   var rgServices=buildRgSummary();
+  var connectServices=buildConnectSummary();
   var rgComment=document.getElementById('cu-rg-comment').value.trim();
+  var connectComment=document.getElementById('cu-connect-comment').value.trim();
   var buildComment=document.getElementById('cu-build-comment').value.trim();
   var rawBuild=localStorage.getItem(BUILD_KEY);
   var E=null;
@@ -569,9 +592,15 @@ function submitCU(){
 
   var body='';
   if(rgServices.length){
-    body+='RUN & GROW WITH US\n';
+    body+='GROW\n';
     rgServices.forEach(function(s){body+='• '+s+'\n';});
     if(rgComment)body+='Comment: '+rgComment+'\n';
+    body+='\n';
+  }
+  if(connectServices.length){
+    body+='CONNECT\n';
+    connectServices.forEach(function(s){body+='• '+s+'\n';});
+    if(connectComment)body+='Comment: '+connectComment+'\n';
     body+='\n';
   }
   if(buildTotal>0){
@@ -582,7 +611,7 @@ function submitCU(){
     if(buildComment)body+='Comment: '+buildComment+'\n';
     body+='\n';
   }
-  if(!rgServices.length&&buildTotal<=0){
+  if(!rgServices.length&&!connectServices.length&&buildTotal<=0){
     body='No specific services selected — general inquiry.';
   }
 
