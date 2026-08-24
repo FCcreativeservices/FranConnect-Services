@@ -125,7 +125,7 @@ nav{
 /* ══════════════════════════════════════════════════════════
    METHODS — "Built around your business" (4 connection types)
    ══════════════════════════════════════════════════════════ */
-#cw-methods{background:var(--off);}
+#cw-methods{background:var(--off);position:relative;z-index:5;}
 .cw-methods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1120px;margin:48px auto 0;}
 .cw-method{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px 22px;transition:.25s;}
 .cw-method:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent;}
@@ -141,7 +141,7 @@ nav{
 /* ══════════════════════════════════════════════════════════
    BIG STATEMENT
    ══════════════════════════════════════════════════════════ */
-#cw-statement{background:#0b2a3e;padding:120px 48px;text-align:center;}
+#cw-statement{background:#0b2a3e;padding:120px 48px;text-align:center;position:relative;z-index:5;}
 .cw-statement-text{font-size:clamp(28px,4.5vw,48px);font-weight:800;color:#fff;line-height:1.28;letter-spacing:-.01em;max-width:720px;margin:0 auto 34px;}
 .cw-statement-text em{color:var(--orange);font-style:normal;}
 .cw-statement-line{width:220px;height:2px;background:rgba(255,255,255,.15);margin:0 auto;position:relative;overflow:hidden;border-radius:2px;}
@@ -152,7 +152,7 @@ nav{
 /* ══════════════════════════════════════════════════════════
    PROCESS — Scope / Build / Connect / Automate
    ══════════════════════════════════════════════════════════ */
-#cw-process{background:#fff;}
+#cw-process{background:#fff;position:relative;z-index:5;}
 .cw-proc-row{display:grid;grid-template-columns:repeat(4,1fr);gap:0;max-width:1000px;margin:48px auto 0;}
 .cw-proc-step{position:relative;text-align:center;padding:0 14px;}
 .cw-proc-step:not(:last-child)::after{content:'';position:absolute;top:23px;left:calc(50% + 30px);width:calc(100% - 60px);height:2px;background:var(--border);}
