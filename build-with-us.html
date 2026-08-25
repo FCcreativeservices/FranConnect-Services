@@ -11,8 +11,6 @@
 :root {
   --blue:    #134564;
   --orange:  #E07300;
-  --orange-text: #A64F00;
-  --orange-text-dark: #FFA94D;
   --blue2:   #17669B;
   --red2:    #AC3446;
   --dark:    #717171;
@@ -123,12 +121,12 @@ nav{
 .hc-icon svg{width:28px;height:28px;stroke:var(--orange);fill:none;stroke-width:1.8;}
 .hc-title{font-size:16px;font-weight:700;color:white;margin-bottom:6px;}
 .hc-desc{font-size:12px;color:rgba(255,255,255,.55);line-height:1.55;}
-.hc-link{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--orange-text);margin-top:14px;text-transform:uppercase;letter-spacing:.06em;}
+.hc-link{display:flex;align-items:center;gap:5px;font-size:11px;font-weight:700;color:var(--orange);margin-top:14px;text-transform:uppercase;letter-spacing:.06em;}
 
 /* ── SECTION SHELL ── */
 .section{padding:90px 48px;}
 .sec-wrap{max-width:1160px;margin:0 auto;}
-.sec-eye{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-text);margin-bottom:10px;}
+.sec-eye{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;}
 .sec-title{font-size:clamp(28px,3.5vw,46px);font-weight:800;color:var(--blue);line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;}
 .sec-sub{font-size:15px;color:var(--dark);max-width:520px;line-height:1.65;margin-bottom:48px;}
 
@@ -189,7 +187,7 @@ nav{
 .ac:hover{border-color:var(--orange);}
 .ac.on{border-color:var(--blue);background:rgba(19,69,100,.05);}
 .ac-name{font-size:12px;font-weight:600;color:var(--text);}
-.ac-price{font-size:11px;color:var(--orange-text);font-weight:700;}
+.ac-price{font-size:11px;color:var(--orange);font-weight:700;}
 
 /* ── VIDEO ── */
 #video{background:#0c1922;position:relative;z-index:5;}
@@ -221,7 +219,7 @@ nav{
 .qval{font-size:18px;font-weight:700;color:white;min-width:24px;text-align:center;}
 .ptype-row{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:14px;}
 .ptb{flex:1;padding:8px 6px;border-radius:var(--rad-sm);border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.05);color:rgba(255,255,255,.7);font-size:11px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Poppins',sans-serif;}
-.ptb:hover,.ptb.on{background:rgba(224,115,0,.2);border-color:var(--orange);color:var(--orange-text);}
+.ptb:hover,.ptb.on{background:rgba(224,115,0,.2);border-color:var(--orange);color:var(--orange);}
 .add-btn{
   width:100%;margin-top:14px;padding:11px;border-radius:var(--rad-sm);
   background:var(--blue2);border:none;color:white;
@@ -231,7 +229,7 @@ nav{
 .vo-opts{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px;}
 .vo-opt{display:flex;align-items:center;gap:7px;cursor:pointer;color:rgba(255,255,255,.65);font-size:12px;}
 .vo-opt input{accent-color:var(--orange);width:15px;height:15px;}
-.vo-opt-price{color:var(--orange-text);font-weight:700;margin-left:3px;}
+.vo-opt-price{color:var(--orange);font-weight:700;margin-left:3px;}
 
 /* ── TRAINING ── */
 #training{background:var(--white);position:relative;z-index:5;}
@@ -244,7 +242,7 @@ nav{
 .ws.act .ws-dot{background:var(--orange);color:white;box-shadow:0 0 0 4px rgba(224,115,0,.18);}
 .ws.done .ws-dot{background:var(--blue);color:white;}
 .ws-lbl{font-size:10px;color:var(--dark);margin-top:5px;font-weight:500;text-align:center;white-space:nowrap;}
-.ws.act .ws-lbl{color:var(--orange-text);font-weight:700;}
+.ws.act .ws-lbl{color:var(--orange);font-weight:700;}
 .ws.done .ws-lbl{color:var(--blue);}
 /* steps */
 .wstep{display:none;}
@@ -275,7 +273,7 @@ nav{
 .ml.sel{border-color:var(--blue);background:rgba(19,69,100,.03);}
 .ml-emoji{font-size:36px;margin-bottom:12px;display:block;}
 .ml-name{font-size:18px;font-weight:800;color:var(--blue);margin-bottom:4px;}
-.ml-time{font-size:12px;color:var(--orange-text);font-weight:700;margin-bottom:8px;}
+.ml-time{font-size:12px;color:var(--orange);font-weight:700;margin-bottom:8px;}
 .ml-desc{font-size:12px;color:var(--dark);line-height:1.5;}
 /* style cards */
 .vs-row{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;}
@@ -295,7 +293,7 @@ nav{
 .vsc-body{padding:16px 18px;}
 .vsc-name{font-size:14px;font-weight:700;color:var(--blue);margin-bottom:3px;}
 .vsc-desc{font-size:11px;color:var(--dark);line-height:1.45;margin-bottom:10px;}
-.vsc-note{font-size:10px;color:var(--orange-text);font-weight:700;margin-bottom:8px;}
+.vsc-note{font-size:10px;color:var(--orange);font-weight:700;margin-bottom:8px;}
 .vsc-from{font-size:10px;color:var(--dark);}
 .vsc-price{font-size:20px;font-weight:800;color:var(--blue);}
 /* addon cards */
@@ -313,7 +311,7 @@ nav{
 .ao.sel .ao-chk svg{display:block;}
 .ao-name{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:3px;}
 .ao-desc{font-size:11px;color:var(--dark);line-height:1.4;margin-bottom:6px;}
-.ao-price{font-size:13px;font-weight:700;color:var(--orange-text);}
+.ao-price{font-size:13px;font-weight:700;color:var(--orange);}
 .ao-qwrap{margin-top:10px;display:none;align-items:center;gap:8px;}
 .ao.sel .ao-qwrap{display:flex;}
 .ao-qlbl{font-size:11px;color:var(--dark);}
@@ -331,7 +329,7 @@ nav{
 .ex.sel .ex-icon svg{stroke:var(--orange);}
 .ex-name{font-size:13px;font-weight:700;color:var(--blue);margin-bottom:3px;}
 .ex-desc{font-size:11px;color:var(--dark);margin-bottom:8px;line-height:1.4;}
-.ex-price{font-size:14px;font-weight:700;color:var(--orange-text);}
+.ex-price{font-size:14px;font-weight:700;color:var(--orange);}
 /* activ-no-addons message */
 .activ-msg{
   background:rgba(19,69,100,.05);border:1px solid rgba(19,69,100,.15);
@@ -384,16 +382,16 @@ nav{
 .aosc-stepper{display:flex;align-items:center;gap:0;background:var(--off);border-radius:40px;border:1.5px solid var(--border);overflow:hidden;}
 .aosc-btn{width:44px;height:44px;border:none;background:transparent;font-size:24px;font-weight:700;cursor:pointer;color:var(--blue);transition:.15s;display:flex;align-items:center;justify-content:center;font-family:'Poppins',sans-serif;line-height:1;}
 .aosc-btn:hover{background:rgba(19,69,100,.1);}
-.aosc-plus{color:var(--orange-text);}
+.aosc-plus{color:var(--orange);}
 .aosc-val{min-width:48px;text-align:center;font-size:26px;font-weight:800;color:var(--blue);}
 .aosc-included{font-size:10px;font-weight:700;color:var(--blue2);text-transform:uppercase;letter-spacing:.06em;background:rgba(23,102,155,.1);border-radius:20px;padding:3px 10px;white-space:nowrap;}
 .aosc-name{font-size:15px;font-weight:700;color:var(--blue);margin-bottom:3px;}
 .aosc-desc{font-size:12px;color:var(--dark);line-height:1.4;margin-bottom:6px;}
-.aosc-price-per{font-size:12px;color:var(--orange-text);font-weight:600;margin-bottom:8px;}
+.aosc-price-per{font-size:12px;color:var(--orange);font-weight:600;margin-bottom:8px;}
 .aosc-summary{font-size:12px;color:var(--text);line-height:1.6;}
 .aosc-inc-tag{background:rgba(23,102,155,.1);color:var(--blue2);font-weight:700;border-radius:4px;padding:2px 7px;font-size:11px;margin-right:4px;}
-.aosc-add-tag{background:rgba(224,115,0,.12);color:var(--orange-text);font-weight:700;border-radius:4px;padding:2px 7px;font-size:11px;margin-right:4px;}
-.aosc-add-cost{font-size:13px;font-weight:700;color:var(--orange-text);margin-top:4px;}
+.aosc-add-tag{background:rgba(224,115,0,.12);color:var(--orange);font-weight:700;border-radius:4px;padding:2px 7px;font-size:11px;margin-right:4px;}
+.aosc-add-cost{font-size:13px;font-weight:700;color:var(--orange);margin-top:4px;}
 /* no-addon message styled */
 .no-addon-msg{
   background:rgba(19,69,100,.04);border:1px solid rgba(19,69,100,.12);
@@ -497,7 +495,7 @@ nav{
 #csm h2{font-size:clamp(26px,3.5vw,44px);font-weight:800;color:white;margin-bottom:10px;}
 #csm p{font-size:15px;color:rgba(255,255,255,.82);margin-bottom:32px;max-width:520px;margin-left:auto;margin-right:auto;}
 .csm-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
-.csm-p{background:white;color:var(--orange-text);border:none;border-radius:40px;padding:14px 36px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:.2s;}
+.csm-p{background:white;color:var(--orange);border:none;border-radius:40px;padding:14px 36px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:.2s;}
 .csm-p:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);}
 .csm-s{background:transparent;color:white;border:2px solid rgba(255,255,255,.5);border-radius:40px;padding:14px 28px;font-size:14px;font-weight:600;cursor:pointer;transition:.2s;font-family:'Poppins',sans-serif;}
 .csm-s:hover{border-color:white;}
@@ -520,7 +518,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 .nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:rgba(19,69,100,.98);backdrop-filter:blur(20px);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
 .nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
 .nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
-.nav-mobile-menu .nav-mobile-current{color:var(--orange-text-dark);}
+.nav-mobile-menu .nav-mobile-current{color:var(--orange);}
 @media(max-width:920px){
   nav{padding:12px 20px;}
   .nav-links a:not(.nav-cta){display:none;}
@@ -580,7 +578,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 </div>
 
 <!-- CART -->
-<div id="cart" onclick="openQuoteModal()">
+<div id="cart" onclick="goToQuote()">
   <div class="c-icon">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
   </div>
@@ -594,7 +592,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 <!-- HERO -->
 <section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Build_Hero%20Image.png'), linear-gradient(rgba(2,26,56,.5), rgba(2,26,56,.5));background-size:contain, cover;background-position:left bottom, center;background-repeat:no-repeat, no-repeat;background-color:#134564;">
   <div class="hero-text">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-text-dark);margin-bottom:10px;">Build with us</div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Build with us</div>
     <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Enhance your platform</h1>
     <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">Design, training, and video — made to feel like your brand, every time.</p>
   </div>
@@ -679,7 +677,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
 <!-- VIDEO -->
 <section id="video" class="section" style="background:#021a38;">
 <div class="sec-wrap">
-  <div class="sec-eye" style="color:var(--orange-text-dark)">Video Production</div>
+  <div class="sec-eye" style="color:var(--orange)">Video Production</div>
   <h2 class="sec-title" style="color:white">Lights, camera,<br><span style="color:var(--orange)">franchise.</span></h2>
   <p class="sec-sub" style="color:rgba(255,255,255,.55)">Got footage? Need footage? Either way — from a quick reformat to a full motion graphic.</p>
 
@@ -907,7 +905,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
     </div>
     <div class="wiz-nav" style="margin-top:20px;">
       <button class="wbtn-back" onclick="wBack(4)">← Adjust selections</button>
-      <button class="wbtn-back" onclick="resetWiz()" id="build-another-btn" style="border-color:var(--orange);color:var(--orange-text);">+ Build another course</button>
+      <button class="wbtn-back" onclick="resetWiz()" id="build-another-btn" style="border-color:var(--orange);color:var(--orange);">+ Build another course</button>
     </div>
   </div>
 
@@ -963,7 +961,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
     <h2>Ready to make it real?</h2>
     <p>Your estimate is just the starting point. Send us your selections and we'll put together a personalized quote — no obligation, no pressure.</p>
     <div class="csm-btns">
-      <button class="csm-p" onclick="openQuoteModal()">See my full estimate</button>
+      <button class="csm-p" onclick="window.location.href='contact-us.html'">See my full estimate</button>
     </div>
   </div>
   <div class="cta-copyright">© FranConnect. 2026</div>
@@ -1009,7 +1007,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
           Pricing depends on duration and type. The client must provide the initial script or concept with references. Duration directly affects price and production timeline.
         </div>
         <div style="padding:12px 14px;background:rgba(224,115,0,.07);border:1px solid rgba(224,115,0,.2);border-radius:var(--rad-sm);">
-          <strong style="color:var(--orange-text);font-size:11px;text-transform:uppercase;letter-spacing:.06em;">Disclaimer</strong><br>
+          <strong style="color:var(--orange);font-size:11px;text-transform:uppercase;letter-spacing:.06em;">Disclaimer</strong><br>
           <span style="font-size:12px;color:var(--dark);">We do not provide on-site video recording. Productions are created using customer-provided footage, screen recordings, licensed stock media, templates, and custom motion graphics.</span>
         </div>
       </div>
@@ -1021,7 +1019,7 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
         </div>
       </div>
       <div style="background:rgba(232,119,34,.07);border:1px solid rgba(232,119,34,.2);border-radius:var(--rad-sm);padding:14px 16px;">
-        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange-text);margin-bottom:6px;">General</div>
+        <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--orange);margin-bottom:6px;">General</div>
         <div style="color:var(--dark);">Final quotes are confirmed by your FranConnect account representative and may include adjustments based on final scope.</div>
       </div>
     </div>
@@ -1038,58 +1036,6 @@ footer .fl{font-size:12px;font-weight:600;color:rgba(255,255,255,.35);}
   <div class="mbox">
     <button class="mclose" onclick="closeModBtn()">✕</button>
     <video class="mvid" id="mvid" controls></video>
-  </div>
-</div>
-
-<!-- MODAL: QUOTE ESTIMATE -->
-<div id="quote-overlay" style="position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;" onclick="closeQuoteIfBg(event)">
-  <div style="background:white;border-radius:20px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;box-shadow:0 24px 80px rgba(0,0,0,.3);position:relative;">
-    <button onclick="document.getElementById('quote-overlay').style.display='none'" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,.2);border:none;color:white;font-size:16px;cursor:pointer;z-index:1;">✕</button>
-    <div style="background:linear-gradient(135deg,var(--blue),var(--blue2));padding:28px 32px;border-radius:20px 20px 0 0;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px;">Your Estimate Summary</div>
-      <div style="font-size:36px;font-weight:800;color:white;" id="qm-total">$0 USD</div>
-      <div style="font-size:12px;color:rgba(255,255,255,.5);margin-top:4px;">All prices in USD · Keep exploring or send us your selections</div>
-      <div style="margin-top:8px;font-size:11px;color:rgba(255,255,255,.5);">By sending a quote request you agree to our <span onclick="openTCModal()" style="color:rgba(255,255,255,.85);text-decoration:underline;cursor:pointer;font-weight:600;">Terms &amp; Conditions</span></div>
-    </div>
-    <div style="padding:24px 32px;" id="qm-body"></div>
-    <div style="padding:0 32px 28px;display:flex;gap:10px;">
-      <button onclick="document.getElementById('quote-overlay').style.display='none'" style="flex:1;padding:14px;border-radius:40px;background:transparent;border:2px solid var(--border);color:var(--dark);font-size:14px;font-weight:600;cursor:pointer;font-family:'Poppins',sans-serif;">Keep exploring</button>
-      <button onclick="document.getElementById('quote-overlay').style.display='none';openGetQuoteModal();" style="flex:1;padding:14px;border-radius:40px;background:var(--orange);border:none;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;">Get a quote →</button>
-    </div>
-  </div>
-</div>
-
-<!-- MODAL: GET A QUOTE (sends email) -->
-<div id="getquote-overlay" style="position:fixed;inset:0;z-index:600;background:rgba(0,0,0,.7);backdrop-filter:blur(10px);display:none;align-items:center;justify-content:center;padding:20px;">
-  <div style="background:white;border-radius:20px;max-width:480px;width:100%;box-shadow:0 24px 80px rgba(0,0,0,.3);position:relative;overflow:hidden;" onclick="event.stopPropagation()">
-    <button onclick="closeGetQuoteModal()" style="position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:rgba(0,0,0,.08);border:none;color:var(--dark);font-size:16px;cursor:pointer;z-index:1;">✕</button>
-    <div style="background:linear-gradient(135deg,var(--blue),var(--blue2));padding:28px 32px;">
-      <div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px;">Request a quote</div>
-      <div style="font-size:22px;font-weight:800;color:white;line-height:1.2;">Let's build something great</div>
-    </div>
-    <div style="padding:24px 32px;" id="gq-form-wrap">
-      <div style="margin-bottom:14px;">
-        <label style="font-size:12px;font-weight:600;color:var(--blue);display:block;margin-bottom:5px;">Your name</label>
-        <input id="gq-name" type="text" placeholder="First Last" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--rad-sm);font-size:14px;font-family:'Poppins',sans-serif;outline:none;">
-      </div>
-      <div style="margin-bottom:14px;">
-        <label style="font-size:12px;font-weight:600;color:var(--blue);display:block;margin-bottom:5px;">Work email</label>
-        <input id="gq-email" type="email" placeholder="you@brand.com" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--rad-sm);font-size:14px;font-family:'Poppins',sans-serif;outline:none;">
-      </div>
-      <div style="margin-bottom:14px;">
-        <label style="font-size:12px;font-weight:600;color:var(--blue);display:block;margin-bottom:5px;">Company / Brand</label>
-        <input id="gq-company" type="text" placeholder="Your franchise name" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--rad-sm);font-size:14px;font-family:'Poppins',sans-serif;outline:none;">
-      </div>
-      <div style="margin-bottom:20px;">
-        <label style="font-size:12px;font-weight:600;color:var(--blue);display:block;margin-bottom:5px;">Anything to add? (optional)</label>
-        <textarea id="gq-msg" placeholder="Timeline, specific needs, questions..." rows="3" style="width:100%;padding:10px 14px;border:1.5px solid var(--border);border-radius:var(--rad-sm);font-size:14px;font-family:'Poppins',sans-serif;outline:none;resize:none;"></textarea>
-      </div>
-      <div style="background:var(--off);border-radius:var(--rad-sm);padding:12px 14px;margin-bottom:16px;font-size:12px;color:var(--dark);">
-        <strong style="color:var(--blue);">Your estimate:</strong> <span id="gq-est-inline">$0 USD</span>
-      </div>
-      <div id="gq-error" style="display:none;background:#fdf0ee;border:1px solid #f0c0b8;border-radius:var(--rad-sm);padding:10px 14px;margin-bottom:12px;font-size:12px;color:#b03020;"></div>
-      <button onclick="submitGetQuote()" id="gq-submit-btn" style="width:100%;padding:14px;border-radius:40px;background:var(--orange);border:none;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:.2s;">Send quote request →</button>
-    </div>
   </div>
 </div>
 
@@ -1165,6 +1111,14 @@ function updCart(){
   } else {
     cart.style.background='var(--blue)';
     if(cta)cta.textContent='Start exploring ↓';
+  }
+}
+function goToQuote(){
+  if(total()>0){
+    window.location.href='contact-us.html';
+  } else {
+    var pf=document.getElementById('platform');
+    if(pf)pf.scrollIntoView({behavior:'smooth'});
   }
 }
 
@@ -1600,201 +1554,8 @@ function closeModBtn(){
 }
 function gotoCSM(){document.getElementById('csm').scrollIntoView({behavior:'smooth'});}
 
-function removeItem(key){
-  if(key==='skin')    {E.platform.skin=false;document.getElementById('pc-skin').classList.remove('sel');document.getElementById('pb-skin').textContent='Add to estimate';}
-  if(key==='dash')    {E.platform.dash=false;document.getElementById('pc-dash').classList.remove('sel');document.getElementById('pb-dash').textContent='Add to estimate';}
-  if(key==='hub')     {E.platform.hub=false;document.getElementById('pc-hub').classList.remove('sel');document.getElementById('pb-hub').textContent='Add to estimate';}
-  if(key==='tmpl')    {E.platform.tmpl=false;document.getElementById('pc-tmpl').classList.remove('sel');document.getElementById('pb-tmpl').textContent='Add to estimate';}
-  if(key==='edit')    {E.editAdded=false;E.editPrice=300;E.editQty=1;var eb=document.getElementById('ebtn');if(eb){eb.style.background='';eb.innerHTML='Add to estimate — <span id="etotal">$300</span>';}}
-  if(key==='prod')    {E.prodAdded=false;E.prodPrice=0;var pb=document.getElementById('pbtn');if(pb){pb.style.background='';pb.innerHTML='Add to estimate — <span id="ptotal">$0</span>';}}
-  if(key.indexOf('course_')===0){
-    E.trainCourses=E.trainCourses.filter(function(c){return c.id!==key;});
-  }
-  updCart();
-  openQuoteModal();
-}
-
-
-function openQuoteModal(){
-  var t=total();
-  document.getElementById('qm-total').textContent='$'+t.toLocaleString()+' USD';
-  var p=E.platform;
-  var sections=[];
-  var platItems=[];
-  if(p.skin)platItems.push({n:'Platform Skinning',p:PLATFORM_PRICES.skin,key:'skin'});
-  if(p.dash)platItems.push({n:'Dashboard Design',p:PLATFORM_PRICES.dash,key:'dash'});
-  if(p.hub)platItems.push({n:'Hub Design Package',p:PLATFORM_PRICES.hub,key:'hub'});
-  if(p.tmpl)platItems.push({n:'Branded Templates (ACTIV + 1 Training Style)',p:PLATFORM_PRICES.tmpl,key:'tmpl'});
-  if(platItems.length)sections.push({title:'Platform Design',items:platItems});
-  var vidItems=[];
-  if(E.editAdded)vidItems.push({n:'Video Editing ('+E.editQty+' video'+(E.editQty>1?'s':'')+')',p:E.editPrice*E.editQty,key:'edit'});
-  if(E.prodAdded)vidItems.push({n:'Video Production',p:E.prodPrice,key:'prod'});
-  if(vidItems.length)sections.push({title:'Video Production',items:vidItems});
-  // Multiple training courses
-  if(E.trainCourses.length>0){
-    var trainItems=E.trainCourses.map(function(c){
-      return {n:c.label+' — $'+c.price.toLocaleString(),p:c.price,key:c.id};
-    });
-    sections.push({title:'Training Modules ('+E.trainCourses.length+' course'+(E.trainCourses.length>1?'s':'')+')',items:trainItems});
-  }
-  var html='';
-  if(sections.length===0){
-    html='<div style="text-align:center;padding:20px;color:var(--dark);font-size:14px;">No services selected yet.<br>Go back and add what you need!</div>';
-  } else {
-    sections.forEach(function(sec){
-      html+='<div style="margin-bottom:20px;">';
-      html+='<div style="font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue2);margin-bottom:10px;">'+sec.title+'</div>';
-      sec.items.forEach(function(item){
-        html+='<div style="display:flex;align-items:center;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:13px;gap:8px;">'
-          +'<span style="color:var(--text);flex:1;">'+item.n+'</span>'
-          +'<span style="font-weight:700;color:var(--blue);white-space:nowrap;">$'+item.p.toLocaleString()+'</span>'
-          +'<button data-remove="'+item.key+'" title="Remove" style="width:24px;height:24px;border-radius:50%;background:rgba(172,52,70,.1);border:1px solid rgba(172,52,70,.25);color:#AC3446;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;line-height:1;">×</button>'
-          +'</div>';
-      });
-      html+='</div>';
-    });
-    html+='<div style="display:flex;justify-content:space-between;padding:14px 0;font-size:16px;font-weight:800;border-top:2px solid var(--blue);margin-top:4px;">'
-      +'<span style="color:var(--blue);">Total Estimate</span>'
-      +'<span style="color:var(--orange-text);">$'+t.toLocaleString()+' USD</span>'
-      +'</div>';
-    html+='<div style="font-size:11px;color:var(--dark);text-align:center;margin-top:8px;">Final pricing confirmed by your account team · Discounts may apply</div>';
-  }
-  document.getElementById('qm-body').innerHTML=html;
-  // Event delegation for remove buttons
-  document.getElementById('qm-body').onclick=function(e){
-    var btn=e.target.closest('[data-remove]');
-    if(btn){removeItem(btn.getAttribute('data-remove'));}
-  };
-  document.getElementById('quote-overlay').style.display='flex';
-}
-
-function closeQuoteIfBg(e){if(e.target.id==='quote-overlay')document.getElementById('quote-overlay').style.display='none';}
-
-function openGetQuoteModal(){
-  var totalAmt=document.getElementById('cart-amt').textContent;
-  document.getElementById('gq-est-inline').textContent=totalAmt;
-  var p=E.platform;
-  var sections=[];
-
-  // Platform
-  var platLines=[];
-  if(p.skin)platLines.push('Platform Skinning — $'+PLATFORM_PRICES.skin.toLocaleString());
-  if(p.dash)platLines.push('Dashboard Design — $'+PLATFORM_PRICES.dash.toLocaleString());
-  if(p.hub)platLines.push('Hub Design Package — $'+PLATFORM_PRICES.hub.toLocaleString());
-  if(p.tmpl)platLines.push('Branded Templates — $'+PLATFORM_PRICES.tmpl.toLocaleString());
-  if(platLines.length)sections.push({title:'Platform Design',lines:platLines});
-
-  // Video
-  var vidLines=[];
-  if(E.editAdded){
-    var editLabel={0:'Format only',1:'Under 5 min',2:'5–15 min',3:'15–30 min',4:'30–45 min'};
-    var sliderVal=document.getElementById('eslider')?parseInt(document.getElementById('eslider').value)||0:0;
-    vidLines.push('Video Editing — '+E.editQty+' video'+(E.editQty>1?'s':'')+' ('+( editLabel[sliderVal]||'')+'): $'+(E.editPrice*E.editQty).toLocaleString());
-  }
-  if(E.prodAdded){
-    var ptLabel={sc:'Screencast',promo:'Promotional',mg:'Motion Graphic'};
-    var ptVal=document.querySelector('.ptb.on');
-    var ptName=ptVal?ptVal.textContent:'Production';
-    var hasScript=document.getElementById('pscript')&&document.getElementById('pscript').checked;
-    var hasVo=document.getElementById('pvo')&&document.getElementById('pvo').checked;
-    var prodLine='Video Production — '+ptName+': $'+E.prodPrice.toLocaleString();
-    var prodExtras=[];
-    if(hasScript)prodExtras.push('Script Writing');
-    if(hasVo)prodExtras.push('AI Voice-over');
-    if(prodExtras.length)prodLine+=' (includes '+prodExtras.join(' + ')+')';
-    vidLines.push(prodLine);
-  }
-  if(vidLines.length)sections.push({title:'Video Production',lines:vidLines});
-
-  // Training courses - full detail
-  if(E.trainCourses.length>0){
-    var trainLines=[];
-    E.trainCourses.forEach(function(c,i){
-      trainLines.push('Course '+(i+1)+': '+c.label+' — $'+c.price.toLocaleString());
-      if(c.lines&&c.lines.length>1){
-        c.lines.slice(1).forEach(function(l){
-          if(l.p>0)trainLines.push('  ↳ '+l.n+' — $'+l.p.toLocaleString());
-        });
-      }
-    });
-    sections.push({title:'Training Modules ('+E.trainCourses.length+' course'+(E.trainCourses.length>1?'s':'')+')',lines:trainLines});
-  }
-
-  // Build plain text for email (bullet points)
-  var emailBody='ESTIMATE: '+totalAmt+'\n\n';
-  if(sections.length===0){
-    emailBody+='No services selected.';
-  } else {
-    sections.forEach(function(s){
-      emailBody+=s.title.toUpperCase()+'\n';
-      s.lines.forEach(function(l){emailBody+='• '+l+'\n';});
-      emailBody+='\n';
-    });
-    emailBody+='TOTAL: '+totalAmt;
-  }
-
-  document._gqEstimate=totalAmt;
-  document._gqServices=emailBody;
-  document.getElementById('getquote-overlay').style.display='flex';
-}
-function closeGetQuoteModal(){
-  document.getElementById('getquote-overlay').style.display='none';
-}
-function closeGetQuoteIfBg(e){if(e.target===document.getElementById('getquote-overlay'))closeGetQuoteModal();}
-
-function submitGetQuote(){
-  var name=document.getElementById('gq-name').value.trim();
-  var email=document.getElementById('gq-email').value.trim();
-  var company=document.getElementById('gq-company').value.trim();
-  var msg=document.getElementById('gq-msg').value.trim();
-  var errEl=document.getElementById('gq-error');
-  if(!name||!email){errEl.textContent='Please fill in your name and email.';errEl.style.display='block';return;}
-  errEl.style.display='none';
-  var btn=document.getElementById('gq-submit-btn');
-  btn.textContent='Sending...';btn.style.background='var(--blue2)';btn.disabled=true;
-
-  var fd=new FormData();
-  fd.append('access_key','7e9c4844-2939-442f-acbe-d6301557c6d2');
-  fd.append('name',name);
-  fd.append('email',email);
-  fd.append('company',company||'—');
-  fd.append('estimate',document._gqEstimate||'$0 USD');
-  fd.append('services',document._gqServices||'No services selected');
-  fd.append('message',msg||'—');
-  fd.append('subject','[Build With Us] Quote from '+(company||name));
-  fd.append('replyto',email);
-  fd.append('from_name','Build With Us — FranConnect Services');
-
-  fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
-  .then(function(r){return r.json();})
-  .then(function(data){
-    if(data.success){
-      document.getElementById('gq-form-wrap').innerHTML=
-        '<div style="text-align:center;padding:32px 20px;">'
-        +'<svg width="56" height="56" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="1.8" style="margin-bottom:16px;"><path d="M22 11.08V12a10 10 0 11-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>'
-        +'<div style="font-size:22px;font-weight:800;color:var(--blue);margin-bottom:10px;">Quote sent!</div>'
-        +'<div style="font-size:14px;color:var(--dark);line-height:1.6;margin-bottom:24px;">We\'ll be in touch soon — thank you for your interest in FranConnect Services! We\'re excited to bring your vision to life. 🎉</div>'
-        +'<button onclick="window.location.reload()" style="padding:12px 32px;border-radius:40px;background:var(--blue);border:none;color:white;font-size:14px;font-weight:700;cursor:pointer;font-family:\'Poppins\',sans-serif;">Close</button>'
-        +'</div>';
-    } else {
-      errEl.textContent=data.message||'Something went wrong. Please try again.';
-      errEl.style.display='block';
-      btn.textContent='Send quote request →';btn.style.background='';btn.disabled=false;
-    }
-  })
-  .catch(function(){
-    errEl.textContent='Connection error. Please try again.';
-    errEl.style.display='block';
-    btn.textContent='Send quote request →';btn.style.background='';btn.disabled=false;
-  });
-}
-
 function openTCModal(){document.getElementById('tc-overlay').style.display='flex';}
 function closeTCIfBg(e){if(e.target.id==='tc-overlay')document.getElementById('tc-overlay').style.display='none';}
-function openCSMModal(){openGetQuoteModal();}
-function closeCSMIfBg(e){closeGetQuoteIfBg(e);}
-function submitCSM(){submitGetQuote();}
-
 /* Init */
 document.getElementById('eslider').style.setProperty('--pct','0%');
 

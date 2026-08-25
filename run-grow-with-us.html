@@ -12,8 +12,6 @@
 :root {
   --blue:    #134564;
   --orange:  #E07300;
-  --orange-text: #A64F00;
-  --orange-text-dark: #FFA94D;
   --blue2:   #17669B;
   --red2:    #AC3446;
   --dark:    #717171;
@@ -239,7 +237,7 @@ nav{
   .split-media img{height:240px;}
 }
 
-.sec-eye{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-text);margin-bottom:14px;}
+.sec-eye{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;}
 .sec-title{font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--blue);line-height:1.2;margin-bottom:14px;}
 .sec-sub{font-size:15px;color:var(--dark);max-width:520px;margin:0 auto 48px;line-height:1.6;}
 .qr-cta{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:white;border:none;border-radius:40px;padding:13px 28px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s;}
@@ -297,7 +295,7 @@ nav{
 }
 #cta h2{font-size:clamp(24px,3vw,32px);font-weight:800;color:white;margin-bottom:14px;}
 #cta p{font-size:15px;color:rgba(255,255,255,.85);max-width:480px;margin:0 auto 28px;}
-.cta-btn{background:white;color:var(--orange-text);border:none;border-radius:40px;padding:14px 36px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:.2s;}
+.cta-btn{background:white;color:var(--orange);border:none;border-radius:40px;padding:14px 36px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Poppins',sans-serif;transition:.2s;}
 .cta-btn:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.18);}
 
 .nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:6px;margin-right:2px;}
@@ -305,7 +303,7 @@ nav{
 .nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:rgba(19,69,100,.98);backdrop-filter:blur(20px);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
 .nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
 .nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
-.nav-mobile-menu .nav-mobile-current{color:var(--orange-text-dark);}
+.nav-mobile-menu .nav-mobile-current{color:var(--orange);}
 @media (max-width:760px){
   .nav-title,.nav-current{display:none;}
   .nav-links a:not(.nav-cta){display:none;}
@@ -358,7 +356,7 @@ nav{
 <!-- HERO -->
 <section id="hero" style="background-image:url('https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/IMG_Index_Grow_Hero%20Image.png'), linear-gradient(rgba(2,26,56,.5), rgba(2,26,56,.5));background-size:contain, cover;background-position:left bottom, center;background-repeat:no-repeat, no-repeat;background-color:#134564;">
   <div class="hero-text">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange-text-dark);margin-bottom:10px;">Grow with us</div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--orange);margin-bottom:10px;">Grow with us</div>
     <h1 style="font-size:clamp(28px,3.5vw,46px);font-weight:800;color:white;line-height:1.1;letter-spacing:-.025em;margin-bottom:12px;">Extra hands, real strategy,<br>smoother change</h1>
     <p style="font-size:15px;font-weight:400;color:rgba(255,255,255,.78);max-width:520px;line-height:1.65;margin:0;">From day-to-day platform work to full-scale rollouts, our team plugs in wherever you need support, without you having to hire for it.</p>
   </div>
@@ -377,7 +375,7 @@ nav{
       </div>
     </div>
     <div class="split-text">
-      <div class="sec-eye" style="color:var(--orange-text);">Grow with us</div>
+      <div class="sec-eye" style="color:var(--orange);">Grow with us</div>
       <h2 class="sec-title">Platform Concierge</h2>
       <p class="sec-sub" style="margin-bottom:8px;">More flexibility. More support. More time to focus on what matters. Platform Concierge gives you direct access to FranConnect expertise whenever you need an extra hand, extra capacity, or a little more momentum.</p>
       <p class="sec-sub" style="margin-bottom:0;">From user management and page updates to reporting, workflow changes, and day-to-day platform needs, your dedicated support can step in wherever it's needed. With a clear understanding of your setup and priorities, work gets done efficiently and consistently, without the ramp-up time or long-term commitment of another hire.</p>
@@ -414,7 +412,7 @@ nav{
   </div>
 
   <div style="text-align:center;">
-    <a href="contact-us.html" class="qr-cta">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="contact-us.html?service=concierge" class="qr-cta">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </div>
 </section>
@@ -432,7 +430,7 @@ nav{
       </div>
     </div>
     <div class="split-text">
-      <div class="sec-eye" style="color:var(--orange-text-dark);">Grow with us</div>
+      <div class="sec-eye" style="color:var(--orange);">Grow with us</div>
       <h2 class="sec-title" style="color:white;">Growth Partner</h2>
       <p class="sec-sub" style="color:rgba(255,255,255,.82);margin-bottom:8px;">Maximize the value of your FranConnect investment with ongoing expertise and strategic guidance. Growth Partner gives your team access to FranConnect specialists who optimize processes, uncover actionable insights, and identify new opportunities to drive greater franchise performance.</p>
       <p class="sec-sub" style="color:rgba(255,255,255,.78);margin-bottom:0;">Go beyond implementation. We work with you to align your platform with evolving business priorities, turning that investment into smarter decisions and measurable business impact, with flexible retainer or outcome-based engagement options.</p>
@@ -463,7 +461,7 @@ nav{
   </div>
 
   <div style="text-align:center;margin-top:40px;">
-    <a href="contact-us.html" class="qr-cta light">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="contact-us.html?service=growth" class="qr-cta light">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </div>
 </section>
@@ -473,7 +471,7 @@ nav{
 <section id="change" class="section" style="background:#fff;position:relative;z-index:5;">
 <div class="sec-wrap">
   <div class="gp-spotlight">
-    <div class="sec-eye" style="color:var(--orange-text);">Grow with us</div>
+    <div class="sec-eye" style="color:var(--orange);">Grow with us</div>
     <h2 class="sec-title">Change Management</h2>
     <p class="sec-sub" style="margin-bottom:8px;">The system works. Getting people to actually use it is the hard part.</p>
     <p class="sec-sub">Most rollouts don't fall short because of the technology. They fall short because franchisees weren't brought along, communication was inconsistent, or the launch had no follow-through after week one. Change Management builds the human side of your rollout, and it's built on a proven change approach, not guesswork, so whatever you just invested in actually sticks instead of quietly fizzling out.</p>
@@ -530,7 +528,7 @@ nav{
   </div>
 
   <div style="text-align:center;">
-    <a href="contact-us.html" class="qr-cta">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="contact-us.html?service=change" class="qr-cta">Get a Custom Quote <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
   </div>
 </div>
 </section>
