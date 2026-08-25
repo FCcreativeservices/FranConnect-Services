@@ -294,6 +294,9 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="cu-section alt">
     <div class="cu-wrap" style="max-width:640px;">
       <p class="cu-tc-row" style="cursor:default;">By submitting this form, you agree to our <a href="#" onclick="openTCModal();return false;">Terms &amp; Conditions</a>.</p>
+      <div style="margin:14px 0;display:flex;justify-content:center;position:relative;z-index:50;">
+        <div class="h-captcha" data-captcha="true" id="cu-hcaptcha"></div>
+      </div>
       <div class="mc-err" id="cu-error"></div>
       <button type="button" class="cu-submit" id="cu-submit-btn" onclick="submitCU()">Send request →</button>
     </div>
@@ -578,6 +581,9 @@ function submitCU(){
     var advisorValid=ADVISOR_LIST.some(function(n){return n.toLowerCase()===advisorVal.toLowerCase();});
     if(!advisorValid){errEl.textContent='Please select a valid FranConnect contact from the suggestions, or click "I don\'t have one."';errEl.style.display='block';return;}
   }
+  var hCaptchaEl=document.querySelector('#cu-hcaptcha textarea[name="h-captcha-response"]');
+  var hCaptchaVal=hCaptchaEl?hCaptchaEl.value:'';
+  if(!hCaptchaVal){errEl.textContent='Please complete the captcha check before sending.';errEl.style.display='block';return;}
   errEl.style.display='none';
 
   var rgServices=buildRgSummary();
@@ -628,6 +634,7 @@ function submitCU(){
   fd.append('replyto',email);
   fd.append('from_name','Contact Us — FranConnect Services');
   fd.append('fc_contact', advisorNoneFlag ? 'No FranConnect contact selected' : advisorVal);
+  fd.append('h-captcha-response', hCaptchaVal);
 
   fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
   .then(function(r){return r.json();})
@@ -640,12 +647,14 @@ function submitCU(){
       errEl.textContent=data.message||'Something went wrong. Please try again.';
       errEl.style.display='block';
       btn.textContent='Send request →';btn.disabled=false;
+      if(window.hcaptcha)window.hcaptcha.reset();
     }
   })
   .catch(function(){
     errEl.textContent='Connection error. Please try again.';
     errEl.style.display='block';
     btn.textContent='Send request →';btn.disabled=false;
+    if(window.hcaptcha)window.hcaptcha.reset();
   });
 }
 /* ── INIT ── */
@@ -655,5 +664,6 @@ renderBuildSection();
 loadFcContacts();
 </script>
 
+<script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
