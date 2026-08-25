@@ -12,8 +12,6 @@
 :root {
   --blue:    #134564;
   --orange:  #E07300;
-  --orange-text: #A64F00;
-  --orange-text-dark: #FFA94D;
   --blue2:   #17669B;
   --red2:    #AC3446;
   --dark:    #717171;
@@ -145,7 +143,7 @@ nav{
   padding:4px 11px;border-radius:40px;margin-bottom:16px;
 }
 .svc-tag.build{background:rgba(23,102,155,.12);color:var(--blue2);}
-.svc-tag.grow{background:rgba(224,115,0,.12);color:var(--orange-text);}
+.svc-tag.grow{background:rgba(224,115,0,.12);color:var(--orange);}
 .svc-card.featured .svc-tag{background:rgba(255,255,255,.15);color:white;}
 .svc-icon{width:34px;height:34px;border-radius:9px;background:rgba(19,69,100,.08);display:flex;align-items:center;justify-content:center;margin-bottom:14px;}
 .svc-icon svg{width:17px;height:17px;stroke:var(--blue);fill:none;stroke-width:1.8;}
@@ -282,7 +280,7 @@ nav{
   #quiz{position:relative!important;min-height:auto;}
   .quiz-spacer{display:none;}
 }
-.sec-eye{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange-text);margin-bottom:14px;}
+.sec-eye{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--orange);margin-bottom:14px;}
 .sec-title{font-size:clamp(26px,3.5vw,38px);font-weight:800;color:var(--blue);line-height:1.2;margin-bottom:14px;}
 .sec-sub{font-size:15px;color:var(--dark);max-width:520px;margin:0 auto 48px;line-height:1.6;}
 .quiz-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;max-width:1000px;margin:0 auto;}
@@ -303,7 +301,7 @@ nav{
 .qc.none .qc-goto{color:var(--dark);}
 
 #quiz-result{display:none;max-width:560px;margin:0 auto;background:var(--blue);border-radius:var(--radius);box-shadow:var(--shadow-lg);padding:40px 36px;text-align:left;color:#fff;transition:background .3s ease;}
-.qr-eyebrow{font-size:12px;font-weight:700;color:var(--orange-text-dark);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
+.qr-eyebrow{font-size:12px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;}
 .qr-title{font-size:26px;font-weight:800;color:var(--blue);margin-bottom:12px;}
 .qr-desc{font-size:15px;color:var(--dark);line-height:1.65;margin-bottom:28px;}
 .qr-cta{display:inline-flex;align-items:center;gap:8px;background:var(--blue);color:white;border:none;border-radius:40px;padding:13px 28px;font-size:14px;font-weight:700;text-decoration:none;transition:.2s;}
@@ -315,7 +313,7 @@ nav{
 .qr-foot button,.qr-foot a{background:none;border:none;color:var(--blue2);font-weight:600;font-size:13px;cursor:pointer;font-family:'Poppins',sans-serif;text-decoration:underline;padding:0;}
 
 /* result card: solid blue-tone background per outcome group */
-#quiz-result .qr-eyebrow{color:var(--orange-text-dark);}
+#quiz-result .qr-eyebrow{color:var(--orange);}
 #quiz-result .qr-title{color:#fff;}
 #quiz-result .qr-desc{color:rgba(255,255,255,.85);}
 #quiz-result .qr-cta{background:#fff;color:var(--blue);}
@@ -455,7 +453,7 @@ nav{
 .nav-mobile-menu{position:fixed;top:0;left:0;right:0;background:rgba(19,69,100,.98);backdrop-filter:blur(20px);z-index:99;max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 20px;}
 .nav-mobile-menu.open{max-height:280px;padding-top:64px;padding-bottom:20px;}
 .nav-mobile-menu a,.nav-mobile-menu .nav-mobile-current{display:block;color:rgba(255,255,255,.85);text-decoration:none;font-size:15px;font-weight:600;padding:14px 4px;border-bottom:1px solid rgba(255,255,255,.08);}
-.nav-mobile-menu .nav-mobile-current{color:var(--orange-text-dark);}
+.nav-mobile-menu .nav-mobile-current{color:var(--orange);}
 @media (max-width:640px){
   nav{padding:12px 20px;}
   .nav-links a:not(.nav-cta){display:none;}
@@ -550,7 +548,7 @@ nav{
 <div class="sec-wrap">
   <div class="split-wrap" style="justify-content:flex-start;">
     <div class="split-text reveal-left" style="max-width:560px;">
-      <div class="sec-eye" style="color:var(--orange-text-dark);">Connect with us</div>
+      <div class="sec-eye" style="color:var(--orange);">Connect with us</div>
       <h2 class="sec-title" style="color:white;">Stop copy-pasting between systems</h2>
       <p class="sec-sub" style="color:rgba(255,255,255,.82);margin-bottom:20px;">Connect FranConnect to the systems you already run, with no more manual exports and no more "which version is correct."</p>
       <ul class="check-list" style="color:rgba(255,255,255,.85);">
@@ -573,7 +571,7 @@ nav{
     </video>
   </div>
   <div class="enhance-card reveal-up">
-    <div class="sec-eye" style="color:var(--orange-text);">Build with us</div>
+    <div class="sec-eye" style="color:var(--orange);">Build with us</div>
     <h2 class="sec-title" style="color:var(--blue);">Enhance your platform</h2>
     <p class="sec-sub">Design that turns heads. Training that sticks. Video that sells. All unmistakably you.</p>
     <div class="pill-row">
