@@ -113,7 +113,7 @@ nav{
 /* ══════════════════════════════════════════════════════════
    PILLARS — Connect / Automate / Trust
    ══════════════════════════════════════════════════════════ */
-#cw-pillars{background:var(--off);padding:72px 48px 40px;position:relative;z-index:5;border-radius:28px 28px 0 0;box-shadow:0 -30px 60px rgba(0,0,0,.12);}
+#cw-pillars{background:#fff;padding:72px 48px 40px;position:relative;z-index:5;border-radius:28px 28px 0 0;}
 .cw-pillar-row{display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;max-width:1080px;margin:0 auto;position:relative;}
 .cw-pillar{padding:0 32px;text-align:center;position:relative;}
 .cw-pillar:not(:last-child)::after{content:'';position:absolute;top:30px;right:0;width:1px;height:64px;background:var(--border);}
@@ -131,7 +131,7 @@ nav{
 /* ══════════════════════════════════════════════════════════
    METHODS — "Built around your business" (4 connection types)
    ══════════════════════════════════════════════════════════ */
-#cw-methods{background:#fff;position:relative;z-index:5;}
+#cw-methods{background:var(--off);position:relative;z-index:5;}
 .cw-methods-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1120px;margin:48px auto 0;}
 .cw-method{background:#fff;border:1px solid var(--border);border-radius:var(--radius);padding:26px 22px;transition:.25s;}
 .cw-method:hover{transform:translateY(-4px);box-shadow:var(--shadow-lg);border-color:transparent;}
@@ -173,8 +173,12 @@ nav{
 .cw-proc-title{font-size:14px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--blue);margin-bottom:8px;}
 .cw-proc-desc{font-size:13px;color:var(--dark);line-height:1.55;max-width:200px;margin:0 auto;}
 .cw-proc-final{
-  margin:56px auto 0;max-width:760px;text-align:center;background:var(--off);
+  margin:56px auto 0;max-width:760px;text-align:center;
+  background:linear-gradient(135deg,rgba(19,69,100,.07),rgba(19,69,100,.02));
+  border:1px solid rgba(19,69,100,.10);
   border-radius:var(--radius);padding:36px 32px;
+  backdrop-filter:blur(6px);
+  box-shadow:0 8px 30px rgba(19,69,100,.06);
 }
 .cw-proc-final-headline{font-size:clamp(18px,2.2vw,24px);font-weight:800;letter-spacing:.03em;color:var(--blue);margin-bottom:10px;}
 .cw-proc-final-sub{font-size:14px;color:var(--dark);line-height:1.6;max-width:520px;margin:0 auto;}
@@ -282,22 +286,10 @@ nav{
 
 <!-- PILLARS -->
 <section id="cw-pillars">
-  <div class="cw-pillar-row reveal-stagger">
-    <div class="cw-pillar reveal-item">
-      <div class="cw-pillar-icon"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></div>
-      <div class="cw-pillar-word">Connect</div>
-      <div class="cw-pillar-line">Bring FranConnect and your other systems into one connected flow.</div>
-    </div>
-    <div class="cw-pillar reveal-item">
-      <div class="cw-pillar-icon"><svg viewBox="0 0 24 24"><path d="M17 1l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 23l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></div>
-      <div class="cw-pillar-word">Automate</div>
-      <div class="cw-pillar-line">Let data move on its own, without repetitive manual work.</div>
-    </div>
-    <div class="cw-pillar reveal-item">
-      <div class="cw-pillar-icon"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-11V5l-8-3-8 3v6c0 7 8 11 8 11z"/><path d="M9 12l2 2 4-4"/></svg></div>
-      <div class="cw-pillar-word">Trust</div>
-      <div class="cw-pillar-line">Built around the way your systems and data already work.</div>
-    </div>
+  <div style="max-width:1344px;margin:0 auto;">
+    <video autoplay muted loop playsinline style="width:100%;height:auto;display:block;">
+      <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Integrations.mp4" type="video/mp4">
+    </video>
   </div>
 </section>
 
@@ -331,12 +323,6 @@ nav{
         <div class="cw-method-title">Custom</div>
         <div class="cw-method-desc">Built around your specific requirements.</div>
       </div>
-    </div>
-
-    <div style="max-width:1120px;margin:48px auto 0;">
-      <video autoplay muted loop playsinline style="width:100%;height:auto;display:block;">
-        <source src="https://raw.githubusercontent.com/FCcreativeservices/FranConnect-Services/main/VID_Index_Integrations.mp4" type="video/mp4">
-      </video>
     </div>
   </div>
 </section>
