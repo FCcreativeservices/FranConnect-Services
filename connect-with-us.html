@@ -443,6 +443,18 @@ function toggleMobileNav(){
   groups.forEach(function(g){ obs.observe(g); });
 })();
 
+(function(){
+  var t;
+  window.addEventListener('resize', function(){
+    clearTimeout(t);
+    t = setTimeout(function(){
+      document.querySelectorAll('video[autoplay]').forEach(function(v){
+        if(v.paused) v.play().catch(function(){});
+      });
+    }, 250);
+  });
+})();
+
 </script>
 </body>
 </html>
