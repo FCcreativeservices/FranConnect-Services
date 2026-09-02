@@ -294,10 +294,8 @@ body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;bac
   <div class="cu-section alt">
     <div class="cu-wrap" style="max-width:640px;">
       <p class="cu-tc-row" style="cursor:default;">By submitting this form, you agree to our <a href="#" onclick="openTCModal();return false;">Terms &amp; Conditions</a>.</p>
-      <div class="h-captcha" id="cu-hcaptcha" data-sitekey="50b2fe65-b00b-4b9e-ad62-3ba471098be2" data-size="invisible"></div>
       <div class="mc-err" id="cu-error"></div>
       <button type="button" class="cu-submit" id="cu-submit-btn" onclick="submitCU()">Send request →</button>
-      <p style="font-size:11px;color:var(--dark);opacity:.55;margin-top:10px;text-align:center;">This site is protected by hCaptcha and its <a href="https://www.hcaptcha.com/privacy" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Privacy Policy</a> and <a href="https://www.hcaptcha.com/terms" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline;">Terms of Service</a> apply.</p>
     </div>
   </div>
 </form>
@@ -404,6 +402,8 @@ function saveDraft(){
     name:document.getElementById('cu-name').value,
     company:document.getElementById('cu-company').value,
     email:document.getElementById('cu-email').value,
+    advisor:document.getElementById('cu-advisor').value,
+    advisorNone:advisorNoneFlag,
     rgComment:document.getElementById('cu-rg-comment').value,
     connectComment:document.getElementById('cu-connect-comment').value,
     buildComment:document.getElementById('cu-build-comment').value,
@@ -419,6 +419,18 @@ function restoreDraft(){
     document.getElementById('cu-name').value=d.name||'';
     document.getElementById('cu-company').value=d.company||'';
     document.getElementById('cu-email').value=d.email||'';
+    if(d.advisorNone){
+      advisorNoneFlag=true;
+      document.getElementById('cu-advisor-field').classList.add('no-advisor');
+      var advInput=document.getElementById('cu-advisor');
+      advInput.value='';
+      advInput.disabled=true;
+      advInput.required=false;
+      advInput.placeholder='No FranConnect contact selected';
+      document.getElementById('cu-advisor-toggle').textContent='I do have a FranConnect contact';
+    }else if(d.advisor){
+      document.getElementById('cu-advisor').value=d.advisor;
+    }
     document.getElementById('cu-rg-comment').value=d.rgComment||'';
     document.getElementById('cu-connect-comment').value=d.connectComment||'';
     document.getElementById('cu-build-comment').value=d.buildComment||'';
@@ -446,7 +458,7 @@ document.querySelectorAll('#cu-rg-services input, #cu-connect-services input').f
     saveDraft();
   });
 });
-['cu-name','cu-company','cu-email','cu-rg-comment','cu-connect-comment','cu-build-comment'].forEach(function(id){
+['cu-name','cu-company','cu-email','cu-advisor','cu-rg-comment','cu-connect-comment','cu-build-comment'].forEach(function(id){
   document.getElementById(id).addEventListener('input',saveDraft);
 });
 document.getElementById('cu-add-link-empty').addEventListener('click',saveDraft);
@@ -541,6 +553,7 @@ function filterAdvisors(q){
 function selectAdvisor(name){
   document.getElementById('cu-advisor').value=name;
   document.getElementById('cu-advisor-suggestions').classList.remove('show');
+  saveDraft();
 }
 function onAdvisorBlur(){
   setTimeout(function(){document.getElementById('cu-advisor-suggestions').classList.remove('show');},150);
@@ -565,6 +578,7 @@ function toggleAdvisorNone(){
     input.placeholder="Start typing your FranConnect contact's name";
     btn.textContent="I don't have one";
   }
+  saveDraft();
 }
 function submitCU(){
   var name=document.getElementById('cu-name').value.trim();
@@ -585,22 +599,9 @@ function submitCU(){
   var btn=document.getElementById('cu-submit-btn');
   btn.textContent='Sending...';btn.disabled=true;
 
-  if(!window.hcaptcha){
-    errEl.textContent='Still loading verification — please try again in a moment.';
-    errEl.style.display='block';
-    btn.textContent='Send request →';btn.disabled=false;
-    return;
-  }
-
-  hcaptcha.execute(undefined,{async:true}).then(function(res){
-    sendCU(name,email,company,advisorVal,res.response);
-  }).catch(function(){
-    errEl.textContent='Verification failed. Please try again.';
-    errEl.style.display='block';
-    btn.textContent='Send request →';btn.disabled=false;
-  });
+  sendCU(name,email,company,advisorVal);
 }
-function sendCU(name,email,company,advisorVal,hCaptchaVal){
+function sendCU(name,email,company,advisorVal){
   var errEl=document.getElementById('cu-error');
   var btn=document.getElementById('cu-submit-btn');
 
@@ -649,7 +650,6 @@ function sendCU(name,email,company,advisorVal,hCaptchaVal){
   fd.append('replyto',email);
   fd.append('from_name','Contact Us — FranConnect Services');
   fd.append('fc_contact', advisorNoneFlag ? 'No FranConnect contact selected' : advisorVal);
-  fd.append('h-captcha-response', hCaptchaVal);
 
   fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
   .then(function(r){return r.json();})
@@ -662,14 +662,12 @@ function sendCU(name,email,company,advisorVal,hCaptchaVal){
       errEl.textContent=data.message||'Something went wrong. Please try again.';
       errEl.style.display='block';
       btn.textContent='Send request →';btn.disabled=false;
-      if(window.hcaptcha)window.hcaptcha.reset();
     }
   })
   .catch(function(){
     errEl.textContent='Connection error. Please try again.';
     errEl.style.display='block';
     btn.textContent='Send request →';btn.disabled=false;
-    if(window.hcaptcha)window.hcaptcha.reset();
   });
 }
 /* ── INIT ── */
@@ -679,6 +677,5 @@ renderBuildSection();
 loadFcContacts();
 </script>
 
-<script src="https://js.hcaptcha.com/1/api.js" async defer></script>
 </body>
 </html>
