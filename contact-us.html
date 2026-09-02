@@ -494,7 +494,10 @@ function renderBuildSection(){
   if(p.tmpl)items.push({n:'Branded Templates',p:1800,key:'tmpl'});
   if(E.editAdded)items.push({n:'Video Editing ('+(E.editQty||1)+' video'+((E.editQty||1)>1?'s':'')+')',p:(E.editPrice||0)*(E.editQty||1),key:'edit'});
   if(E.prodAdded)items.push({n:'Video Production',p:E.prodPrice||0,key:'prod'});
-  (E.trainCourses||[]).forEach(function(c){items.push({n:c.label,p:c.price,key:c.id});});
+  (E.trainCourses||[]).forEach(function(c){
+    var detail=(c.lines||[]).map(function(l){return l.p>0?l.n+' ($'+l.p.toLocaleString()+')':l.n;}).join(', ');
+    items.push({n:c.label+(detail?' — '+detail:''),p:c.price,key:c.id});
+  });
   items.forEach(function(item){
     var row=document.createElement('div');
     row.className='cu-service-row';
