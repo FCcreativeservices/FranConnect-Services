@@ -619,13 +619,11 @@ function sendCU(name,email,company,advisorVal){
   if(rgServices.length){
     body+='GROW\n';
     rgServices.forEach(function(s){body+='• '+s+'\n';});
-    if(rgComment)body+='Comment: '+rgComment+'\n';
     body+='\n';
   }
   if(connectServices.length){
     body+='CONNECT\n';
     connectServices.forEach(function(s){body+='• '+s+'\n';});
-    if(connectComment)body+='Comment: '+connectComment+'\n';
     body+='\n';
   }
   if(buildTotal>0){
@@ -633,23 +631,29 @@ function sendCU(name,email,company,advisorVal){
     document.querySelectorAll('#cu-build-rows .cu-service-row').forEach(function(row){
       body+='• '+row.querySelector('.n').textContent+' — '+row.querySelector('.p').textContent+'\n';
     });
-    if(buildComment)body+='Comment: '+buildComment+'\n';
     body+='\n';
   }
   if(!rgServices.length&&!connectServices.length&&buildTotal<=0){
     body='No specific services selected — general inquiry.';
   }
 
+  var messageParts=[];
+  if(rgComment)messageParts.push('Grow: '+rgComment);
+  if(connectComment)messageParts.push('Connect: '+connectComment);
+  if(buildComment)messageParts.push('Build: '+buildComment);
+  var messageText=messageParts.length?messageParts.join('\n'):'—';
+
   var fd=new FormData();
   fd.append('access_key','7e9c4844-2939-442f-acbe-d6301557c6d2');
   fd.append('name',name);
   fd.append('email',email);
   fd.append('company',company||'—');
+  fd.append('fc_contact', advisorNoneFlag ? 'No FranConnect contact selected' : advisorVal);
   fd.append('services',body);
+  fd.append('message',messageText);
   fd.append('subject','[Contact Us] Quote request from '+(company||name));
   fd.append('replyto',email);
   fd.append('from_name','Contact Us — FranConnect Services');
-  fd.append('fc_contact', advisorNoneFlag ? 'No FranConnect contact selected' : advisorVal);
 
   fetch('https://api.web3forms.com/submit',{method:'POST',body:fd})
   .then(function(r){return r.json();})
