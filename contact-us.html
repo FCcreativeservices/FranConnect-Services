@@ -493,7 +493,16 @@ function renderBuildSection(){
   if(p.hub)items.push({n:'Hub Design Package',p:3750,key:'hub'});
   if(p.tmpl)items.push({n:'Branded Templates',p:1800,key:'tmpl'});
   if(E.editAdded)items.push({n:'Video Editing ('+(E.editQty||1)+' video'+((E.editQty||1)>1?'s':'')+')',p:(E.editPrice||0)*(E.editQty||1),key:'edit'});
-  if(E.prodAdded)items.push({n:'Video Production',p:E.prodPrice||0,key:'prod'});
+  if(E.prodAdded){
+    var PROD_TYPE_LABELS={sc:'Screencast',promo:'Promotional',mg:'Motion Graphic'};
+    var PROD_UNITS={sc:'min',promo:'min',mg:'sec'};
+    var prodTypeLabel=PROD_TYPE_LABELS[E.prodType]||'Video Production';
+    var prodDetail=[];
+    if(E.prodDur)prodDetail.push(E.prodDur+' '+(PROD_UNITS[E.prodType]||'min'));
+    if(E.prodScript)prodDetail.push('script writing');
+    if(E.prodVo)prodDetail.push('AI voice-over');
+    items.push({n:'Video Production — '+prodTypeLabel+(prodDetail.length?' ('+prodDetail.join(', ')+')':''),p:E.prodPrice||0,key:'prod'});
+  }
   (E.trainCourses||[]).forEach(function(c){
     var detail=(c.lines||[]).map(function(l){return l.p>0?l.n+' ($'+l.p.toLocaleString()+')':l.n;}).join(', ');
     items.push({n:c.label+(detail?' — '+detail:''),p:c.price,key:c.id});

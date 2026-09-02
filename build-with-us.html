@@ -1065,7 +1065,7 @@ var PLATFORM_PRICES = { skin:300, dash:2100, hub:3750, tmpl:1800 };
 var E = {
   platform: { skin:false, dash:false, hub:false, tmpl:false },
   editPrice:300, editQty:1, editAdded:false,
-  prodPrice:0, prodAdded:false,
+  prodPrice:0, prodAdded:false, prodType:null, prodDur:0, prodScript:false, prodVo:false,
   trainCourses:[]
 };
 
@@ -1190,6 +1190,10 @@ function updProd(s){
   var sc=document.getElementById('pscript').checked?600:0;
   var vo=document.getElementById('pvo').checked?700:0;
   E.prodPrice=base+sc+vo;
+  E.prodType=PT;
+  E.prodDur=dur;
+  E.prodScript=!!sc;
+  E.prodVo=!!vo;
   var pp=document.getElementById('pprice');
   var pbtn=document.getElementById('pbtn');
   if(E.prodPrice>0){
@@ -1578,6 +1582,10 @@ document.getElementById('eslider').style.setProperty('--pct','0%');
     if(typeof saved.editAdded==='boolean')E.editAdded=saved.editAdded;
     if(typeof saved.prodPrice==='number')E.prodPrice=saved.prodPrice;
     if(typeof saved.prodAdded==='boolean')E.prodAdded=saved.prodAdded;
+    if(typeof saved.prodType==='string')E.prodType=saved.prodType;
+    if(typeof saved.prodDur==='number')E.prodDur=saved.prodDur;
+    if(typeof saved.prodScript==='boolean')E.prodScript=saved.prodScript;
+    if(typeof saved.prodVo==='boolean')E.prodVo=saved.prodVo;
     if(Array.isArray(saved.trainCourses))E.trainCourses=saved.trainCourses;
   }catch(e){}
 
