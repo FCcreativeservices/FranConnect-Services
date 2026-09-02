@@ -615,33 +615,23 @@ function sendCU(name,email,company,advisorVal){
   if(rawBuild){try{E=JSON.parse(rawBuild);}catch(e){}}
   var buildTotal=E?total(E):0;
 
-  var body='';
-  if(rgServices.length){
-    body+='GROW\n';
-    rgServices.forEach(function(s){body+='• '+s+'\n';});
-    body+='\n';
-  }
-  if(connectServices.length){
-    body+='CONNECT\n';
-    connectServices.forEach(function(s){body+='• '+s+'\n';});
-    body+='\n';
-  }
+  var serviceParts=[];
+  if(rgServices.length) serviceParts.push('GROW: '+rgServices.join(', '));
+  if(connectServices.length) serviceParts.push('CONNECT: '+connectServices.join(', '));
   if(buildTotal>0){
-    body+='BUILD WITH US (estimate $'+buildTotal.toLocaleString()+' USD)\n';
+    var buildItems=[];
     document.querySelectorAll('#cu-build-rows .cu-service-row').forEach(function(row){
-      body+='• '+row.querySelector('.n').textContent+' — '+row.querySelector('.p').textContent+'\n';
+      buildItems.push(row.querySelector('.n').textContent+' ('+row.querySelector('.p').textContent+')');
     });
-    body+='\n';
+    serviceParts.push('BUILD: '+buildItems.join(', ')+' — Est. total $'+buildTotal.toLocaleString()+' USD');
   }
-  if(!rgServices.length&&!connectServices.length&&buildTotal<=0){
-    body='No specific services selected — general inquiry.';
-  }
+  var body=serviceParts.length?serviceParts.join(' | '):'No specific services selected — general inquiry.';
 
   var messageParts=[];
   if(rgComment)messageParts.push('Grow: '+rgComment);
   if(connectComment)messageParts.push('Connect: '+connectComment);
   if(buildComment)messageParts.push('Build: '+buildComment);
-  var messageText=messageParts.length?messageParts.join('\n'):'—';
+  var messageText=messageParts.length?messageParts.join(' | '):'—';
 
   var fd=new FormData();
   fd.append('access_key','7e9c4844-2939-442f-acbe-d6301557c6d2');
